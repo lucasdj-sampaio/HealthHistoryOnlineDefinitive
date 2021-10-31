@@ -2,6 +2,7 @@ package br.com.healthhistoryonline.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import br.com.healthhistoryonline.model.Pair;
 
 public class LoginDao {
 	
@@ -14,7 +15,8 @@ public class LoginDao {
 					+ "GROUP BY NM_USUARIO;");
 			
 			stat.setString(1, user);
-			stat.setString(2, password);
+			stat.setString(2, user);
+			stat.setString(3, password);
 			
 			ResultSet response = conn.getData(stat);
 			
