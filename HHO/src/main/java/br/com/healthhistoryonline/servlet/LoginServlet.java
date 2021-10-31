@@ -14,7 +14,7 @@ public class LoginServlet extends HttpServlet {
 	private LoginDao validLogin = new LoginDao();
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getAttribute("userName").toString();
 		String password = request.getAttribute("password").toString();
 		
