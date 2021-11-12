@@ -5,16 +5,16 @@ public class Measure{
 	
 	//-------- Atributos --------
 	
-	public float height;
-	public float weight; 
-	public float imc;
-	public String imcClassification;
+	private float height;
+	private float weight; 
+	private float imc;
+	private String imcClassification;
 	
 	//-------- Construtor --------
 	
 	/**@param Construtor para criação do obj*/
 	public Measure(float aHeight, float aWeight) {
-		this.imc = imcCalculate(aHeight, aWeight);
+		imcCalculate(aHeight, aWeight);
 		this.height = aHeight;
 		this.weight = aWeight;
 		
@@ -24,8 +24,8 @@ public class Measure{
 	//-------- Métodos --------
 	
 	/**@param Método para calcular IMC*/
-	private float imcCalculate(float height, float weight) {
-		return weight / (height * height) ;
+	private void imcCalculate(float height, float weight) {
+		this.imc = weight / (height * height) ;
 	}
 	/**@return retorna calculo de IMC para guardar o valor do calculo*/
 	
@@ -46,4 +46,20 @@ public class Measure{
 		}
 	}
 	/**@return retorna uma string para registrar o retorno*/
+
+	public float getHeight() {
+		return height;
+	}
+
+	public float getWeight() {
+		return weight;
+	}
+
+	public float getImc() {
+		return imc;
+	}
+
+	public String getImcClassification() {
+		return imcClassification;
+	}
 }

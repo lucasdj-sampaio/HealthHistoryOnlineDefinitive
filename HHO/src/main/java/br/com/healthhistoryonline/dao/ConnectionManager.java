@@ -20,13 +20,27 @@ public class ConnectionManager {
 	}
 	
 	public Connection getConnection() {
-		openConnection();
+		if	(connection == null) {
+			openConnection();
+			setCommit();
+		}
+		
 		return this.connection;
 	}
 	
 	private void openConnection() {
 		try {
 			this.connection = DriverManager.getConnection("jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl", "RM88770", "fiap21");
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+		}
+	}
+	
+	private void setCommit() {
+		try {
+			this.connection.setAutoCommit(false);
 		}
 		catch (SQLException ex) 
 		{
@@ -44,15 +58,15 @@ public class ConnectionManager {
 		}
 	}
 	
-	public int executeCommand(PreparedStatement stat) {
+	public int executeCommand(PreparedStatement stat, boolean makeCommit) {
 		int response = 0;
 		
 		try {
-			connection.setAutoCommit(false);
-			
 			response = stat.executeUpdate();
 			
-			connection.commit();
+			if (makeCommit) {
+				connection.commit();
+			}	
 		}
 		catch (SQLException ex) 
 		{
@@ -65,9 +79,6 @@ public class ConnectionManager {
 			{
 				ex1.printStackTrace();
 			}
-		}
-		finally {
-			closeConnection();
 		}
 				
 		return response;		

@@ -39,7 +39,7 @@ public class PhoneDao {
 		}
 	}
 	
-	public Set<Phone> getAll(String userName){
+	public static Set<Phone> getAll(String userName){
 		Set<Phone> listValues = new HashSet<Phone>();
 		
 		try {

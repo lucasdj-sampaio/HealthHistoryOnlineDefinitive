@@ -5,10 +5,10 @@ public class Meal{
 	
 	//-------- Atributos --------
 	
-	public String food;
-	public int calories;
-	public int quantity;
-	public String measure;
+	private String food;
+	private int calories;
+	private int quantity;
+	private String measure;
 	
 	//-------- Construtor --------
 	
@@ -19,4 +19,20 @@ public class Meal{
 		this.quantity = aQuantity;
 		this.measure = aMeasure;
 	}
+
+	public String getFood() {
+		return food;
+	}
+
+	public int getCalories() {
+		return calories;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public String getMeasure() {
+		return measure;
+	}	
 }

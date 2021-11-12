@@ -5,10 +5,9 @@ public class Phone{
 	
 	//-------- Atributos --------
 	
-	
-	public int ddiNumber;
-	public int dddNumber;
-	public int number;
+	private int ddiNumber;
+	private int dddNumber;
+	private int number;
 		
 	//-------- Construtor --------
 	
@@ -19,5 +18,15 @@ public class Phone{
 		this.number = aNumber;
 	}
 
+	public int getDdiNumber() {
+		return ddiNumber;
+	}
 
+	public int getDddNumber() {
+		return dddNumber;
+	}
+
+	public int getNumber() {
+		return number;
+	}
 }

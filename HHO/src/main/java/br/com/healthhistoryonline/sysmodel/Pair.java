@@ -1,4 +1,4 @@
-package br.com.healthhistoryonline.model;
+package br.com.healthhistoryonline.sysmodel;
 
 public class Pair<U, V> {
 

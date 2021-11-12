@@ -4,16 +4,15 @@ public class Pressure {
 /**@author giovana agudo*/
 	
 	//-------- Atributos --------
-	public int diastolic;
-	public int systolic;
-	public String classification;
-	public String inclusionDate;
+	private int diastolic;
+	private int systolic;
+	private String classification;
+	private String inclusionDate;
 	
 	//-------- Construtor --------
 	
 	/**@param Construtor para criação de obj de pressão*/
 	public Pressure(int aSystolic, int aDiastolic, String ainclusionDate) {
-		
 		this.diastolic = aDiastolic;
 		this.systolic = aSystolic;
 		this.inclusionDate = ainclusionDate;
@@ -42,4 +41,20 @@ public class Pressure {
 		}
 	}
 	/**@return retorna uma string com a classificação de pressão do usuário*/
+
+	public int getDiastolic() {
+		return diastolic;
+	}
+
+	public int getSystolic() {
+		return systolic;
+	}
+
+	public String getClassification() {
+		return classification;
+	}
+
+	public String getInclusionDate() {
+		return inclusionDate;
+	}
 }
