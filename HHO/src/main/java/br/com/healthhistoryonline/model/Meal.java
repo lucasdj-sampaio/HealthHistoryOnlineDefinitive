@@ -1,26 +1,20 @@
 package br.com.healthhistoryonline.model;
+import br.com.healthhistoryonline.sysmodel.FoodType;
+import br.com.healthhistoryonline.sysmodel.MeasureType;
 
 public class Meal{
 /**@author gabriela montefusco*/
 	
 	//-------- Atributos --------
 	
-	private String food;
+	private FoodType food;
 	private int calories;
 	private int quantity;
-	private String measure;
+	private MeasureType measure;
 	
 	//-------- Construtor --------
-	
-	/**@param parametros do construtor para criar objeto de refeição*/
-	public Meal(String aFood, int aCalories, int aQuantity, String aMeasure) {
-		this.food = aFood;
-		this.calories = aCalories;
-		this.quantity = aQuantity;
-		this.measure = aMeasure;
-	}
 
-	public String getFood() {
+	public FoodType getFood() {
 		return food;
 	}
 
@@ -32,7 +26,23 @@ public class Meal{
 		return quantity;
 	}
 
-	public String getMeasure() {
+	public MeasureType getMeasure() {
 		return measure;
+	}
+
+	public void setFood(FoodType food) {
+		this.food = food;
+	}
+
+	public void setCalories(int calories) {
+		this.calories = calories;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public void setMeasure(MeasureType measure) {
+		this.measure = measure;
 	}	
 }

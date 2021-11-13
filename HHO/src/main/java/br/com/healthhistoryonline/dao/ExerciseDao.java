@@ -45,7 +45,7 @@ public class ExerciseDao {
 		}
 	}
 	
-	public Pair<Boolean, String> updateExercise(Exercise exerciseDetails, String userName){	
+	public Pair<Boolean, String> updateExercise(Exercise exerciseDetails){	
 		try {
 			PreparedStatement exercise = conn.getConnection().prepareStatement("UPDATE T_EXERCICIO"
 					+ "(SET NR_KCAL_GASTO = ?, NR_BPM = ?, DT_INCLUSAO = ?, CD_EXERCICIO = ? WHERE CD_ATIVIDADE = ?)");
@@ -74,8 +74,32 @@ public class ExerciseDao {
 		}
 	}
 	
+	public Pair<Boolean, String> deleteExercise(Exercise exerciseDetails){	
+		try {
+			PreparedStatement exercise = conn.getConnection().prepareStatement("DELETE FROM T_EXERCICIO WHERE CD_ATIVIDADE = ?");
+			
+			exercise.setInt(1, exerciseDetails.getActivityId());
+			
+			if (conn.executeCommand(exercise, false) == 1) {
+				conn.getConnection().commit();
+				
+				return new Pair<Boolean, String>(true, "Exercício deletado com sucesso!");
+			}
+			
+			return new Pair<Boolean, String>(false, "Erro ao deletar exercicio");
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Erro ao deletar exercicio");
+		}
+		finally {
+			conn.closeConnection();
+		}
+	}
+	
 	//Get all from specify user
-	public Set<Exercise> getAll(String userName) throws ParseException{
+	public Pair<Boolean, Set<Exercise>> getAll(String userName) throws ParseException{
 		Set<Exercise> listValues = new HashSet<Exercise>();
 		
 		try {
@@ -105,12 +129,13 @@ public class ExerciseDao {
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
+			return new Pair<Boolean, Set<Exercise>>(false, null);
 		}
 		finally {
 			conn.closeConnection();
 		}
 		
-		return listValues;
+		return new Pair<Boolean, Set<Exercise>>(true, listValues);
 	}
 	
 	public Set<ExerciseType> getAll(){

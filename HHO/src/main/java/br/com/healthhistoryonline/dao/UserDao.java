@@ -127,7 +127,7 @@ public class UserDao {
 				User user = new User(response.getString(1), response.getString(2)
 						, response.getString(5).charAt(0), response.getLong(3), response.getDate(4));
 				
-				user.setPhone(PhoneDao.getAll(userName));
+				user.setPhone(PhoneDao.getAll(conn, userName));
 				
 				return new Pair<Boolean, User>(true, user);
 			}
@@ -166,7 +166,7 @@ public class UserDao {
 		}
 	}
 	
-	private Boolean validLogin(String userName){
+	private boolean validLogin(String userName){
 		try {
 			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT NM_USUARIO "
 					+ "FROM T_CREDENCIAL WHERE NM_USUARIO = ? OR EMAIL = ?");

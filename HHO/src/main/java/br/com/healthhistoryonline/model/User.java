@@ -1,6 +1,5 @@
 package br.com.healthhistoryonline.model;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 public class User{
