@@ -219,7 +219,10 @@ public class MealDao {
 			if (conn.executeCommand(updateSnack, false) <= 1) {
 				conn.getConnection().commit();
 				return new Pair<Boolean, String>(true, "Refeição atualizada com sucesso!");
-			}			
+			}	
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
 		}
 		catch (SQLException ex) 
 		{
@@ -229,8 +232,6 @@ public class MealDao {
 		finally {
 			conn.closeConnection();
 		}
-		
-		return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
 	}
 	
 	public Pair<Boolean, String> updateMeal(Meal meal){	
@@ -249,6 +250,9 @@ public class MealDao {
 				conn.getConnection().commit();
 				return new Pair<Boolean, String>(true, "Refeição atualizada com sucesso!");
 			}
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
 		}
 		catch (SQLException ex) 
 		{
@@ -258,8 +262,6 @@ public class MealDao {
 		finally {
 			conn.closeConnection();
 		}
-		
-		return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
 	}
 	
 	public Pair<Boolean, String> deleteMeal(Snack snack){	
@@ -281,6 +283,9 @@ public class MealDao {
 					return new Pair<Boolean, String>(true, "Refeição removida com sucesso!");
 				}
 			}
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
 		}
 		catch (SQLException ex) 
 		{
@@ -289,9 +294,7 @@ public class MealDao {
 		}
 		finally {
 			conn.closeConnection();
-		}
-		
-		return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
+		}	
 	}
 	
 	public Pair<Boolean, String> deleteMeal(Meal meal){	
@@ -305,6 +308,9 @@ public class MealDao {
 				conn.getConnection().commit();
 				return new Pair<Boolean, String>(true, "Refeição removida com sucesso!");
 			}
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
 		}
 		catch (SQLException ex) 
 		{
@@ -314,7 +320,5 @@ public class MealDao {
 		finally {
 			conn.closeConnection();
 		}
-		
-		return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
 	}
 }

@@ -5,6 +5,7 @@ public class Phone{
 	
 	//-------- Atributos --------
 	
+	private int numberCode;
 	private int ddiNumber;
 	private int dddNumber;
 	private int number;
@@ -28,5 +29,13 @@ public class Phone{
 
 	public int getNumber() {
 		return number;
+	}
+	
+	public int getNumberCode() {
+		return numberCode;
+	}
+	
+	public void setNumberCode(int numberCode) {
+		this.numberCode = numberCode;
 	}
 }

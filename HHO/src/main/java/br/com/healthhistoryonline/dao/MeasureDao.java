@@ -4,164 +4,253 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.HashSet;
-import java.util.Set;
-import br.com.healthhistoryonline.model.Exercise;
-import br.com.healthhistoryonline.sysmodel.ExerciseType;
+import java.util.ArrayList;
+import java.util.List;
+import br.com.healthhistoryonline.model.Measure;
 import br.com.healthhistoryonline.sysmodel.Pair;
+import br.com.healthhistoryonline.sysmodel.Heigth;
+import br.com.healthhistoryonline.sysmodel.Weigth;
 
 public class MeasureDao {
 	
 	ConnectionManager conn = new ConnectionManager();
 	
-	public Pair<Boolean, String> insertExercise(Exercise exerciseDetails, String userName){	
+	public Pair<Boolean, String> insertMeasure(Weigth weigth, String userName){	
 		try {
-			PreparedStatement exercise = conn.getConnection().prepareStatement("INSERT INTO T_EXERCICIO"
-					+ "(CD_ATIVIDADE, NM_USUARIO, NR_KCAL_GASTO, NR_BPM, DT_INCLUSAO, CD_EXERCICIO)"
-					+ "VALUES (EXERCICIO.Nextval, ?, ?, ?, ?, ?)");
+			PreparedStatement insertW = conn.getConnection().prepareStatement("INSERT INTO T_PESO"
+					+ "(cd_peso, nm_usuario, dt_inclusao, nr_peso)"
+					+ "VALUES (PESO.Nextval, ?, ?, ?)");
 			
-			exercise.setString(1, userName);
-			exercise.setInt(2, exerciseDetails.getSpentCalories());
-			exercise.setInt(3, exerciseDetails.getBpm());
-			exercise.setDate(4, java.sql.Date.valueOf(exerciseDetails.getInclusionDate().toString()));
-			exercise.setInt(5, exerciseDetails.getType().getExerciseCode());
+			insertW.setString(1, userName);
+			insertW.setDate(2, java.sql.Date.valueOf(weigth.getInclusionDate().toString()));
+			insertW.setFloat(3, weigth.getWeigth());
 			
-			if (conn.executeCommand(exercise, true) == 1) {
-				return new Pair<Boolean, String>(true, "Exercício incluso com sucesso!");
+			if (conn.executeCommand(insertW, true) == 1) {
+				return new Pair<Boolean, String>(true, "Peso incluso com sucesso!");
 			}		
 			
-			return new Pair<Boolean, String>(false, "Erro ao cadastrar exercício");
+			return new Pair<Boolean, String>(false, "Erro ao cadastrar peso");
 		}
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
-			return new Pair<Boolean, String>(false, "Erro ao cadastrar exercício");
+			return new Pair<Boolean, String>(false, "Erro ao cadastrar peso");
 		}
 		finally {
 			conn.closeConnection();
 		}
 	}
 	
-	public Pair<Boolean, String> updateExercise(Exercise exerciseDetails){	
+	public Pair<Boolean, String> insertMeasure(Heigth heigth, String userName){	
 		try {
-			PreparedStatement exercise = conn.getConnection().prepareStatement("UPDATE T_EXERCICIO"
-					+ "(SET NR_KCAL_GASTO = ?, NR_BPM = ?, DT_INCLUSAO = ?, CD_EXERCICIO = ? WHERE CD_ATIVIDADE = ?)");
+			PreparedStatement insertH = conn.getConnection().prepareStatement("INSERT INTO T_ALTURA"
+					+ "(cd_altura, nm_usuario, dt_inclusao, nr_altura)"
+					+ "VALUES (ALTURA.Nextval, ?, ?, ?)");
 			
-			exercise.setInt(1, exerciseDetails.getSpentCalories());
-			exercise.setInt(2, exerciseDetails.getBpm());
-			exercise.setDate(3, java.sql.Date.valueOf(exerciseDetails.getInclusionDate().toString()));
-			exercise.setInt(4, exerciseDetails.getType().getExerciseCode());
-			exercise.setInt(5, exerciseDetails.getActivityId());
+			insertH.setString(1, userName);
+			insertH.setDate(2, java.sql.Date.valueOf(heigth.getInclusionDate().toString()));
+			insertH.setFloat(3, heigth.getHeigth());
 			
-			if (conn.executeCommand(exercise, false) == 1) {
+			if (conn.executeCommand(insertH, true) == 1) {
+				return new Pair<Boolean, String>(true, "Altura incluso com sucesso!");
+			}		
+			
+			return new Pair<Boolean, String>(false, "Erro ao cadastrar altura");
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Erro ao cadastrar altura");
+		}
+		finally {
+			conn.closeConnection();
+		}
+	}
+	
+	public Pair<Boolean, String> updateMeasure(Heigth heigth){	
+		try {
+			PreparedStatement updateH = conn.getConnection().prepareStatement("UPDATE T_ALTURA"
+					+ "(SET nr_altura = ?, dt_inclusao = ?, WHERE cd_altura = ?)");
+			
+			updateH.setFloat(1, heigth.getHeigth());
+			updateH.setDate(2, java.sql.Date.valueOf(heigth.getInclusionDate().toString()));
+			updateH.setInt(3, heigth.getHeigthCode());
+			
+			if (conn.executeCommand(updateH, false) == 1) {
 				conn.getConnection().commit();
 				
-				return new Pair<Boolean, String>(true, "Alteração de exercício concluída");
+				return new Pair<Boolean, String>(true, "Alteração de altura concluída");
 			}
 			
-			return new Pair<Boolean, String>(false, "Erro ao alterar exercicio");
+			return new Pair<Boolean, String>(false, "Erro ao alterar altura");
 		}
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
-			return new Pair<Boolean, String>(false, "Erro ao alterar exercicio");
+			return new Pair<Boolean, String>(false, "Erro ao alterar altura");
 		}
 		finally {
 			conn.closeConnection();
 		}
 	}
 	
-	public Pair<Boolean, String> deleteExercise(Exercise exerciseDetails){	
+	public Pair<Boolean, String> updateMeasure(Weigth weigth){	
 		try {
-			PreparedStatement exercise = conn.getConnection().prepareStatement("DELETE FROM T_EXERCICIO WHERE CD_ATIVIDADE = ?");
+			PreparedStatement updateW = conn.getConnection().prepareStatement("UPDATE T_PESO"
+					+ "(SET nr_peso = ?, dt_inclusao = ?, WHERE cd_peso = ?)");
 			
-			exercise.setInt(1, exerciseDetails.getActivityId());
+			updateW.setFloat(1, weigth.getWeigth());
+			updateW.setDate(2, java.sql.Date.valueOf(weigth.getInclusionDate().toString()));
+			updateW.setInt(3, weigth.getWeigthCode());
 			
-			if (conn.executeCommand(exercise, false) == 1) {
+			if (conn.executeCommand(updateW, false) == 1) {
 				conn.getConnection().commit();
 				
-				return new Pair<Boolean, String>(true, "Exercício deletado com sucesso!");
+				return new Pair<Boolean, String>(true, "Alteração de peso concluída");
 			}
 			
-			return new Pair<Boolean, String>(false, "Erro ao deletar exercicio");
+			return new Pair<Boolean, String>(false, "Erro ao alterar peso");
 		}
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
-			return new Pair<Boolean, String>(false, "Erro ao deletar exercicio");
+			return new Pair<Boolean, String>(false, "Erro ao alterar peso");
 		}
 		finally {
 			conn.closeConnection();
 		}
 	}
 	
-	//Get all from specify user
-	public Pair<Boolean, Set<Exercise>> getAll(String userName) throws ParseException{
-		Set<Exercise> listValues = new HashSet<Exercise>();
-		
+	public Pair<Boolean, String> deleteMeasure(Weigth weigth){	
 		try {
-			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT E.NR_KCAL_GASTO, E.nr_bpm, E.DT_INCLUSAO,"
-					+ " TE.TP_EXERCICIO, CD_ATIVIDADE FROM T_EXERCICIO E INNER JOIN T_TP_EXERCICIO TE "
-					+ "ON E.CD_EXERCICIO = TE.CD_EXERCICIO WHERE NM_USUARIO = ?");
+			PreparedStatement deleteW = conn.getConnection().prepareStatement("DELETE FROM T_PESO WHERE cd_peso = ?");
 			
-			stat.setString(1, userName);
+			deleteW.setInt(1, weigth.getWeigthCode());
 			
-			ResultSet response = conn.getData(stat);
-			
-			while (response.next()) {
-				ExerciseType type = new ExerciseType();
-				type.setExercise(response.getString(4));
+			if (conn.executeCommand(deleteW, false) == 1) {
+				conn.getConnection().commit();
 				
-				Exercise exercise = new Exercise(response.getInt(1)
-						, response.getInt(2), new SimpleDateFormat("dd/MM/yyyy").parse(response.getString(3)));
-				
-				exercise.setActivityId(response.getInt(5));
-				exercise.setType(type);
-				
-				listValues.add(exercise);
+				return new Pair<Boolean, String>(true, "Peso removido com sucesso!");
 			}
 			
-			conn.closeConnection();			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Erro ao deletar registro de peso");
 		}
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
-			return new Pair<Boolean, Set<Exercise>>(false, null);
+			return new Pair<Boolean, String>(false, "Erro ao deletar registro de peso");
 		}
 		finally {
 			conn.closeConnection();
 		}
-		
-		return new Pair<Boolean, Set<Exercise>>(true, listValues);
 	}
 	
-	public Set<ExerciseType> getAll(){
-		Set<ExerciseType> listValues = new HashSet<ExerciseType>();
+	public Pair<Boolean, String> deleteMeasure(Heigth heigth){	
+		try {
+			PreparedStatement deleteH = conn.getConnection().prepareStatement("DELETE FROM T_ALTURA WHERE cd_altura = ?");
+			
+			deleteH.setInt(1, heigth.getHeigthCode());
+			
+			if (conn.executeCommand(deleteH, false) == 1) {
+				conn.getConnection().commit();
+				
+				return new Pair<Boolean, String>(true, "Altura removida com sucesso!");
+			}
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Erro ao deletar registro de altura");
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Erro ao deletar registro de altura");
+		}
+		finally {
+			conn.closeConnection();
+		}
+	}
+	
+	//Get user measure
+	public Pair<Boolean, Measure> getMeasure(String userName){
 		
 		try {
-			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT CD_EXERCICIO, TP_EXERCICIO "
-					+ "FROM T_TP_EXERCICIO");
+			PreparedStatement measure = conn.getConnection().prepareStatement("SELECT nr_peso, nr_altura FROM "
+					+ "(SELECT nr_peso FROM T_PESO WHERE nm_usuario = ? AND ROWNUM = 1 ORDER BY dt_inclusao DESC), "
+					+ "(SELECT nr_altura FROM T_ALTURA WHERE nm_usuario = ? AND ROWNUM = 1 ORDER BY dt_inclusao DESC)");
+			
+			measure.setString(1, userName);
+			measure.setString(2, userName);
+			
+			ResultSet response = conn.getData(measure);
+			
+			if (response.next()) {
+				return new Pair<Boolean, Measure>(true, new Measure(response.getFloat(2), response.getFloat(1)));
+			}
+			
+			return new Pair<Boolean, Measure>(false, null);
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, Measure>(false, null);
+		}
+		finally {
+			conn.closeConnection();
+		}
+	}
+	
+	public Pair<Boolean, List<Heigth>> getAllHeigth(String userName) throws ParseException{
+		List<Heigth> heigthList = new ArrayList<Heigth>();
+		
+		try {
+			PreparedStatement heigth = conn.getConnection().prepareStatement("SELECT cd_altura, nr_altura, dt_inclusao "
+					+ "FROM T_ALTURA WHERE nm_usuario = ? ORDER BY dt_inclusao ASC");
 					
-			ResultSet response = conn.getData(stat);
+			heigth.setString(1, userName);
+			ResultSet response = conn.getData(heigth);
 			
 			while (response.next()) {
-				ExerciseType type = new ExerciseType();
-				type.setExerciseCode(response.getInt(1));
-				type.setExercise(response.getString(2));
-				
-				listValues.add(type);
-			}
-			
-			conn.closeConnection();			
+				heigthList.add(new Heigth(response.getInt(1), response.getInt(2)
+						, new SimpleDateFormat("dd/MM/yyyy").parse(response.getDate(3).toString())));
+			}			
 		}
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
+			return new Pair<Boolean, List<Heigth>>(false, null);
 		}
 		finally {
 			conn.closeConnection();
 		}
 		
-		return listValues;
+		return new Pair<Boolean, List<Heigth>>(true, heigthList);
+	}
+	
+	public Pair<Boolean, List<Weigth>> getAllWeigth(String userName) throws ParseException{
+		List<Weigth> weigthList = new ArrayList<Weigth>();
+		
+		try {
+			PreparedStatement weigth = conn.getConnection().prepareStatement("SELECT cd_peso, nr_peso, dt_inclusao "
+					+ "FROM T_PESO WHERE nm_usuario = ? ORDER BY dt_inclusao ASC");
+					
+			weigth.setString(1, userName);
+			ResultSet response = conn.getData(weigth);
+			
+			while (response.next()) {
+				weigthList.add(new Weigth(response.getInt(1), response.getInt(2)
+						, new SimpleDateFormat("dd/MM/yyyy").parse(response.getDate(3).toString())));
+			}			
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, List<Weigth>>(false, null);
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return new Pair<Boolean, List<Weigth>>(true, weigthList);
 	}
 }

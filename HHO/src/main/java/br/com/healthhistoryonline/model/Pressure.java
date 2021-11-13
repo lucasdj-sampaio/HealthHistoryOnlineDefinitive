@@ -1,18 +1,20 @@
 package br.com.healthhistoryonline.model;
+import java.util.Date;
 
 public class Pressure {
 /**@author giovana agudo*/
 	
 	//-------- Atributos --------
+	private int pressureCode;
 	private int diastolic;
 	private int systolic;
 	private String classification;
-	private String inclusionDate;
+	private Date inclusionDate;
 	
 	//-------- Construtor --------
 	
 	/**@param Construtor para criação de obj de pressão*/
-	public Pressure(int aSystolic, int aDiastolic, String ainclusionDate) {
+	public Pressure(int aSystolic, int aDiastolic, Date ainclusionDate) {
 		this.diastolic = aDiastolic;
 		this.systolic = aSystolic;
 		this.inclusionDate = ainclusionDate;
@@ -54,7 +56,15 @@ public class Pressure {
 		return classification;
 	}
 
-	public String getInclusionDate() {
+	public Date getInclusionDate() {
 		return inclusionDate;
+	}
+
+	public int getPressureCode() {
+		return pressureCode;
+	}
+
+	public void setPressureCode(int pressureCode) {
+		this.pressureCode = pressureCode;
 	}
 }

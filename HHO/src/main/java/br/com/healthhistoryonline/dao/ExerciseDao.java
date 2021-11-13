@@ -51,7 +51,7 @@ public class ExerciseDao {
 			exercise.setInt(2, exerciseDetails.getBpm());
 			exercise.setDate(3, java.sql.Date.valueOf(exerciseDetails.getInclusionDate().toString()));
 			exercise.setInt(4, exerciseDetails.getType().getExerciseCode());
-			exercise.setInt(5, exerciseDetails.getActivityId());
+			exercise.setInt(5, exerciseDetails.getActivityCode());
 			
 			if (conn.executeCommand(exercise, false) == 1) {
 				conn.getConnection().commit();
@@ -59,6 +59,7 @@ public class ExerciseDao {
 				return new Pair<Boolean, String>(true, "Alteração de exercício concluída");
 			}
 			
+			conn.getConnection().rollback();
 			return new Pair<Boolean, String>(false, "Erro ao alterar exercicio");
 		}
 		catch (SQLException ex) 
@@ -75,7 +76,7 @@ public class ExerciseDao {
 		try {
 			PreparedStatement exercise = conn.getConnection().prepareStatement("DELETE FROM T_EXERCICIO WHERE CD_ATIVIDADE = ?");
 			
-			exercise.setInt(1, exerciseDetails.getActivityId());
+			exercise.setInt(1, exerciseDetails.getActivityCode());
 			
 			if (conn.executeCommand(exercise, false) == 1) {
 				conn.getConnection().commit();
@@ -83,6 +84,7 @@ public class ExerciseDao {
 				return new Pair<Boolean, String>(true, "Exercício deletado com sucesso!");
 			}
 			
+			conn.getConnection().rollback();
 			return new Pair<Boolean, String>(false, "Erro ao deletar exercicio");
 		}
 		catch (SQLException ex) 
@@ -115,7 +117,7 @@ public class ExerciseDao {
 				Exercise exercise = new Exercise(response.getInt(1)
 						, response.getInt(2), new SimpleDateFormat("dd/MM/yyyy").parse(response.getString(3)));
 				
-				exercise.setActivityId(response.getInt(5));
+				exercise.setActivityCode(response.getInt(5));
 				exercise.setType(type);
 				
 				listValues.add(exercise);
