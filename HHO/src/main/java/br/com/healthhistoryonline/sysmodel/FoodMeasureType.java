@@ -1,11 +1,11 @@
 package br.com.healthhistoryonline.sysmodel;
 
-public class MeasureType {
+public class FoodMeasureType {
 	
 	private int measureCode;
 	private String measure;
 	
-	public MeasureType(int measeureCode, String measure) {
+	public FoodMeasureType(int measeureCode, String measure) {
 		this.measureCode = measeureCode;
 		this.measure = measure;
 	}

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 import br.com.healthhistoryonline.model.Pressure;
+import br.com.healthhistoryonline.sysmodel.Pair;
 
 public class PressureDao {
 
@@ -66,5 +67,31 @@ ConnectionManager conn = new ConnectionManager();
 
 		return listValues;
 	}
-
+	
+	public Pair<Boolean, String> updatePressure(Pressure pressureDetails){	
+		try {
+			PreparedStatement pressure = conn.getConnection().prepareStatement("UPDATE T_PRESSAO"
+					+ "SET NR_DIASTOLICA = ?, NR_SISTOLICA = ?, DT_INCLUSAO = ? WHERE CD_PRESSAO = ?");				
+		
+			pressure.setInt(1, pressureDetails.diastolic);
+			pressure.setInt(2, pressureDetails.systolic);			
+			pressure.setDate(3, java.sql.Date.valueOf(pressureDetails.inclusionDate));
+		
+			if (conn.executeCommand(pressure, false) == 1) {
+				conn.getConnection().commit();
+				
+				return new Pair<Boolean, String>(true, "Alteração de Pressão concluída");
+			}
+			
+			return new Pair<Boolean, String>(false, "Erro ao alterar Pressão");
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Erro ao alterar Pressão");
+		}
+		finally {
+			conn.closeConnection();
+		}
+	}
 }
