@@ -8,10 +8,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import br.com.healthhistoryonline.model.Meal;
 import br.com.healthhistoryonline.model.Snack;
-import br.com.healthhistoryonline.sysmodel.ExerciseType;
 import br.com.healthhistoryonline.sysmodel.FoodType;
 import br.com.healthhistoryonline.sysmodel.MeasureType;
 import br.com.healthhistoryonline.sysmodel.Pair;
@@ -29,7 +27,7 @@ public class MealDao {
 					+ ", ?, ?)");
 		
 			snack.setString(1, userName);
-			snack.setInt(2, data.getTypeFood().getSnackCode());
+			snack.setInt(2, data.getTypeFood().getSnackTypeCode());
 			snack.setDate(3, java.sql.Date.valueOf(data.getInclusionDate().toString()));
 			
 			if (conn.executeCommand(snack, false) == 1) {
@@ -133,21 +131,17 @@ public class MealDao {
 		return new Pair<Boolean, List<Snack>>(true, snackList);
 	}
 	
-	public Set<FoodType> getAll(){
+	public Set<FoodType> getAllFoodTypes(){
 		Set<FoodType> foodTypes = new HashSet<FoodType>();
 				
 		try {
-			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT cd_alimento, nm_alimento "
+			PreparedStatement food = conn.getConnection().prepareStatement("SELECT cd_alimento, nm_alimento "
 					+ "FROM T_ALIMENTO");
 					
-			ResultSet response = conn.getData(stat);
+			ResultSet response = conn.getData(food);
 			
 			while (response.next()) {
-				ExerciseType type = new ExerciseType();
-				type.setExerciseCode(response.getInt(1));
-				type.setExercise(response.getString(2));
-				
-				listValues.add(type);
+				foodTypes.add(new FoodType(response.getInt(1), response.getString(2)));
 			}
 			
 			conn.closeConnection();			
@@ -161,5 +155,166 @@ public class MealDao {
 		}
 		
 		return foodTypes;
+	}
+
+	public Set<SnackType> getAllSnackTypes(){
+		Set<SnackType> snackTypes = new HashSet<SnackType>();
+				
+		try {
+			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT cd_tp_refeicao, tp_refeicao "
+					+ "FROM T_TP_REFEICAO");
+					
+			ResultSet response = conn.getData(stat);
+			
+			while (response.next()) {
+				snackTypes.add(new SnackType(response.getInt(1), response.getString(2)));
+			}
+			
+			conn.closeConnection();			
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return snackTypes;
+	}
+
+	public Set<MeasureType> getAllMeasureTypes(){
+		Set<MeasureType> measureTypes = new HashSet<MeasureType>();
+				
+		try {
+			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT cd_medida, nm_medida "
+					+ "FROM T_MEDIDA_ALIMENTO");
+					
+			ResultSet response = conn.getData(stat);
+			
+			while (response.next()) {
+				measureTypes.add(new MeasureType(response.getInt(1), response.getString(2)));
+			}
+			
+			conn.closeConnection();			
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return measureTypes;
+	}
+
+	public Pair<Boolean, String> updateMeal(Snack data){	
+		try {
+			PreparedStatement updateSnack = conn.getConnection().prepareStatement("UPDATE T_REFEICAO SET cd_tp_refeicao = ? WHERE cd_ref = ?");
+		
+			updateSnack.setInt(1, data.getTypeFood().getSnackTypeCode());
+			updateSnack.setInt(2, data.getSnackCode());
+						
+			if (conn.executeCommand(updateSnack, false) <= 1) {
+				conn.getConnection().commit();
+				return new Pair<Boolean, String>(true, "Refeição atualizada com sucesso!");
+			}			
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
+	}
+	
+	public Pair<Boolean, String> updateMeal(Meal meal){	
+		try {
+			PreparedStatement updateMeal = conn.getConnection().prepareStatement("UPDATE T_REF_ALIMENTO "
+					+ "SET cd_medida = ? qtd_alimento = ?, nr_caloria = ?, cd_alimento = ? WHERE cd_relacao = ?");
+		
+			updateMeal.setInt(1, meal.getMeasure().getMeasureCode());
+			updateMeal.setInt(2, meal.getQuantity());
+			updateMeal.setInt(3, meal.getCalories());
+			updateMeal.setInt(4, meal.getFood().getFoodCode());
+			updateMeal.setInt(5, meal.getMealCode());
+						
+			
+			if (conn.executeCommand(updateMeal, false) <= 1) {
+				conn.getConnection().commit();
+				return new Pair<Boolean, String>(true, "Refeição atualizada com sucesso!");
+			}
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
+	}
+	
+	public Pair<Boolean, String> deleteMeal(Snack snack){	
+		try {		
+			PreparedStatement deleteMeal = conn.getConnection().prepareStatement("DELETE FROM T_REF_ALIMENTO "
+					+ "WHERE cd_ref = ?");
+		
+			deleteMeal.setInt(1, snack.getSnackCode());
+			
+			if (conn.executeCommand(deleteMeal, false) == snack.getMeal().size()) {
+				
+				PreparedStatement deleteSnack = conn.getConnection().prepareStatement("DELETE FROM T_REFEICAO "
+						+ "WHERE cd_ref = ?");
+			
+				deleteSnack.setInt(1, snack.getSnackCode());
+				
+				if (conn.executeCommand(deleteSnack, false) == 1) {
+					conn.getConnection().commit();
+					return new Pair<Boolean, String>(true, "Refeição removida com sucesso!");
+				}
+			}
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
+	}
+	
+	public Pair<Boolean, String> deleteMeal(Meal meal){	
+		try {
+			PreparedStatement deleteMeal = conn.getConnection().prepareStatement("DELETE FROM T_REF_ALIMENTO "
+					+ "WHERE cd_relacao = ?");
+		
+			deleteMeal.setInt(1, meal.getMealCode());
+			
+			if (conn.executeCommand(deleteMeal, false) <= 1) {
+				conn.getConnection().commit();
+				return new Pair<Boolean, String>(true, "Refeição removida com sucesso!");
+			}
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
 	}
 }
