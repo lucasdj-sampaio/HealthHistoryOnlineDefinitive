@@ -11,7 +11,7 @@ import java.util.Set;
 import br.com.healthhistoryonline.model.Meal;
 import br.com.healthhistoryonline.model.Snack;
 import br.com.healthhistoryonline.sysmodel.FoodType;
-import br.com.healthhistoryonline.sysmodel.MeasureType;
+import br.com.healthhistoryonline.sysmodel.FoodMeasureType;
 import br.com.healthhistoryonline.sysmodel.Pair;
 import br.com.healthhistoryonline.sysmodel.SnackType;
 
@@ -109,7 +109,7 @@ public class MealDao {
 					meal.setFood(new FoodType(response.getInt(1), response.getString(2)));
 					meal.setCalories(response.getInt(3));
 					meal.setQuantity(response.getInt(4));
-					meal.setMeasure(new MeasureType(response.getInt(5), response.getString(6)));
+					meal.setMeasure(new FoodMeasureType(response.getInt(5), response.getString(6)));
 					
 					mealList.add(meal);
 				}
@@ -183,8 +183,8 @@ public class MealDao {
 		return snackTypes;
 	}
 
-	public Set<MeasureType> getAllMeasureTypes(){
-		Set<MeasureType> measureTypes = new HashSet<MeasureType>();
+	public Set<FoodMeasureType> getAllMeasureTypes(){
+		Set<FoodMeasureType> measureTypes = new HashSet<FoodMeasureType>();
 				
 		try {
 			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT cd_medida, nm_medida "
@@ -193,7 +193,7 @@ public class MealDao {
 			ResultSet response = conn.getData(stat);
 			
 			while (response.next()) {
-				measureTypes.add(new MeasureType(response.getInt(1), response.getString(2)));
+				measureTypes.add(new FoodMeasureType(response.getInt(1), response.getString(2)));
 			}
 			
 			conn.closeConnection();			
@@ -219,7 +219,10 @@ public class MealDao {
 			if (conn.executeCommand(updateSnack, false) <= 1) {
 				conn.getConnection().commit();
 				return new Pair<Boolean, String>(true, "Refeição atualizada com sucesso!");
-			}			
+			}	
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
 		}
 		catch (SQLException ex) 
 		{
@@ -229,8 +232,6 @@ public class MealDao {
 		finally {
 			conn.closeConnection();
 		}
-		
-		return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
 	}
 	
 	public Pair<Boolean, String> updateMeal(Meal meal){	
@@ -249,6 +250,9 @@ public class MealDao {
 				conn.getConnection().commit();
 				return new Pair<Boolean, String>(true, "Refeição atualizada com sucesso!");
 			}
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
 		}
 		catch (SQLException ex) 
 		{
@@ -258,8 +262,6 @@ public class MealDao {
 		finally {
 			conn.closeConnection();
 		}
-		
-		return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
 	}
 	
 	public Pair<Boolean, String> deleteMeal(Snack snack){	
@@ -281,6 +283,9 @@ public class MealDao {
 					return new Pair<Boolean, String>(true, "Refeição removida com sucesso!");
 				}
 			}
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
 		}
 		catch (SQLException ex) 
 		{
@@ -289,9 +294,7 @@ public class MealDao {
 		}
 		finally {
 			conn.closeConnection();
-		}
-		
-		return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
+		}	
 	}
 	
 	public Pair<Boolean, String> deleteMeal(Meal meal){	
@@ -305,6 +308,9 @@ public class MealDao {
 				conn.getConnection().commit();
 				return new Pair<Boolean, String>(true, "Refeição removida com sucesso!");
 			}
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
 		}
 		catch (SQLException ex) 
 		{
@@ -314,7 +320,5 @@ public class MealDao {
 		finally {
 			conn.closeConnection();
 		}
-		
-		return new Pair<Boolean, String>(false, "Falha ao remover refeição!");
 	}
 }

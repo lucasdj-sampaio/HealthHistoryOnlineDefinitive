@@ -1,6 +1,6 @@
 package br.com.healthhistoryonline.model;
 import br.com.healthhistoryonline.sysmodel.FoodType;
-import br.com.healthhistoryonline.sysmodel.MeasureType;
+import br.com.healthhistoryonline.sysmodel.FoodMeasureType;
 
 public class Meal{
 /**@author gabriela montefusco*/
@@ -11,7 +11,7 @@ public class Meal{
 	private FoodType food;
 	private int calories;
 	private int quantity;
-	private MeasureType measure;
+	private FoodMeasureType measure;
 	
 	//-------- Construtor --------
 
@@ -27,7 +27,7 @@ public class Meal{
 		return quantity;
 	}
 
-	public MeasureType getMeasure() {
+	public FoodMeasureType getMeasure() {
 		return measure;
 	}
 
@@ -43,7 +43,7 @@ public class Meal{
 		this.quantity = quantity;
 	}
 
-	public void setMeasure(MeasureType measure) {
+	public void setMeasure(FoodMeasureType measure) {
 		this.measure = measure;
 	}
 

@@ -6,15 +6,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import br.com.healthhistoryonline.model.Phone;
+import br.com.healthhistoryonline.sysmodel.Pair;
 
 public class PhoneDao {
 	
 	ConnectionManager conn = new ConnectionManager();
 	
-	/**
-	 * @param data
-	 */
-	public void insertPhone(List<Phone> phoneDetails, String userName){	
+	public Pair<Boolean, String> insertPhone(List<Phone> phoneDetails, String userName){	
 		try {
 			
 			for (Phone phone : phoneDetails) {
@@ -23,16 +21,24 @@ public class PhoneDao {
 						+ "VALUES (TELEFONE.Nextval, ?, ?, ?, ?)");
 			
 				phoneStat.setString(1, userName);
-				phoneStat.setInt(2, phone.ddiNumber);
-				phoneStat.setInt(3, phone.dddNumber);
-				phoneStat.setInt(4, phone.number);
-
-				conn.executeCommand(phoneStat);
+				phoneStat.setInt(2, phone.getDdiNumber());
+				phoneStat.setInt(3, phone.getDddNumber());
+				phoneStat.setInt(4, phone.getNumber());
+				
+				if (conn.executeCommand(phoneStat, false) != 1) {
+					conn.getConnection().rollback();
+					return new Pair<Boolean, String>(false, "Falha ao cadastrar telefone!");
+				}
 			}	
+			
+			conn.getConnection().commit();
+			
+			return new Pair<Boolean, String>(true, "Inclusão de telefone realizada!");
 		}
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Falha ao cadastrar telefone!");
 		}
 		finally {
 			conn.closeConnection();
@@ -43,16 +49,21 @@ public class PhoneDao {
 		Set<Phone> listValues = new HashSet<Phone>();
 		
 		try {
-			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT NR_DDI, NR_DDD, NR_TELEFONE FROM T_TELEFONE WHERE NM_USUARIO = ?");
+			PreparedStatement phoneStat = conn.getConnection().prepareStatement("SELECT NR_DDI, NR_DDD, NR_TELEFONE "
+					+ "CD_TELEFONE FROM T_TELEFONE WHERE NM_USUARIO = ?");
 			
-			stat.setString(1, userName);
+			phoneStat.setString(1, userName);
 			
-			ResultSet response = conn.getData(stat);
+			ResultSet response = conn.getData(phoneStat);
 			
 			while (response.next()) {
-				listValues.add(new Phone(response.getInt(1),
+				Phone phone = new Phone(response.getInt(1),
 						response.getInt(2),
-						response.getInt(3)));
+						response.getInt(3));
+				
+				phone.setNumberCode(response.getInt(4));
+				
+				listValues.add(phone);
 			}
 			
 			conn.closeConnection();			
@@ -66,5 +77,61 @@ public class PhoneDao {
 		}
 		
 		return listValues;
+	}
+	
+	public Pair<Boolean, String> updatePhone(Phone phone){	
+		try {		
+	
+			PreparedStatement phoneStat = conn.getConnection().prepareStatement("UPDATE T_TELEFONE "
+					+ "SET NR_DDI = ?, NR_DDD = ?, NR_TELEFONE = ? "
+					+ "WHERE CD_TELEFONE = ?");
+			
+			phoneStat.setInt(1, phone.getDdiNumber());
+			phoneStat.setInt(2, phone.getDddNumber());
+			phoneStat.setInt(3, phone.getNumber());
+			phoneStat.setInt(4, phone.getNumberCode());
+			
+			if (conn.executeCommand(phoneStat, false) <= 1) {
+				conn.getConnection().commit();
+				return new Pair<Boolean, String>(true, "Refeição atualizada com sucesso!");
+			}
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Falha ao atualiazar telefone!");
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Falha ao atualiazar telefone!");
+		}
+		finally {
+			conn.closeConnection();
+		}
+	}
+	
+	public Pair<Boolean, String> deletePhone(Phone phone){	
+		try {		
+	
+			PreparedStatement phoneStat = conn.getConnection().prepareStatement("DELETE T_TELEFONE "
+					+ "WHERE CD_TELEFONE = ?");
+			
+			phoneStat.setInt(4, phone.getNumberCode());
+			
+			if (conn.executeCommand(phoneStat, false) == 1) {
+				conn.getConnection().commit();
+				return new Pair<Boolean, String>(true, "Remoção de telefone concluída!");
+			}
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Falha ao deletar telefone!");
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Falha ao deletar telefone!");
+		}
+		finally {
+			conn.closeConnection();
+		}
 	}
 }

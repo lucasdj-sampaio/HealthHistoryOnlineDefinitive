@@ -7,7 +7,7 @@ public class Exercise{
 /**@author gabriela montefusco*/	
 	
 	//-------- Atributos --------
-	private int activityId;
+	private int activityCode;
 	private int spentCalories;
 	private int bpm;
 	private Date inclusionDate;
@@ -22,12 +22,12 @@ public class Exercise{
 		this.inclusionDate = inclusionDate;
 	}
 	
-	public int getActivityId() {
-		return activityId;
+	public int getActivityCode() {
+		return activityCode;
 	}
 	
-	public void setActivityId(int activityId) {
-		this.activityId = activityId;
+	public void setActivityCode(int activityId) {
+		this.activityCode = activityId;
 	}
 
 	public int getSpentCalories() {
