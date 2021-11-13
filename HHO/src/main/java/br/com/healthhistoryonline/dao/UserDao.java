@@ -77,7 +77,7 @@ public class UserDao {
 			newUser.setString(3, userData.getLastName());
 			newUser.setLong(4, userData.getCpf());
 			newUser.setDate(5, java.sql.Date.valueOf(userData.getBirthDate().toString()));
-			newUser.setString(6, userData.getGender());
+			newUser.setString(6, String.valueOf(userData.getGender().charAt(0)).toString());
 			
 			if (conn.executeCommand(newUser, false) == 1) {
 				return true;
@@ -127,6 +127,7 @@ public class UserDao {
 				User user = new User(response.getString(1), response.getString(2)
 						, response.getString(5).charAt(0), response.getLong(3), response.getDate(4));
 				
+				user.setUserPhoto(response.getString(6));
 				user.setPhone(PhoneDao.getAll(conn, userName));
 				
 				return new Pair<Boolean, User>(true, user);
@@ -165,6 +166,35 @@ public class UserDao {
 			conn.closeConnection();
 		}
 	}
+	
+	public Pair<Boolean, String> updateUser(User user){
+		try {
+			PreparedStatement updateUser = conn.getConnection().prepareStatement("UPDATE T_USUARIO "
+					+ "SET NOME = ?, SOBRENOME = ?, NR_CPF = ?, DT_NASCIMENTO = ?, DS_SEXO = ?, CD_ARQUIVO = ? "
+					+ "WHERE NM_USUARIO = ?");
+		
+			updateUser.setString(1, user.getName());
+			updateUser.setString(2, user.getLastName());
+			updateUser.setLong(3, user.getCpf());
+			updateUser.setDate(4, java.sql.Date.valueOf(user.getBirthDate().toString()));
+			updateUser.setString(5, String.valueOf(user.getGender().charAt(0)).toString());
+			updateUser.setString(6, user.getUserPhoto());
+			
+			if (conn.executeCommand(updateUser, true) <= 1) {
+				return new Pair<Boolean, String>(true, "Usuário atualizado com sucesso!");
+			}
+			
+			return new Pair<Boolean, String>(false, "Erro ao atualizar dados do usuário");
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Erro ao atualizar dados do usuário");
+		}
+		finally {
+			conn.closeConnection();
+		}
+	} 
 	
 	private boolean validLogin(String userName){
 		try {

@@ -13,6 +13,7 @@ public class User{
 	private long cpf;
 	private Date birthDate;
 	private Set<Phone> phone;
+	private String userPhoto;
 		
 	//-------- Construtor --------
 	
@@ -65,5 +66,13 @@ public class User{
 	
 	public void setPhone(Set<Phone> phones) {
 		this.phone = phones;
+	}
+	
+	public void setUserPhoto(String userPhoto) {
+		this.userPhoto = userPhoto;
+	}
+	
+	public String getUserPhoto() {
+		return this.userPhoto;
 	}
 }

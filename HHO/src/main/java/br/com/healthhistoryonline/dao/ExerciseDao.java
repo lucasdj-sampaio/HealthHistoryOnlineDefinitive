@@ -14,9 +14,6 @@ public class ExerciseDao {
 	
 	ConnectionManager conn = new ConnectionManager();
 	
-	/**
-	 * @param data
-	 */
 	public Pair<Boolean, String> insertExercise(Exercise exerciseDetails, String userName){	
 		try {
 			PreparedStatement exercise = conn.getConnection().prepareStatement("INSERT INTO T_EXERCICIO"

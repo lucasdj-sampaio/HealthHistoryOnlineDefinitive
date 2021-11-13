@@ -7,6 +7,7 @@ public class Meal{
 	
 	//-------- Atributos --------
 	
+	private int mealCode;
 	private FoodType food;
 	private int calories;
 	private int quantity;
@@ -44,5 +45,13 @@ public class Meal{
 
 	public void setMeasure(MeasureType measure) {
 		this.measure = measure;
+	}
+
+	public int getMealCode() {
+		return mealCode;
+	}
+
+	public void setMealCode(int mealCode) {
+		this.mealCode = mealCode;
 	}	
 }
