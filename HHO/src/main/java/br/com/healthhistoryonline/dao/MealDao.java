@@ -5,9 +5,13 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import br.com.healthhistoryonline.model.Meal;
 import br.com.healthhistoryonline.model.Snack;
+import br.com.healthhistoryonline.sysmodel.ExerciseType;
 import br.com.healthhistoryonline.sysmodel.FoodType;
 import br.com.healthhistoryonline.sysmodel.MeasureType;
 import br.com.healthhistoryonline.sysmodel.Pair;
@@ -127,5 +131,35 @@ public class MealDao {
 		}
 		
 		return new Pair<Boolean, List<Snack>>(true, snackList);
+	}
+	
+	public Set<FoodType> getAll(){
+		Set<FoodType> foodTypes = new HashSet<FoodType>();
+				
+		try {
+			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT cd_alimento, nm_alimento "
+					+ "FROM T_ALIMENTO");
+					
+			ResultSet response = conn.getData(stat);
+			
+			while (response.next()) {
+				ExerciseType type = new ExerciseType();
+				type.setExerciseCode(response.getInt(1));
+				type.setExercise(response.getString(2));
+				
+				listValues.add(type);
+			}
+			
+			conn.closeConnection();			
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return foodTypes;
 	}
 }

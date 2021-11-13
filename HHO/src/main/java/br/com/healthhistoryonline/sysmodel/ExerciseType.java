@@ -13,11 +13,11 @@ public class ExerciseType {
 		return exercise;
 	}
 	
-	public void setExerciseCode(int code) {
-		this.exerciseCode = code;
-	}
-	
 	public void setExercise(String exercise) {
 		this.exercise = exercise;
+	}
+	
+	public void setExerciseCode(int exerciseCode) {
+		this.exerciseCode = exerciseCode;
 	}
 }
