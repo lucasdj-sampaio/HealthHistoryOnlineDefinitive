@@ -14,6 +14,7 @@ public class User{
 	private Date birthDate;
 	private Set<Phone> phone;
 	private String userPhoto;
+	private Credential credential;
 		
 	//-------- Construtor --------
 	
@@ -74,5 +75,13 @@ public class User{
 	
 	public String getUserPhoto() {
 		return this.userPhoto;
+	}
+
+	public Credential getCredential() {
+		return credential;
+	}
+
+	public void setCredential(Credential credential) {
+		this.credential = credential;
 	}
 }

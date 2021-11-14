@@ -1,22 +1,24 @@
 package br.com.healthhistoryonline.model;
+import br.com.healthhistoryonline.sysmodel.Weight;
+import br.com.healthhistoryonline.sysmodel.Height;
 
 public class Measure{
 /**@author giovana agudo*/
 	
 	//-------- Atributos --------
 	
-	private float height;
-	private float weight; 
+	private Height height;
+	private Weight weight; 
 	private float imc;
 	private String imcClassification;
 	
 	//-------- Construtor --------
 	
 	/**@param Construtor para criação do obj*/
-	public Measure(float aHeight, float aWeight) {
-		imcCalculate(aHeight, aWeight);
-		this.height = aHeight;
-		this.weight = aWeight;
+	public Measure(Height height, Weight weight) {
+		imcCalculate(height.getHeight(), weight.getWeight());
+		this.height = height;
+		this.weight = weight;
 		
 		this.imcClassification = getImcClassification(imc);
 	}
@@ -47,11 +49,11 @@ public class Measure{
 	}
 	/**@return retorna uma string para registrar o retorno*/
 
-	public float getHeight() {
+	public Height getHeight() {
 		return height;
 	}
 
-	public float getWeight() {
+	public Weight getWeight() {
 		return weight;
 	}
 
