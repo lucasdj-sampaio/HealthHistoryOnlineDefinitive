@@ -17,15 +17,15 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> insertMeasure(Weigth weigth, String userName){	
 		try {
-			PreparedStatement insertW = conn.getConnection().prepareStatement("INSERT INTO T_PESO"
+			PreparedStatement insertWeight = conn.getConnection().prepareStatement("INSERT INTO T_PESO"
 					+ "(cd_peso, nm_usuario, dt_inclusao, nr_peso)"
 					+ "VALUES (PESO.Nextval, ?, ?, ?)");
 			
-			insertW.setString(1, userName);
-			insertW.setDate(2, java.sql.Date.valueOf(weigth.getInclusionDate().toString()));
-			insertW.setFloat(3, weigth.getWeigth());
+			insertWeight.setString(1, userName);
+			insertWeight.setDate(2, java.sql.Date.valueOf(weigth.getInclusionDate().toString()));
+			insertWeight.setFloat(3, weigth.getWeigth());
 			
-			if (conn.executeCommand(insertW, true) == 1) {
+			if (conn.executeCommand(insertWeight, true) == 1) {
 				return new Pair<Boolean, String>(true, "Peso incluso com sucesso!");
 			}		
 			
@@ -43,15 +43,15 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> insertMeasure(Heigth heigth, String userName){	
 		try {
-			PreparedStatement insertH = conn.getConnection().prepareStatement("INSERT INTO T_ALTURA"
+			PreparedStatement insertHeight = conn.getConnection().prepareStatement("INSERT INTO T_ALTURA"
 					+ "(cd_altura, nm_usuario, dt_inclusao, nr_altura)"
 					+ "VALUES (ALTURA.Nextval, ?, ?, ?)");
 			
-			insertH.setString(1, userName);
-			insertH.setDate(2, java.sql.Date.valueOf(heigth.getInclusionDate().toString()));
-			insertH.setFloat(3, heigth.getHeigth());
+			insertHeight.setString(1, userName);
+			insertHeight.setDate(2, java.sql.Date.valueOf(heigth.getInclusionDate().toString()));
+			insertHeight.setFloat(3, heigth.getHeigth());
 			
-			if (conn.executeCommand(insertH, true) == 1) {
+			if (conn.executeCommand(insertHeight, true) == 1) {
 				return new Pair<Boolean, String>(true, "Altura incluso com sucesso!");
 			}		
 			
@@ -69,14 +69,14 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> updateMeasure(Heigth heigth){	
 		try {
-			PreparedStatement updateH = conn.getConnection().prepareStatement("UPDATE T_ALTURA"
+			PreparedStatement updateHeight = conn.getConnection().prepareStatement("UPDATE T_ALTURA"
 					+ "(SET nr_altura = ?, dt_inclusao = ?, WHERE cd_altura = ?)");
 			
-			updateH.setFloat(1, heigth.getHeigth());
-			updateH.setDate(2, java.sql.Date.valueOf(heigth.getInclusionDate().toString()));
-			updateH.setInt(3, heigth.getHeigthCode());
+			updateHeight.setFloat(1, heigth.getHeigth());
+			updateHeight.setDate(2, java.sql.Date.valueOf(heigth.getInclusionDate().toString()));
+			updateHeight.setInt(3, heigth.getHeigthCode());
 			
-			if (conn.executeCommand(updateH, false) == 1) {
+			if (conn.executeCommand(updateHeight, false) == 1) {
 				conn.getConnection().commit();
 				
 				return new Pair<Boolean, String>(true, "Alteração de altura concluída");
@@ -96,14 +96,14 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> updateMeasure(Weigth weigth){	
 		try {
-			PreparedStatement updateW = conn.getConnection().prepareStatement("UPDATE T_PESO"
+			PreparedStatement updateWeight = conn.getConnection().prepareStatement("UPDATE T_PESO"
 					+ "(SET nr_peso = ?, dt_inclusao = ?, WHERE cd_peso = ?)");
 			
-			updateW.setFloat(1, weigth.getWeigth());
-			updateW.setDate(2, java.sql.Date.valueOf(weigth.getInclusionDate().toString()));
-			updateW.setInt(3, weigth.getWeigthCode());
+			updateWeight.setFloat(1, weigth.getWeigth());
+			updateWeight.setDate(2, java.sql.Date.valueOf(weigth.getInclusionDate().toString()));
+			updateWeight.setInt(3, weigth.getWeigthCode());
 			
-			if (conn.executeCommand(updateW, false) == 1) {
+			if (conn.executeCommand(updateWeight, false) == 1) {
 				conn.getConnection().commit();
 				
 				return new Pair<Boolean, String>(true, "Alteração de peso concluída");
@@ -123,11 +123,11 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> deleteMeasure(Weigth weigth){	
 		try {
-			PreparedStatement deleteW = conn.getConnection().prepareStatement("DELETE FROM T_PESO WHERE cd_peso = ?");
+			PreparedStatement deleteWeight = conn.getConnection().prepareStatement("DELETE FROM T_PESO WHERE cd_peso = ?");
 			
-			deleteW.setInt(1, weigth.getWeigthCode());
+			deleteWeight.setInt(1, weigth.getWeigthCode());
 			
-			if (conn.executeCommand(deleteW, false) == 1) {
+			if (conn.executeCommand(deleteWeight, false) == 1) {
 				conn.getConnection().commit();
 				
 				return new Pair<Boolean, String>(true, "Peso removido com sucesso!");
@@ -148,11 +148,11 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> deleteMeasure(Heigth heigth){	
 		try {
-			PreparedStatement deleteH = conn.getConnection().prepareStatement("DELETE FROM T_ALTURA WHERE cd_altura = ?");
+			PreparedStatement deleteHeight = conn.getConnection().prepareStatement("DELETE FROM T_ALTURA WHERE cd_altura = ?");
 			
-			deleteH.setInt(1, heigth.getHeigthCode());
+			deleteHeight.setInt(1, heigth.getHeigthCode());
 			
-			if (conn.executeCommand(deleteH, false) == 1) {
+			if (conn.executeCommand(deleteHeight, false) == 1) {
 				conn.getConnection().commit();
 				
 				return new Pair<Boolean, String>(true, "Altura removida com sucesso!");
