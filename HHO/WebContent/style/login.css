@@ -4,25 +4,30 @@ label{
 }
 
 form{ 
-    max-width: 500px;  
-    padding: 40px 20px;
-    margin: 10vh auto; 
- 
-}
-.caixa{
-    max-width: 500px;   
-    height: 500px;
-    padding: 40px 20px;
-    margin: 10vh auto; 
-    background: #3E3B7A;
-    opacity: 0.4;
-
+  max-width: 500px;  
+  padding: 40px 20px;
+  margin: 10vh auto; 
 }
 
+#acessBox{
+  max-width: 500px;   
+  height: 500px;
+  padding: 40px 20px;
+  background: #3c3879a8;
+}
 
 ::-webkit-input-placeholder{
   color: #ccc;
   text-transform: uppercase;
+}
+
+#titleDiv{
+  color: #FDB171;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 500px;  
+  background: #3c3879;
 }
 
 body{
@@ -58,9 +63,6 @@ input:focus{
 
 .acess button{
   background: #FDB171;
-}
-
-.acess button{
   margin-top: 20px;
   border: none;
   display: block;
@@ -69,6 +71,14 @@ input:focus{
   height: 45px;
   border-radius: 4px;
   color: white;
+}
+
+.acess a{
+  text-decoration: none;
+}
+
+.acess button:hover{
+  background: pink;
 }
 
 .subscribe button{

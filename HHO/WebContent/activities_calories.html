@@ -23,61 +23,130 @@
     <!-- #endregion -->
 
     <!-- Css References -->
-    <link href="css/default.css" rel="stylesheet" />
-    <link href="css/activities.css" rel="stylesheet" />
+    <link href="style/default.css" rel="stylesheet" />
+    <link href="style/activities.css" rel="stylesheet" />
   </head>
 
   <body>
     <div class="container-fluid">
-        <!-- #region MenuBar-->
-        <div class="row">
-            <div class="col-12">
-                <nav class="navbar navbar-light bg-light shadow">
-                    <div id="menuBar" class="container-fluid">
-                        <button
-                            class="navbar-toggler"
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#menuModelBar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <img src="./_img/Icons/Logo.png" height="45px">
-                    </div>
-                </nav>
+      <!-- #region MenuBar-->
+      <div class="row">
+        <div class="col-12">
+          <nav class="navbar navbar-light bg-light shadow">
+            <div id="menuBar" class="container-fluid">
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#menuModelBar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <img src="./_img/Icons/Logo.png" height="45px">
             </div>
+          </nav>
         </div>
+      </div>
       <!-- #endregion -->
 
       <!-- #region WeigthHistoric -->
-        <div class="card-body">
-            <div class="row bg-light shadow">
-                <div class="col-sm-12 col-md-6 col-lg-6">                  
-                    <div class="container-data-weight bg-light shadow">
-                        <a href="./profile.html">
-                            <img  id="profileEdit" src="./_img/Index/profile.jpg" alt="Editar perfil"/>                  
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div class="container-data-weight-current bg-light shadow">
-                        <div style="display: flex;">
-                            <img id="pressão" style="width: 40px;" src="./_img/Icons/peso.png" alt="balança"/>
-                            <h2>Últimos pesos cadastrados</h2> 
-                        </div>  
-                        <div class="container-weight" data-bs-toggle="modal" data-bs-target="#alterGoal">
-
-                        </div>
-
-                    </div>
-                    
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6">                  
+          <div class="container-data-weight bg-light shadow">
+            <a href="./profile.html">
+              <img  id="profileEdit" src="./_img/Index/profile.jpg" alt="Editar perfil"/>                  
+            </a>
+          </div>
         </div>
-          
 
-    <!-- #endregion -->
-      
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <div class="container-data-weight-current bg-light shadow">
+            <div style="display: flex;">
+              <img id="pressão" style="width: 40px;" src="./_img/Icons/peso.png" alt="balança"/>
+              <h2>Últimos pesos cadastrados</h2> 
+            </div>  
+            <div class="container-weight" data-bs-toggle="modal" data-bs-target="#alterGoal">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-header">
+              <h1>Pressão arterial</h1>
+            </div>
+
+            <div class="card-body">
+              <div class="row bg-light shadow">
+                <div class="col-sm-12 col-md-8 col-lg-8">
+                  <h1>Histórico</h1>
+                  <div class="container-data-weight bg-light shadow">
+                    <div class="container-weight">
+                      <h2>Janeiro</h2>
+
+                      <div>
+                        <p>80 Kg</p>
+                      </div>
+                    </div>
+
+                    <div class="container-weight">
+                      <h2>Fevereiro</h2>
+
+                      <div>
+                        <p>70 Kg</p>
+                      </div>
+                    </div>
+
+                    <div class="container-weight">
+                      <h2>Março</h2>
+
+                      <div>
+                        <p>75 Kg</p>
+                      </div>
+                    </div>
+
+                    <div class="container-weight">
+                      <h2>Abril</h2>
+
+                      <div>
+                        <p>70 Kg</p>
+                      </div>
+                    </div>
+
+                    <div class="container-weight">
+                      <h2>Maio</h2>
+
+                      <div>
+                        <p>75 Kg</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                  <h1>Meta</h1>
+
+                  <div class="container-data-weight-current bg-light shadow">
+                    <div
+                      class="container-weight"
+                      data-bs-toggle="modal"
+                      data-bs-target="#alterGoal"
+                    >
+                      <h2>Atual</h2>
+
+                      <div>
+                        <p>78 Kg</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 

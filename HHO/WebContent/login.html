@@ -23,15 +23,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
     <!-- Css References -->
-    <link href="css/default.css" rel="stylesheet" />
-    <link href="css/login.css" rel="stylesheet" />
+    <link href="style/default.css" rel="stylesheet" />
+    <link href="style/login.css" rel="stylesheet" />
 
   </head>
 
   <body>
 
     <div class="container-fluid"> 
-          <!-- #region MenuBar -->
+        
       <div class="row">
         <div class="col-12">
           <nav class="navbar navbar-light bg-light shadow">
@@ -44,49 +44,53 @@
               >
                 <span class="navbar-toggler-icon"></span>
               </button>
-
-             
             </div>
           </nav>
         </div>
+      
       </div>
-      <!-- #endregion -->   
-      <div class="caixa">
-        </div>
 
-      <form>
-        <!-- #region Input information-->
-        <div>
-          <input type="email" class="form-control" id="email" placeholder="E-mail" required="true"/>
-        </div>
-
-        <div>
-          <input type="password" class="form-control" id="pwd" placeholder="Senha" required="true"/>
-        </div>
+      <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="row justify-content-center">
+            <div id="titleDiv" class="col sm-9 col-md-6 col-lg-6">
+              <hi>TITULO</hi>
+            </div>
+          </div>
+          
+          <div class="row justify-content-center">
+            <div class="col sm-9 col-md-6 col-lg-6" id="acessBox">
+              <form>
+                <div>
+                  <input type="email" class="form-control" id="email" placeholder="E-mail" required="true"/>
+                </div>
         
-        <div>
-          <label><input type="checkbox" /> Lembre-me</label>
+                <div>
+                  <input type="password" class="form-control" id="pwd" placeholder="Senha" required="true"/>
+                </div>
+                
+                <div>
+                  <label><input type="checkbox" /> Lembre-me</label>
+                </div>
+                
+                <div class="acess">
+                  <a href="./index.html">           
+                    <button type="reset" class="btn btn-primary" onclick="location.href='./index.html'"> <img id="acessar-icon" src="./_img/Icons/acessar.png" alt="Acessar"/>
+                      Acessar
+                    </button>
+                  </a>
+                </div>
+        
+                <div class="subscribe">         
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#newUser"><img id="cadastro-icon" src="./_img/Icons/cadastro.png" alt="Cadastrar"/>
+                    Cadastrar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-
-        <div class="acess">
-          <a href="./index.html">           
-            <button type="reset" class="btn btn-primary" onclick="location.href='./index.html'"> <img id="acessar-icon" src="./_img/Icons/acessar.png" alt="Acessar"/>
-              Acessar
-            </button>
-          </a>
-        </div>
-
-        <div class="subscribe">         
-            <button type="button" data-bs-toggle="modal" data-bs-target="#newUser"><img id="cadastro-icon" src="./_img/Icons/cadastro.png" alt="Cadastrar"/>
-              Cadastrar
-            </button>
-          </a>
-        </div>
-
-       
-        <!-- #endregion -->
-      </form>  
-     
+      </div>
     </div>
   </body>
 
