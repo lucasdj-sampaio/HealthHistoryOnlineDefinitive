@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Historico Online</title>
+    <meta charset="utf-8" />
+
+    <!-- #region Bootstrap config/reference-->
+    <!-- Make responsive -->
+    <meta name="viewport" content="width=device-width , initial-scale=1" />
+    <!-- Set style classes -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
+    <!-- #endregion -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Css References -->
+    <link href="css/default.css" rel="stylesheet" />
+    <link href="css/historic.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <!-- #region MenuBar -->
+      <nav class="navbar navbar-light bg-light shadow">
+        <div id="menuBar" class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#menuModelBar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <img src="./_img/Icons/Logo.png" height="45px">
+        </div>
+      </nav>
+      <!-- #endregion -->
+
+      <!-- #region Content-->
+      <form>
+      
+          <div id="hoLabel" class="col sm-10 col-md-10 col-lg-10">
+            <h3 class="texto-peso">Acompanhe seu progresso</h3>
+          </div>          
+        
+          <div class="subscribe">         
+            <button type="button" data-bs-toggle="modal" data-bs-target="#newUser">
+              Cadastre um novo peso
+            </button>          
+        </div>
+
+        <table class="table bg-light shadow">
+          <thead>
+            <tr>
+              <th scope="col">°</th>
+              <th scope="col">Peso</th>
+              <th scope="col">Data de modificação</th>
+              <th scope="col">Visualizar</th>
+            </tr>
+          </thead>
+          <tbody class="tabela-peso">
+            <tr>
+              <th scope="row">1</th>
+              <td>55,70 kg</td>
+              <td>Ontem</td>
+              <td>
+                <a
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#examSangue"
+                >
+                  <button id="viewButton" class="btn"></button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>56,00 Kg</td>
+              <td>Há uma semana</td>
+              <td>
+                <a
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#examRaio-x"
+                >
+                  <button id="viewButton" class="btn"></button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>55,95 Kg</td>
+              <td>15/04/2020</td>
+              <td>
+                <a
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#examUrina"
+                >
+                  <button id="viewButton" class="btn"></button>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      <!-- #endregion -->     
+    </div>
+  </body>
+
+  <!-- #region MenuModal -->
+  <div
+    class="modal fade"
+    id="menuModelBar"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-fullscreen">
+      <div id="modelContent" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">MENU</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
+        </div>     
+        <div>
+            <img src="./_img/Icons/perfil.png" alt="Perfil" style="width: 100px;" />   
+             <img src="./_img/Icons/perfil.png" alt="Perfil" style="width: 100px;" />  
+             </div>     
+      </div>
+       
+              
+      </div>
+    </div>
+  </div>
+  <!-- #endregion -->
+
+  <!-- #region QrCodeModal -->
+  <div
+    class="modal fade"
+    id="qrCodeModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>COMPARTILHE SEUS EXAMES =)</h5>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="row">
+            <h6>
+              Com o QrCode abaixo é possível compartilhar seus exames com
+              médicos e especialistas
+            </h6>
+          </div>
+
+          <hr size="3" />
+
+          <img src="./_img/Icons/Icon_Qr-code.svg" alt="QrCode" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- #endregion -->
+
+  <!-- #region AttachFileModal -->
+  <div
+    class="modal fade"
+    id="attachDoc"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>VINCULE UM NOVO DOCUMENTO</h5>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <div>
+            <label> Selecione o tipo do exame:</label>
+            <select
+              class="form-select form-select-sm"
+              aria-label=".form-select-sm example"
+            >
+              <option selected>Exame de Sangue</option>
+              <option value="2">Raio-X</option>
+              <option value="3">Coleta de urina</option>
+              <option value="4">Outros</option>
+            </select>
+          </div>
+
+          <hr size="3" />
+
+          <div>
+            <input type="file" name="" id="" />
+          </div>
+
+          <hr size="3" />
+
+          <div>
+            <button
+              type="submit"
+              class="btn btn-success"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              ENVIAR ARQUIVO
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- #endregion -->
+
+  <!-- #region ExamModal 1 -->
+  <div
+    class="modal fade"
+    id="examSangue"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>RESULTADO DO EXAME</h5>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <img
+            src="./_img/Historic/bloodExam.jpg"
+            width="466px"
+            height="700px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- #endregion -->
+
+  <!-- #region ExamModal 2 -->
+  <div
+    class="modal fade"
+    id="examRaio-x"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>RESULTADO DO EXAME</h5>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <img
+            src="./_img/Historic/xrayExam.jpg"
+            width="466px"
+            height="700px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- #endregion -->
+
+  <!-- #region ExamModal 3 -->
+  <div
+    class="modal fade"
+    id="examUrina"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>RESULTADO DO EXAME</h5>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <img
+            src="./_img/Historic/urineExam.jpg"
+            width="466px"
+            height="700px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- #endregion -->
+  <!-- #region Modal new user-->
+  <div class="modal fade" id="newUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Cadastro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">        
+                <div>
+                  <input type="text" class="form-control" id="nome_user" placeholder="Peso"/>
+                </div> 
+                <div>
+                  <input type="text" class="form-control" id="nome_user" placeholder="Data"/>
+                </div>     
+
+                <div class="cadastro-peso">                    
+                    <button type="reset" class="btn btn-success" id="add-campo">
+                    Cadastrar
+                     </button>
+                </a>
+            </div>            
+        </div>
+    </div>
+  </div>
+</div>
+  <!-- #endregion -->
+<script>
+    $( "#add-campo" ).click(function() {
+  $( ".tabela-peso" ).append( "<td>55,70 kg</td><td>Ontem</td>" );
+});
+</script>  
+</html>

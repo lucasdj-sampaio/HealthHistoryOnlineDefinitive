@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Health Track - HHO</title>
+    <meta charset="utf-8" />
+
+    <!-- #region Bootstrap config/reference-->
+    <!-- Make responsive -->
+    <meta name="viewport" content="width=device-width , initial-scale=1" />
+    <!-- Set style classes -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
+    <!-- #endregion -->
+
+    <!-- Css References -->
+    <link href="css/default.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <!-- #region MenuBar -->
+      <div class="row">
+        <div class="col-12">
+          <nav class="navbar navbar-light bg-light shadow">
+            <div id="menuBar" class="container-fluid">
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#menuModelBar"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <img src="./_img/Icons/Logo.png" height="45px">
+            </div>
+          </nav>
+        </div>
+      </div>
+      <!-- #endregion -->
+
+      <!-- #region Carousel-->
+      <div class="row bg-light shadow">
+        <div class="col sm-12 col-md-12 col-lg-12">
+          <div
+            id="carouselHomePage"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselHomePage"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselHomePage"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselHomePage"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+            </div>
+
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <a href="#historic">
+                  <img
+                    src="./_img/Index/carousel_1.jpg"
+                    class="d-block w-100"
+                  />
+                </a>
+              </div>
+
+              <div class="carousel-item">
+                <a href="#calories">
+                  <img
+                    src="./_img/Index/carousel_2.jpg"
+                    class="d-block w-100"
+                  />
+                </a>
+              </div>
+
+              <div class="carousel-item">
+                <a href="#exercices">
+                  <img
+                    src="./_img/Index/carousel_3.jpg"
+                    class="d-block w-100"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselHomePage"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+            </button>
+
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselHomePage"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- #endregion -->
+
+      <!-- #region Content-->
+      <div id="information">
+        <h1>SUA SAÚDE EM PRIMEIRO LUGAR</h1>
+        <hr size="4.5" />
+
+        <div id="historic" class="row">
+          <div class="col sm-3 col-md-4 col-lg-6">
+            <img
+              src="./_img/Index/historic.jpg"
+              class="d-block w-100 bg-light shadow"
+            />
+          </div>
+          <div class="col sm-3 col-md-4 col-lg-6">
+            <h2>Histórico de exames</h2>
+            <p>
+              Nossa ferramenta conta com uma funcionalidade na qual você pode
+              vincular seus exames e compartilhar seus resultados com médicos e
+              especialistas da área da saúde!
+              <br />
+              Tudo isso de forma prática e sem a necessidade de carregar papeis
+              para todo canto!
+            </p>
+          </div>
+        </div>
+
+        <hr size="4.5" />
+        <div id="calories" class="row">
+          <div class="col sm-3 col-md-4 col-lg-6">
+            <h2>Acompanhe seu peso</h2>
+            <p>
+              Na aba de metas, você pode acompanhar a evolução do seu peso,
+              registrar sua meta e gerenciar sua evolução!
+            </p>
+          </div>
+          <div class="col sm-3 col-md-4 col-lg-6">
+            <img
+              src="./_img/Index/calories.jpg"
+              class="d-block w-100 bg-light shadow"
+            />
+          </div>
+        </div>
+
+        <hr size="4.5" />
+        <div id="exercices" class="row">
+          <div class="col sm-3 col-md-4 col-lg-6">
+            <img
+              src="./_img/Index/exercices.jpg"
+              class="d-block w-100 bg-light shadow"
+            />
+          </div>
+          <div class="col sm-3 col-md-4 col-lg-6">
+            <h2>Atividades físicas</h2>
+            <p>
+              Com o menu de atividades físicas, você pode cadastrar suas
+              atividades, exercícios e tarefas realizadas. Dessa forma você pode
+              acompanhar sua rotina mais de perto!
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- #endregion -->
+
+      <!-- #region Copyright-->
+      <div id="copyrightDiv" class="row">
+        <div class="col sm-12 col-md-12 col-lg-12">
+          <div class="copyright">
+            <footer>Copyright &copy; HHO - Health Historic Online 2021</footer>
+          </div>
+        </div>
+      </div>
+      <!-- #endregion -->
+    </div>
+  </body>
+
+  <!-- #region MenuModal -->
+  <div
+    class="modal fade"
+    id="menuModelBar"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-fullscreen">
+      <div id="modelContent" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">MENU</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <ul class="list-group list-group-flush">
+            <div class="container-fluid">
+              <div class="row">
+                lucasdj_sampaio
+                <hr class="userRow" size="3" />
+              </div>
+              <div class="row">
+                <a href="./profile.html">
+                  <img
+                    id="profileEdit"
+                    src="./_img/Index/profile.jpg"
+                    alt="Editar perfil"
+                  />
+                  <button id="editProfileButton"></button>
+                </a>
+              </div>
+              <div class="row">
+                <a id="labelEditProfile" href="./profile.html">
+                  Editar perfil
+                </a>
+              </div>
+            </div>
+
+            <a
+              href="./index.html"
+              class="list-group-item list-group-item-action"
+              >HOME</a
+            >
+            <a
+              href="./historic.html"
+              class="list-group-item list-group-item-action"
+              >HISTÓRICO MÉDICO</a
+            >
+            <a
+              href="./activities_calories.html"
+              class="list-group-item list-group-item-action"
+              >METAS</a
+            >
+            <a
+              href="./login.html"
+              class="list-group-item list-group-item-action"
+              >SAIR</a
+            >
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- #endregion -->
+</html>

@@ -1,0 +1,115 @@
+label{
+  color: #141414;
+  text-transform: uppercase;
+}
+
+form{ 
+    max-width: 500px;  
+    padding: 40px 20px;
+    margin: 10vh auto; 
+ 
+}
+.caixa{
+    max-width: 500px;   
+    height: 500px;
+    padding: 40px 20px;
+    margin: 10vh auto; 
+    background: #3E3B7A;
+    opacity: 0.4;
+
+}
+
+
+::-webkit-input-placeholder{
+  color: #ccc;
+  text-transform: uppercase;
+}
+
+body{
+  font-family: 'Work Sans', sans-serif;
+  background-image: url('../_img/Login/backgroundLogin.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  display: table;
+}
+
+input[type="text"],
+input[type="email"], 
+input[type="password"],
+input[type="date"]
+select{
+    width: 100%;
+    height: 35px;
+    margin-bottom: 35px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+input:focus{
+  border-bottom: 1px solid #3D8790; 
+  transition: all 0.3s;
+}
+
+.acess button{
+  background: #FDB171;
+}
+
+.acess button{
+  margin-top: 20px;
+  border: none;
+  display: block;
+  text-transform: uppercase;
+  width: 100%;
+  height: 45px;
+  border-radius: 4px;
+  color: white;
+}
+
+.subscribe button{
+  background: #8D8D8D;
+}
+
+.subscribe button{
+  margin-top: 20px;
+  border: none;
+  display: block;
+  text-transform: uppercase;
+  width: 100%;
+  height: 45px;
+  border-radius: 4px;
+  color: white;
+}
+
+label{
+  color: rgba(112, 112, 112, 0.973);
+  font-size: 14px;
+  font-weight: 300;
+  padding-left: 13px;
+}
+
+#logo{
+  margin-top: 20px;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+#acessar-icon{
+    width: 20px;
+
+}
+
+#cadastro-icon{
+    width: 25px;
+    
+}
+
+.btn-success{
+    background: #FDB171;
+    width: 100%;
+}

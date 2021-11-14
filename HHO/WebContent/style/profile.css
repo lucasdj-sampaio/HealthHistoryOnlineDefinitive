@@ -1,0 +1,26 @@
+h1{
+  font-size: 25px;
+}
+
+.btn-block{
+  width: 100%;
+}
+
+.card{
+  margin: 20px 20px;
+}
+
+.container-image-profile{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.container-image-profile img{
+  border-radius: 300px;
+  margin-bottom: 20px;
+}
+
+.container-image-profile button{
+  margin-left: 39px !important;
+}
