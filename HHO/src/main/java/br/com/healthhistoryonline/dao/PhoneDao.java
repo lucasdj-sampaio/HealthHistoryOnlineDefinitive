@@ -9,7 +9,7 @@ public class PhoneDao {
 	
 	ConnectionManager conn = new ConnectionManager();
 	
-	public Pair<Boolean, String> insertPhone(Phone phone, String userName){	
+	public static Pair<Boolean, String> insertPhone(ConnectionManager conn, Phone phone, String userName){	
 		try {
 			
 				PreparedStatement phoneStat = conn.getConnection().prepareStatement("INSERT INTO T_TELEFONE"

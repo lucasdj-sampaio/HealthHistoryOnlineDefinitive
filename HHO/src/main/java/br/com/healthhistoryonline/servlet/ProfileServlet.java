@@ -18,6 +18,14 @@ import br.com.healthhistoryonline.sysmodel.Pair;
 @WebServlet(description = "A Servlet how control the login method", urlPatterns = { "/Profile" })
 public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private UserDao userDao;
+	private MeasureDao measureDao;
+	
+	@Override
+	public void init() {
+		userDao = new UserDao();
+		measureDao = new MeasureDao();
+	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -96,6 +104,9 @@ public class ProfileServlet extends HttpServlet {
 	    	if(!incluseResponse.getFirst()) {
 	    		request.setAttribute("message", new Pair<String, String>("E", incluseResponse.getSecond()));
 	    	}
+	    	else {
+	    		request.setAttribute("message", new Pair<String, String>("S", incluseResponse.getSecond()));
+	    	}
     	}catch (Exception ex){
     		ex.printStackTrace();
     	}
@@ -104,15 +115,13 @@ public class ProfileServlet extends HttpServlet {
 	}
 	
 	private void redirect(HttpServletRequest request, HttpServletResponse response, String userName) throws ServletException, IOException {
-    	UserDao userDao = new UserDao();
-		MeasureDao measureDao = new MeasureDao();
+    	
 		
 		HttpSession session = request.getSession(true);
 		
 		session.removeAttribute("usuario");
 		session.setAttribute("usuario", userDao.getUser(userName).getSecond());
 		
-		session.removeAttribute("medidas");
 		request.setAttribute("medida", measureDao.getMeasure(userName));
 		
 		RequestDispatcher rd = request.getRequestDispatcher("perfil.jsp");
@@ -143,6 +152,6 @@ public class ProfileServlet extends HttpServlet {
     		return new Pair<Boolean, String>(false, updateH.getSecond());
     	}
     	
-    	return new Pair<Boolean, String>(true, null);
+    	return new Pair<Boolean, String>(true, "Dados atualizados!");
 	}
 }

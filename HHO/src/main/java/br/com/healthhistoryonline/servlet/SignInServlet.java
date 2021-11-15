@@ -14,6 +14,12 @@ import br.com.healthhistoryonline.sysmodel.Pair;
 @WebServlet(description = "A Servlet how control the login method", urlPatterns = { "/SignIn" })
 public class SignInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private UserDao userDao;
+	
+	@Override
+	public void init() {
+		userDao = new UserDao();
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,14 +27,11 @@ public class SignInServlet extends HttpServlet {
     	HttpSession session = request.getSession(true);
     	
     	User user = (User)session.getAttribute("usuario");
+		String userName = request.getParameter("usuario").toString();
 		
     	if (user.getCredential().getUserName() == null)
-    	{
-			UserDao access = new UserDao();
-			
-			String userName = request.getParameter("usuario").toString();
-			
-			Pair<Boolean, String> hasUser = access.validLogin(userName
+    	{			
+			Pair<Boolean, String> hasUser = userDao.validLogin(userName
 					, request.getParameter("senha").toString());
 			
 			if (!hasUser.getFirst()) {		
@@ -38,7 +41,7 @@ public class SignInServlet extends HttpServlet {
 		    	rd.forward(request, response);
 			}
 			
-			user = access.getUser(userName).getSecond();
+			user = userDao.getUser(userName).getSecond();
 			session.setAttribute("user", user);		
     	}
     		

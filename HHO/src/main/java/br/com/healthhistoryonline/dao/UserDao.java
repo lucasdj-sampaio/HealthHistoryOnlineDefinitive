@@ -57,6 +57,11 @@ public class UserDao {
 				return new Pair<Boolean, String>(false, "Erro ao cadastrar usuários");
 			}
 			
+			if (!PhoneDao.insertPhone(conn, userData.getPhone(), userData.getCredential().getUserName()).getFirst()) {
+				conn.getConnection().rollback();
+				return new Pair<Boolean, String>(false, "Erro ao cadastrar telefone");
+			}
+			
 			conn.getConnection().commit();
 			return new Pair<Boolean, String>(true, "Usuário cadastrado com sucesso");		
 		}
