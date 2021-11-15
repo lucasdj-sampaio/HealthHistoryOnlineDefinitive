@@ -1,6 +1,5 @@
 package br.com.healthhistoryonline.model;
 import java.util.Date;
-import java.util.Set;
 
 public class User{
 /**@author ludiana pozzobon*/
@@ -12,13 +11,13 @@ public class User{
 	private String gender;
 	private long cpf;
 	private Date birthDate;
-	private Set<Phone> phone;
+	private Phone phone;
 	private String userPhoto;
 	private Credential credential;
 		
 	//-------- Construtor --------
 	
-	/**@param Método para criação de usuário, usado para criar novos usuário no sistema, usando a herança de credential para controlar sessão*/
+	/**@param Mï¿½todo para criaï¿½ï¿½o de usuï¿½rio, usado para criar novos usuï¿½rio no sistema, usando a heranï¿½a de credential para controlar sessï¿½o*/
 	public User(String aName, String aLastName, char aGender, long aCpf , Date aBirthDate) {
 		this.name = aName;
 		this.lastName = aLastName;
@@ -27,9 +26,9 @@ public class User{
 		this.birthDate = aBirthDate;
 	}
 	
-	//-------- Métodos --------
+	//-------- Mï¿½todos --------
 	
-	/**@param Metodo, recebe um char referente ao sexo do usuário*/
+	/**@param Metodo, recebe um char referente ao sexo do usuï¿½rio*/
 	private String completGender(char gender) {
 		switch(Character.toString(gender).toUpperCase()) {
 			case "M":
@@ -61,11 +60,11 @@ public class User{
 		return birthDate;
 	}
 
-	public Set<Phone> getPhone() {
+	public Phone getPhone() {
 		return phone;
 	}
 	
-	public void setPhone(Set<Phone> phones) {
+	public void setPhone(Phone phones) {
 		this.phone = phones;
 	}
 	
@@ -83,5 +82,25 @@ public class User{
 
 	public void setCredential(Credential credential) {
 		this.credential = credential;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public void setCpf(long cpf) {
+		this.cpf = cpf;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 }
