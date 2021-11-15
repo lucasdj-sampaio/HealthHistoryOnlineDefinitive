@@ -57,44 +57,50 @@
                     <div id="titleDiv" class="col sm-9 col-md-6 col-lg-6">
                         <div>                  
                             <img src="./_img/Index/profile.jpg"  alt="Perfil" style="width: 150px;" /> 
-                            <h5>Nome do usuário</h5>              
+                            <h5 class="nome-usuario">Nome do usuário</h5>              
                         </div>
-                        <div>                              
-                            <h5>Idade</h5>
-                            <h5>Peso</h5>
-                            <h5>Altura</h5>              
+                        <div id="dados-usuario">
+                            <div class="dados-perfil">                             
+                                <h5>Idade</h5>
+                            </div> 
+                            <div class="dados-perfil"> 
+                                <h5>Peso</h5>
+                            </div>
+                            <div class="dados-perfil">  
+                                <h5>Altura</h5> 
+                            </div>             
                         </div>
                     </div>
                 </div>
           
                 <div class="row justify-content-center">
-                    <div class="col sm-9 col-md-6 col-lg-6" id="acessBox">
+                    <div class="col sm-12 col-md-12 col-lg-12" id="acessBox">
                         <form>
                             <div>
                                 <img src="./_img/Icons/email.png"style="width: 70px;" />
-                                <label>E-mail:
-                                    <input id="input-perfil" placeholder="email@email.com.br" >
+                                <label class="col-9">E-mail:
+                                    <input id="input-perfil"  placeholder="email@email.com.br" >
                                 </label>
                             </div>
 
                             <div>
                                 <img src="./_img/Icons/cpf.png"style="width: 70px;" />
-                                <label>CPF:
-                                    <input id="input-perfil" placeholder="000.000.000-00" >
+                                <label class="col-9">CPF:
+                                    <input id="input-perfil"  placeholder="000.000.000-00" >
                                 </label> 
                             </div>
                 
                             <div>
                                 <img src="./_img/Icons/nascimento.png"style="width: 70px;" />
-                                <label>Data de Nascimento:
-                                    <input id="input-perfil" placeholder="00/00/0000">
+                                <label class="col-9">Data de Nascimento:
+                                    <input id="input-perfil"  placeholder="00/00/0000">
                                 </label> 
                             </div>
 
                             <div>
                                 <img src="./_img/Icons/telefone.png"style="width: 70px;" />
-                                <label>Telefone:
-                                    <input id="input-perfil"placeholder="(00) 00000-0000">
+                                <label class="col-9">Telefone:
+                                    <input id="input-perfil"  placeholder="(00) 00000-0000">
                                 </label> 
                             </div>                     
                         </form>
@@ -121,12 +127,20 @@
                                 aria-label="Close"></button>
                         </div>     
                         <div class="icones-menu">
-                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>   
-                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>  
+                            <a href="./perfil.html"> 
+                                <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>
+                            </a>
+                            <a href="./metricas.html">   
+                                <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>
+                            </a>  
                         </div>
                         <div class="icones-menu">
-                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>   
-                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>  
+                            <a href="./peso.html"> 
+                                <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>
+                            </a>
+                            <a href="./pressao.html">    
+                                <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>
+                            </a>  
                         </div>
                         <div class="icones-menu">
                             <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>   

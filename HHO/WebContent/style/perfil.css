@@ -27,17 +27,30 @@ body{
   font-size: 30px;  
   margin-top: 100px;
   max-width: 500px;  
-  height: 250px;
-  background: #ffffff;
-  padding: 20px;  
+  height: 210px;
+  background: #ffffffa9;
+  padding: 20px;
+  display: inline-flex;  
 
+}
+
+#input-perfil{
+    width: 100%;
+    height: 35px;
+    margin-bottom: 10px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: #3E3B7A;
+    border-bottom: 1px solid #ccc;    
 }
 
 #acessBox{
   max-width: 500px;   
   height: 250px;
   padding: 30px 20px;
-  background: #ffffff;
+  background: #ffffffa9;
   margin: 20px;
 }
 
@@ -57,10 +70,16 @@ input {
 label{
     color: #3E3B7A;
     font-weight: bold;
+    display: inline-flex;  
+    width: 100%;  
 }
 
 #input-perfil{
     font-style:#FDB171;
+}
+
+#input-perfil::placeholder{
+    color:#FDB171;
 }
 
 #editar-perfil{
@@ -74,21 +93,6 @@ label{
     cursor: pointer;
 }
 
-input[type="text"],
-input[type="email"], 
-input[type="password"],
-input[type="date"]
-select{
-    width: 100%;
-    height: 35px;
-    margin-bottom: 35px;
-    background: none;
-    border: none;
-    font-size: 14px;
-    font-weight: 300;
-    color: #ccc;
-    border-bottom: 1px solid #ccc;
-}
 
 input:focus{
   border-bottom: 1px solid #3D8790; 
@@ -112,5 +116,23 @@ input:focus{
    border-width: 2px;
    border-style: solid;
 
+}
+
+#dados-usuario{
+    display: inline-flex;
+    margin: 15% 0px;
+    text-align: center;    
+}
+
+.dados-perfil{
+    margin: 0 20px;
+}
+
+.nome-usuario{
+    color: #3E3B7A;
+}
+
+a{
+  text-decoration: none;
 }
 

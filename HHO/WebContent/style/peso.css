@@ -11,12 +11,12 @@
 
 .table{
   margin-top: 50px;
-  margin-bottom: 14%;
+  margin-bottom: 14%; 
+}
+td, th{
+    text-align: center;
 }
 
-#qrCode{
-  background-image: url('../_img/Icons/Icon_Qr-code.svg');
-}
 
 #attachfile{
   background-image: url('../_img/Icons/Icon_Attach.svg');
@@ -61,7 +61,7 @@
 
 
 .cadastro-peso{
-     margin-top: 20px;
+  margin-top: 20px;
   border: none;
   display: block;
   margin-right: auto;
