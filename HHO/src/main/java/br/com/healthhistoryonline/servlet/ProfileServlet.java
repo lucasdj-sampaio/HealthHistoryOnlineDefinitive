@@ -1,9 +1,6 @@
 package br.com.healthhistoryonline.servlet;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.HashSet;
-import java.util.Set;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import br.com.healthhistoryonline.dao.MeasureDao;
 import br.com.healthhistoryonline.dao.UserDao;
-import br.com.healthhistoryonline.model.Credential;
 import br.com.healthhistoryonline.model.Measure;
 import br.com.healthhistoryonline.model.Phone;
 import br.com.healthhistoryonline.model.User;
@@ -36,41 +32,75 @@ public class ProfileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(true);
+		
+		User sessionUser = (User)session.getAttribute("usuario");
+		Measure sessionMeasure = (Measure)request.getAttribute("medida");
    
 		try {
-			User sessionUser = (User)session.getAttribute("usuario");
-			Measure requestMeasure = (Measure)request.getAttribute("medida");
+			sessionUser.setName(request.getParameter("nome").trim().length() > 0 
+					? request.getParameter("nome").trim() 
+					: sessionUser.getName());
 			
-	    	Credential credential = new Credential(request.getParameter("usuario"), request.getParameter("email")
-	    			, request.getParameter("senha"));
-	    	
-	    	String[] phoneData = request.getParameter("telefone").split(" ");
-	    	
-	    	Set<Phone> phone = new HashSet<Phone>();
-	    	phone.add(new Phone (Integer.parseInt(phoneData[0])
-	    			, Integer.parseInt(phoneData[1]), Integer.parseInt(phoneData[2])));
+			sessionUser.setLastName(request.getParameter("sobrenome").trim().length() > 0 
+					? request.getParameter("sobrenome").trim() 
+					: sessionUser.getLastName());
+			
+			sessionUser.setCpf(request.getParameter("cpf").trim().length() > 0 
+					? Long.parseLong(request.getParameter("cpf"))
+					: sessionUser.getCpf());
+			
+			sessionUser.setBirthDate(request.getParameter("aniversario").trim().length() > 0
+					? new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("aniversario"))
+					: sessionUser.getBirthDate());
+			
+			if (request.getParameter("telefone").trim().length() > 0 
+					&& request.getParameter("ddd").trim().length() > 0
+					&& request.getParameter("ddi").trim().length() > 0) {
+				
+				Phone phone = new Phone(Integer.parseInt(request.getParameter("ddi"))
+						,Integer.parseInt(request.getParameter("ddd"))
+						, Integer.parseInt(request.getParameter("telefone")));
+				
+				sessionUser.setPhone(phone);
+			}
+						
+			sessionUser.setGender(request.getParameter("sM").equals("on") ? "M" : "F");
+			
+	    	sessionUser.getCredential().setMailAddress(request.getParameter("email").trim().length() > 0 
+					? request.getParameter("email").trim() 
+					: sessionUser.getCredential().getMailAddress());
     	    		
-	    	sessionUser = (request.getParameter("nome"), request.getParameter("sobrenome")
-	    			, request.getParameter("sexo").charAt(0), Long.parseLong(request.getParameter("cpf"))
-	    			, new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("aniversario")));
+	    	if (request.getParameter("novaSenha").trim().length() > 0 
+	    			&& request.getParameter("novaSenha") == request.getParameter("confirmarSenha")
+	    			&& request.getParameter("senha") == sessionUser.getCredential().getPassword()) {
 	    	
-	    	user.setCredential(credential);
-	    	user.setPhone(phone);
-	    	
-	    	Measure measure = new Measure(Float.parseFloat(request.getParameter("altura"))
-	    			, Float.parseFloat(request.getParameter("peso")));
-	    	
-	    	Pair<Boolean, String> incluseResponse = includeUser(sessionUser, measure);
-	    	
-	    	if(!incluseResponse.getFirst()) {
-	    		request.setAttribute("message", incluseResponse.getSecond());
+	    		sessionUser.getCredential().setPassword("novaSenha");
+	    	}
+	    	else if (request.getParameter("senha") == request.getParameter("novaSenha")) {
+	    		request.setAttribute("message", new Pair<String, String>("W","Senha não alterada pois são iguais!"));
+	    	}
+	    	else {
+	    		request.setAttribute("message", new Pair<String, String>("W","Senha de confirmação inválida ou vazia"));
 	    	}
 	    	
+	    	sessionMeasure.getHeight().setHeight(request.getParameter("altura").trim().length() > 0 
+	    			? Float.parseFloat(request.getParameter("altura").trim().replace(",", "."))   
+	    			: sessionMeasure.getHeight().getHeight());
+	   
+	    	sessionMeasure.getWeight().setWeight(request.getParameter("peso").trim().length() > 0 
+	    			? Float.parseFloat(request.getParameter("peso").trim().replace(",", "."))   
+	    			: sessionMeasure.getWeight().getWeight());
+	    	
+	    	Pair<Boolean, String> incluseResponse = includeUser(sessionUser, sessionMeasure);
+	    	
+	    	if(!incluseResponse.getFirst()) {
+	    		request.setAttribute("message", new Pair<String, String>("E", incluseResponse.getSecond()));
+	    	}
     	}catch (Exception ex){
     		ex.printStackTrace();
     	}
     	
-    	redirect(request, response, request.getParameter("usuario"));
+    	redirect(request, response, sessionUser.getCredential().getUserName());
 	}
 	
 	private void redirect(HttpServletRequest request, HttpServletResponse response, String userName) throws ServletException, IOException {

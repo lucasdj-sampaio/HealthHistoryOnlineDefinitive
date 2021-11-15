@@ -26,4 +26,8 @@ public class Height {
 	public void setInclusionDate(Date inclusionDate) {
 		this.inclusionDate = inclusionDate;
 	}
+	
+	public void setHeight(float height) {
+		this.height = height;
+	}
 }

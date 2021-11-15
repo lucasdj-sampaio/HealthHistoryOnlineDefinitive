@@ -23,4 +23,12 @@ public class Credential {
 	public String getPassword() {
 		return password;
 	}
+
+	public void setMailAddress(String mailAddress) {
+		this.mailAddress = mailAddress;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

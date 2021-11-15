@@ -1,6 +1,5 @@
 package br.com.healthhistoryonline.model;
 import java.util.Date;
-import java.util.Set;
 
 public class User{
 /**@author ludiana pozzobon*/
@@ -12,7 +11,7 @@ public class User{
 	private String gender;
 	private long cpf;
 	private Date birthDate;
-	private Set<Phone> phone;
+	private Phone phone;
 	private String userPhoto;
 	private Credential credential;
 		
@@ -61,11 +60,11 @@ public class User{
 		return birthDate;
 	}
 
-	public Set<Phone> getPhone() {
+	public Phone getPhone() {
 		return phone;
 	}
 	
-	public void setPhone(Set<Phone> phones) {
+	public void setPhone(Phone phones) {
 		this.phone = phones;
 	}
 	
@@ -83,5 +82,25 @@ public class User{
 
 	public void setCredential(Credential credential) {
 		this.credential = credential;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public void setCpf(long cpf) {
+		this.cpf = cpf;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 }

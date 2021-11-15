@@ -27,4 +27,8 @@ public class Weight {
 	public void setInclusionDate(Date inclusionDate) {
 		this.inclusionDate = inclusionDate;
 	}
+	
+	public void setWeight(float weight) {
+		this.weight = weight;
+	}
 }

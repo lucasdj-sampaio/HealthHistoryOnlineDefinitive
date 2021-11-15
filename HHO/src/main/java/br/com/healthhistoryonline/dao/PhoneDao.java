@@ -2,9 +2,6 @@ package br.com.healthhistoryonline.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import br.com.healthhistoryonline.model.Phone;
 import br.com.healthhistoryonline.sysmodel.Pair;
 
@@ -12,10 +9,9 @@ public class PhoneDao {
 	
 	ConnectionManager conn = new ConnectionManager();
 	
-	public Pair<Boolean, String> insertPhone(List<Phone> phoneDetails, String userName){	
+	public Pair<Boolean, String> insertPhone(Phone phone, String userName){	
 		try {
 			
-			for (Phone phone : phoneDetails) {
 				PreparedStatement phoneStat = conn.getConnection().prepareStatement("INSERT INTO T_TELEFONE"
 						+ "(CD_TELEFONE, NM_USUARIO, NR_DDI, NR_DDD, NR_TELEFONE)"
 						+ "VALUES (TELEFONE.Nextval, ?, ?, ?, ?)");
@@ -28,8 +24,8 @@ public class PhoneDao {
 				if (conn.executeCommand(phoneStat, false) != 1) {
 					conn.getConnection().rollback();
 					return new Pair<Boolean, String>(false, "Falha ao cadastrar telefone!");
-				}
-			}	
+			
+				}	
 			
 			conn.getConnection().commit();
 			
@@ -45,9 +41,7 @@ public class PhoneDao {
 		}
 	}
 	
-	public static Set<Phone> getAll(ConnectionManager conn, String userName){
-		Set<Phone> listValues = new HashSet<Phone>();
-		
+	public static Phone getAll(ConnectionManager conn, String userName){
 		try {
 			PreparedStatement phoneStat = conn.getConnection().prepareStatement("SELECT NR_DDI, NR_DDD, NR_TELEFONE "
 					+ "CD_TELEFONE FROM T_TELEFONE WHERE NM_USUARIO = ?");
@@ -56,17 +50,15 @@ public class PhoneDao {
 			
 			ResultSet response = conn.getData(phoneStat);
 			
-			while (response.next()) {
+			if (response.next()) {
 				Phone phone = new Phone(response.getInt(1),
 						response.getInt(2),
 						response.getInt(3));
 				
 				phone.setNumberCode(response.getInt(4));
 				
-				listValues.add(phone);
-			}
-			
-			conn.closeConnection();			
+				return phone;
+			}		
 		}
 		catch (SQLException ex) 
 		{
@@ -76,7 +68,7 @@ public class PhoneDao {
 			conn.closeConnection();
 		}
 		
-		return listValues;
+		return null;
 	}
 	
 	public Pair<Boolean, String> updatePhone(Phone phone){	
