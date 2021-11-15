@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Perfil</title>
+    <meta charset="utf-8" />
+
+    <!-- #region Bootstrap config/reference-->
+    <!-- Make responsive -->
+    <meta name="viewport" content="width=device-width , initial-scale=1" />
+    <!-- Set style classes -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
+    <!-- #endregion -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Css References -->
+    <link href="style/default.css" rel="stylesheet" />
+    <link href="style/perfil.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+        <!-- #region MenuBar -->
+        <nav class="navbar navbar-light bg-light shadow">
+            <div id="menuBar" class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#menuModelBar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <img id="profileEdit"src="./_img/Index/profile.jpg" alt="Editar perfil" height="80px" />
+            </div>
+        </nav>
+        <!-- #endregion -->
+
+        <!-- #region Content-->
+        <form>      
+            <div id="hoLabel" class="col sm-10 col-md-10 col-lg-10">
+                <h3 class="texto-perfil">Perfil</h3>
+                <img src="./_img/Icons/editar.png" data-bs-toggle="modal" data-bs-target="#newUser" id="editar-perfil" /> 
+            </div> 
+        </form>
+        <!-- #endregion --> 
+
+        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="row justify-content-center">
+                    <div id="titleDiv" class="col sm-9 col-md-6 col-lg-6">
+                        <div>                  
+                            <img src="./_img/Index/profile.jpg"  alt="Perfil" style="width: 150px;" /> 
+                            <h5>Nome do usuário</h5>              
+                        </div>
+                        <div>                              
+                            <h5>Idade</h5>
+                            <h5>Peso</h5>
+                            <h5>Altura</h5>              
+                        </div>
+                    </div>
+                </div>
+          
+                <div class="row justify-content-center">
+                    <div class="col sm-9 col-md-6 col-lg-6" id="acessBox">
+                        <form>
+                            <div>
+                                <img src="./_img/Icons/email.png"style="width: 70px;" />
+                                <label>E-mail:
+                                    <input id="input-perfil" placeholder="email@email.com.br" >
+                                </label>
+                            </div>
+
+                            <div>
+                                <img src="./_img/Icons/cpf.png"style="width: 70px;" />
+                                <label>CPF:
+                                    <input id="input-perfil" placeholder="000.000.000-00" >
+                                </label> 
+                            </div>
+                
+                            <div>
+                                <img src="./_img/Icons/nascimento.png"style="width: 70px;" />
+                                <label>Data de Nascimento:
+                                    <input id="input-perfil" placeholder="00/00/0000">
+                                </label> 
+                            </div>
+
+                            <div>
+                                <img src="./_img/Icons/telefone.png"style="width: 70px;" />
+                                <label>Telefone:
+                                    <input id="input-perfil"placeholder="(00) 00000-0000">
+                                </label> 
+                            </div>                     
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- #region MenuModal -->
+        <div
+            class="modal fade"
+            id="menuModelBar"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div id="modelContent" class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">MENU</h5>
+                                <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>     
+                        <div class="icones-menu">
+                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>   
+                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>  
+                        </div>
+                        <div class="icones-menu">
+                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>   
+                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>  
+                        </div>
+                        <div class="icones-menu">
+                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>   
+                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>  
+                        </div> 
+                        <div class="icones-menu">
+                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>   
+                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>  
+                        </div>      
+                    </div>             
+                </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+
+    <!-- #region Modal new user-->
+    <div class="modal fade" id="newUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Cadastro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">        
+                    <div>
+                      <input type="text" class="form-control" id="nome_user" placeholder="Nome Completo"/>
+                    </div>
+                    
+                    <div>
+                      <input type="text" class="form-control" id="cpf_user" placeholder="Nome do Usuário" />
+                    </div>
+
+                    <div>
+                      <input type="text" class="form-control" id="sexo_user" placeholder="E-mail"/>
+                    </div>
+                    
+                    <div>
+                      <input type="email" class="form-control" id="email" placeholder="Senha antiga"/>
+                    </div>
+
+                    <div>
+                      <input type="text" class="form-control" id="peso" placeholder="Nova Senha"/>
+                    </div>
+
+                    <div>
+                      <input type="text" class="form-control" id="sobrenome_user" placeholder="Confirmar Nova Senha"/>
+                    </div>       
+
+                    <div>
+                      <input type="text" class="form-control" id="sobrenome_user" placeholder="Data de Nascimento"/>
+                    </div>
+
+                     <div>
+                      <input type="text" class="form-control" id="sobrenome_user" placeholder="Peso"/>
+                    </div>
+
+                    <div>
+                      <input type="email" class="form-control" id="email" placeholder="Altura"/>
+                    </div>
+
+                    <div>
+                      <input type="text" class="form-control" id="email" placeholder="CPF"/>
+                    </div>
+
+                    <div>
+                      <input type="text" class="form-control" id="altura" placeholder="Telefone"/>
+                    </div>
+      
+                    <div class="login">                    
+                        <button type="reset" class="btn btn-success" onclick="location.href='./perfil.html'">
+                            CONFIRMAR
+                        </button>               
+                </div>           
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+</html>

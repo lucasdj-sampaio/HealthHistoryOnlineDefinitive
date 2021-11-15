@@ -32,65 +32,60 @@
 
     <div class="container-fluid"> 
         
-      <div class="row">
-        <div class="col-12">
-          <nav class="navbar navbar-light bg-light shadow">
-            <div id="menuBar" class="container-fluid">
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#menuModelBar"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            </div>
-          </nav>
-        </div>
-      
-      </div>
-
-      <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
-          <div class="row justify-content-center">
-            <div id="titleDiv" class="col sm-9 col-md-6 col-lg-6">
-              <hi>TITULO</hi>
-            </div>
-          </div>
-          
-          <div class="row justify-content-center">
-            <div class="col sm-9 col-md-6 col-lg-6" id="acessBox">
-              <form>
-                <div>
-                  <input type="email" class="form-control" id="email" placeholder="E-mail" required="true"/>
-                </div>
-        
-                <div>
-                  <input type="password" class="form-control" id="pwd" placeholder="Senha" required="true"/>
-                </div>
-                
-                <div>
-                  <label><input type="checkbox" /> Lembre-me</label>
-                </div>
-                
-                <div class="acess">
-                  <a href="./index.html">           
-                    <button type="reset" class="btn btn-primary" onclick="location.href='./index.html'"> <img id="acessar-icon" src="./_img/Icons/acessar.png" alt="Acessar"/>
-                      Acessar
-                    </button>
-                  </a>
-                </div>
-        
-                <div class="subscribe">         
-                  <button type="button" data-bs-toggle="modal" data-bs-target="#newUser"><img id="cadastro-icon" src="./_img/Icons/cadastro.png" alt="Cadastrar"/>
-                    Cadastrar
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+            <div class="col-12">
+                <nav class="navbar navbar-light bg-light shadow">
+                    <div id="menuBar" class="container-fluid">
+                        <h3>HOME</h3> 
+                        <h3>PARCEIROS</h3>
+                        <h3>SOBRE</h3>
+                        <h3 class="login-bold">LOGIN</h3>   
+                    </div>
+                </nav>
+            </div>      
         </div>
-      </div>
+
+        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="row justify-content-center">
+                    <div id="titleDiv" class="col sm-9 col-md-6 col-lg-6">
+                        <hi>Login</hi>
+                    </div>
+                </div>
+          
+                <div class="row justify-content-center">
+                    <div class="col sm-9 col-md-6 col-lg-6" id="acessBox">
+                        <form>
+                            <div>
+                                <input type="email" class="form-control" id="email" placeholder="E-mail" required="true"/>
+                            </div>
+            
+                            <div>
+                                <input type="password" class="form-control" id="pwd" placeholder="Senha" required="true"/>
+                            </div>
+                        
+                            <div>
+                                <label><input type="checkbox" /> Lembre-me</label>
+                            </div>
+                        
+                            <div class="acess">
+                                <a href="./index.html">           
+                                    <button type="reset" class="btn btn-primary" onclick="location.href='./index.html'"> <img id="acessar-icon" src="./_img/Icons/acessar.png" alt="Acessar"/>
+                                        Acessar
+                                    </button>
+                                </a>
+                            </div>
+                
+                            <div class="subscribe">         
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#newUser"><img id="cadastro-icon" src="./_img/Icons/cadastro.png" alt="Cadastrar"/>
+                                Cadastrar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   </body>
 
@@ -148,21 +143,16 @@
                   <input type="text" class="form-control" id="altura" placeholder="Altura"/>
                 </div>
 
-      
                 <div class="login">
                     <a href="./login.html">
-                    <button type="reset" class="btn btn-success" onclick="location.href='./login.html'">
-                    CONFIRMAR
-                     </button>
-                </a>
-            </div>
-            <div>
-                <img id="login-fundo" src="./_img/Login/login.png" alt="Cadastrar"/>  
+                        <button type="reset" class="btn btn-success" onclick="location.href='./login.html'">
+                            CONFIRMAR
+                        </button>
+                    </a>
+                </div>           
             </div>
         </div>
     </div>
-  </div>
-</div>
-  <!-- #endregion -->  
+<!-- #endregion -->  
 
 </html>

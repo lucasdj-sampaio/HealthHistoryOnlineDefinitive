@@ -5,14 +5,14 @@ label{
 
 form{ 
   max-width: 500px;  
-  padding: 40px 20px;
+  padding: 0px 20px;
   margin: 10vh auto; 
 }
 
 #acessBox{
   max-width: 500px;   
-  height: 500px;
-  padding: 40px 20px;
+  height: 450px;
+  padding: 0px 20px;
   background: #3c3879a8;
 }
 
@@ -25,9 +25,12 @@ form{
   color: #FDB171;
   font-size: 30px;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 100px;
   max-width: 500px;  
-  background: #3c3879;
+  height: 90px;
+  background: #3c3879;font-weight: bold;
+  padding: 20px;  
+
 }
 
 body{
@@ -83,9 +86,6 @@ input:focus{
 
 .subscribe button{
   background: #8D8D8D;
-}
-
-.subscribe button{
   margin-top: 20px;
   border: none;
   display: block;
@@ -95,6 +95,15 @@ input:focus{
   border-radius: 4px;
   color: white;
 }
+
+.subscribe a{
+  text-decoration: none;
+}
+
+.subscribe button:hover{
+  background: pink;
+}
+
 
 label{
   color: rgba(112, 112, 112, 0.973);
@@ -123,3 +132,8 @@ label{
     background: #FDB171;
     width: 100%;
 }
+
+.login-bold{
+    font-weight: bold;
+}
+
