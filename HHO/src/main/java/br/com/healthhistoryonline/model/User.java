@@ -17,7 +17,7 @@ public class User{
 		
 	//-------- Construtor --------
 	
-	/**@param Método para criação de usuário, usado para criar novos usuário no sistema, usando a herança de credential para controlar sessão*/
+	/**@param Mï¿½todo para criaï¿½ï¿½o de usuï¿½rio, usado para criar novos usuï¿½rio no sistema, usando a heranï¿½a de credential para controlar sessï¿½o*/
 	public User(String aName, String aLastName, char aGender, long aCpf , Date aBirthDate) {
 		this.name = aName;
 		this.lastName = aLastName;
@@ -26,9 +26,9 @@ public class User{
 		this.birthDate = aBirthDate;
 	}
 	
-	//-------- Métodos --------
+	//-------- Mï¿½todos --------
 	
-	/**@param Metodo, recebe um char referente ao sexo do usuário*/
+	/**@param Metodo, recebe um char referente ao sexo do usuï¿½rio*/
 	private String completGender(char gender) {
 		switch(Character.toString(gender).toUpperCase()) {
 			case "M":
