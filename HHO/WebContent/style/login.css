@@ -1,0 +1,173 @@
+label{
+  color: #141414;
+  text-transform: uppercase;
+}
+
+form{ 
+  max-width: 500px;  
+  padding: 0px 20px;
+  margin: 10vh auto; 
+}
+
+#acessBox{
+  max-width: 500px;   
+  height: 450px;
+  padding: 0px 20px;
+  background: #3c3879a8;
+}
+
+::-webkit-input-placeholder{
+  color: #ccc;
+  text-transform: uppercase;
+}
+
+#titleDiv{
+  color: #FDB171;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 100px;
+  max-width: 500px;  
+  height: 90px;
+  background: #3c3879;font-weight: bold;
+  padding: 20px;  
+
+}
+
+body{
+  font-family: 'Work Sans', sans-serif;
+  background-image: url('../_img/Login/backgroundLogin.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  display: table;
+}
+
+input[type="text"],
+input[type="email"], 
+input[type="password"],
+input[type="date"]
+input[type="tel"]
+select{
+    width: 100%;
+    height: 35px;
+    margin-bottom: 35px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: white;
+    border-bottom: 1px solid #ccc;
+}
+
+#format-input{
+    width: 100%;
+    height: 35px;
+    margin-bottom: 35px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: #FDB171;
+    border-bottom: 1px solid #ccc;
+
+}
+
+input:focus{
+  border-bottom: 1px solid #ced4da;; 
+  transition: all 0.3s;
+}
+
+.acess button{
+  background: #FDB171;
+  margin-top: 20px;
+  border: none;
+  display: block;
+  text-transform: uppercase;
+  width: 100%;
+  height: 45px;
+  border-radius: 4px;
+  color: white;
+}
+
+.acess a{
+  text-decoration: none;
+}
+
+.acess button:hover{
+  background: #E87412;
+}
+
+.subscribe button{
+  background: #8D8D8D;
+  margin-top: 20px;
+  border: none;
+  display: block;
+  text-transform: uppercase;
+  width: 100%;
+  height: 45px;
+  border-radius: 4px;
+  color: white;
+}
+
+.subscribe a{
+  text-decoration: none;
+}
+
+.subscribe button:hover{
+  background: #595353;
+}
+
+
+label{
+  color: rgba(112, 112, 112, 0.973);
+  font-size: 14px;
+  font-weight: 300;
+  padding-left: 13px;
+}
+
+#logo{
+  margin-top: 20px;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+#acessar-icon{
+    width: 20px;
+
+}
+
+#cadastro-icon{
+    width: 25px;
+    
+}
+
+.btn-success{
+    background: #FDB171;
+    width: 100%;
+    border-color:#FDB171
+}
+
+.btn-success:hover{
+    background: #E87412; 
+    border-color:#E87412;  
+}
+
+.bold{
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.form-control::placeholder{
+    color: #FDB171;
+}
+
+label{
+    color: #FDB171;;
+}
+
+
+
+
+
