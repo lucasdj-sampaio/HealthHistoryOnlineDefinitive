@@ -185,8 +185,11 @@ public class MeasureDao {
 			ResultSet response = conn.getData(measure);
 			
 			if (response.next()) {
-				Height hei = new Height(response.getInt(3), response.getFloat(4));
-				Weight wei = new Weight(response.getInt(1), response.getFloat(2));
+				Weight wei = new Weight(response.getFloat(2));
+				wei.setWeightCode(response.getInt(1));
+				
+				Height hei = new Height(response.getFloat(4));
+				hei.setHeightCode(response.getInt(3));
 				
 				return new Pair<Boolean, Measure>(true, new Measure(hei, wei));
 			}
@@ -214,7 +217,8 @@ public class MeasureDao {
 			ResultSet response = conn.getData(height);
 			
 			while (response.next()) {
-				Height hei = new Height(response.getInt(1), response.getInt(2));
+				Height hei = new Height(response.getInt(2));
+				hei.setHeightCode(response.getInt(1));
 				hei.setInclusionDate(new SimpleDateFormat("dd/MM/yyyy").parse(response.getDate(3).toString()));
 				
 				heightList.add(hei);
@@ -243,7 +247,8 @@ public class MeasureDao {
 			ResultSet response = conn.getData(weight);
 			
 			while (response.next()) {
-				Weight wei = new Weight(response.getInt(1), response.getFloat(2));
+				Weight wei = new Weight(response.getFloat(2));
+				wei.setWeightCode(response.getInt(1));
 				wei.setInclusionDate(new SimpleDateFormat("dd/MM/yyyy").parse(response.getDate(3).toString()));
 				
 				weightList.add(wei);

@@ -7,8 +7,7 @@ public class Weight {
 	private float weight;
 	private Date inclusionDate;
 	
-	public Weight(int weightCode, float weight) {
-		this.weightCode = weightCode;
+	public Weight(float weight) {
 		this.weight = weight;
 	}
 
@@ -30,5 +29,9 @@ public class Weight {
 	
 	public void setWeight(float weight) {
 		this.weight = weight;
+	}
+
+	public void setWeightCode(int weightCode) {
+		this.weightCode = weightCode;
 	}
 }

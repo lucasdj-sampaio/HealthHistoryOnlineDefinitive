@@ -6,8 +6,7 @@ public class Height {
 	private float height;
 	private Date inclusionDate;
 	
-	public Height(int heightCode, float height) {
-		this.heightCode = heightCode;
+	public Height(float height) {
 		this.height = height;
 	}
 
@@ -29,5 +28,9 @@ public class Height {
 	
 	public void setHeight(float height) {
 		this.height = height;
+	}
+
+	public void setHeightCode(int heightCode) {
+		this.heightCode = heightCode;
 	}
 }
