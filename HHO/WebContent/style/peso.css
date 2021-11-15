@@ -1,0 +1,118 @@
+#table{
+  margin-top: 7%;
+  padding: 15px 0px 5px 16px;
+}
+
+.table{
+  margin-top: 50px;
+  margin-bottom: 14%; 
+}
+td, th{
+    text-align: center;
+}
+
+
+#attachfile{
+  background-image: url('../_img/Icons/Icon_Attach.svg');
+}
+
+#hoLabel{
+    display: inline-flex;
+    justify-content: center;
+    background: #3E3B7A;
+    width: 100%;
+    height: 60px;
+    margin-top: 20px;    
+}
+
+.texto-peso{
+    margin: 10px;
+    color: white;
+}
+
+
+.subscribe button{
+  margin-top: 20px;
+  border: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 20%;
+  height: 45px;
+  border-radius: 4px;
+  border-color: #FDB171;
+  border-width: 2px;
+  border-style: solid;
+  background: white;
+  color: #FDB171;
+  font-weight: bold;
+  font-size: 150%;
+}
+
+.subscribe button:hover{
+    background: #E87412;
+    color: white;
+    border-color: #E87412;
+}
+
+
+.btn-success{
+  margin-top: 20px;
+  border: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  text-transform: uppercase;
+  width: 20%;
+  height: 45px;
+  border-radius: 4px;
+  color: white;  
+  width: 100%;
+  background: #FDB171;
+
+}
+
+.btn-success:hover{
+    background: #E87412;
+
+}
+
+input[type="text"],
+input[type="email"], 
+input[type="password"],
+input[type="date"]
+select{
+    width: 100%;
+    height: 35px;
+    margin-bottom: 35px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#menu-icone{
+    width: 45%;
+   align-items: center;
+ 
+}
+
+#menu-icone:hover{
+    cursor: pointer;
+    box-sizing: border-box;
+   border-color: #FDB171;
+   border-width: 2px;
+   border-style: solid;
+
+}
+
+#add-campo{
+    width: 100%
+}
+
+#nome{
+    right: 0px;
+}
+

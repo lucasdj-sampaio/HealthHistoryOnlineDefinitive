@@ -1,0 +1,180 @@
+body{
+  font-family: 'Work Sans', sans-serif;
+  background-image: url('../_img/Login/backgroundLogin.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  display: table;
+}
+
+.texto-perfil{
+    margin: 10px;
+    color: white;
+}
+
+#hoLabel{
+    display: inline-flex;
+    justify-content: center;
+    background: #3E3B7A;
+    width: 100%;
+    height: 60px; 
+    margin-top: 20px;   
+}
+
+#titleDiv{
+  color: #FDB171;
+  font-size: 30px;  
+  margin-top: 100px;
+  max-width: 500px;  
+  height: 210px;
+  background: #ffffff;
+  padding: 20px;
+  display: inline-flex;  
+
+}
+
+#input-perfil{
+    width: 100%;
+    height: 35px;
+    margin-bottom: 10px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: #3E3B7A;
+    border-bottom: 1px solid #ccc;    
+}
+
+#acessBox{
+  max-width: 500px;   
+  height: 250px;
+  padding: 30px 20px;
+  background: #ffffff;
+  margin: 20px;
+}
+
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
+input {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+    color: #FDB171;
+} 
+
+label{
+    color: #3E3B7A;
+    font-weight: bold;
+    display: inline-flex;  
+    width: 100%;  
+}
+
+#input-perfil{
+    font-style:#FDB171;
+}
+
+#input-perfil::placeholder{
+    color:#FDB171;
+}
+
+#editar-perfil{
+    margin-top: 10px;
+    width: 30px; 
+    height: 30px;"
+    cursor: pointer;
+}
+
+#editar-perfil:hover{ 
+    cursor: pointer;
+}
+
+ 0
+input:focus{
+  border-bottom: 1px solid #3D8790; 
+  transition: all 0.3s;
+}
+.btn-success{
+    margin: 30px 0;
+    background: #FDB171;
+    width: 100%;
+    border-color:#FDB171
+}
+
+.btn-success:hover{
+    background: #E87412; 
+    border-color:#E87412;  
+}
+
+#menu-icone{
+    width: 45%;
+   align-items: center;
+ 
+}
+
+#menu-icone:hover{
+    cursor: pointer;
+    box-sizing: border-box;
+   border-color: #FDB171;
+   border-width: 2px;
+   border-style: solid;
+
+}
+
+#dados-usuario{
+    display: inline-flex;
+    margin: 15% 0px;
+    text-align: center;    
+}
+
+.dados-perfil{
+    margin: 0 20px;
+}
+
+.nome-usuario{
+    color: #3E3B7A;
+}
+
+a{
+  text-decoration: none;
+}
+
+input[type="text"],
+input[type="email"], 
+input[type="password"],
+input[type="date"]
+input[type="tel"]
+select{
+    width: 100%;
+    height: 35px;
+    margin-bottom: 35px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: white;
+    border-bottom: 1px solid #ccc;
+}
+
+#format-input{
+    width: 100%;
+    height: 35px;
+    margin-bottom: 35px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: #FDB171;
+    border-bottom: 1px solid #ccc;
+
+}
+
+#file-upload-button{
+    width: 100%;
+    background: #FDB171;
+}
+
