@@ -27,6 +27,7 @@
     <!-- Css References -->
     <link href="style/default.css" rel="stylesheet" />
     <link href="style/perfil.css" rel="stylesheet" />
+    <link rel="icon" href="./_img/Icons/icone.png"> 
   </head>
 
   <body>
@@ -102,7 +103,7 @@
                                 <label class="col-9">Telefone:
                                     <input id="input-perfil"  placeholder="(00) 00000-0000">
                                 </label> 
-                            </div>                     
+                            </div>                                             
                         </form>
                     </div>
                 </div>
@@ -128,27 +129,27 @@
                         </div>     
                         <div class="icones-menu">
                             <a href="./perfil.html"> 
-                                <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>
+                                <img src="./_img/Icons/perfil-laranja.png" alt="Perfil" id="menu-icone"/>
                             </a>
                             <a href="./metricas.html">   
-                                <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>
+                                <img src="./_img/Icons/métricas.png" alt="Métricas" id="menu-icone"/>
                             </a>  
                         </div>
                         <div class="icones-menu">
                             <a href="./peso.html"> 
-                                <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>
+                                <img src="./_img/Icons/peso-botao.png" alt="Peso" id="menu-icone"/>
                             </a>
                             <a href="./pressao.html">    
-                                <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>
+                                <img src="./_img/Icons/pressão-botão.png" alt="Perfil" id="menu-icone"/>
                             </a>  
                         </div>
                         <div class="icones-menu">
-                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>   
-                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>  
+                            <img src="./_img/Icons/exercicios.png" alt="Exercicios" id="menu-icone"/>   
+                            <img src="./_img/Icons/alimentação.png" alt="Perfil" id="menu-icone"/>  
                         </div> 
                         <div class="icones-menu">
-                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>   
-                            <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone"/>  
+                            <img src="./_img/Icons/suporte.png" alt="Perfil" id="menu-icone"/>   
+                            <img src="./_img/Icons/sair.png" alt="Perfil" id="menu-icone"/>  
                         </div>      
                     </div>             
                 </div>
@@ -175,40 +176,45 @@
                     </div>
 
                     <div>
-                      <input type="text" class="form-control" id="sexo_user" placeholder="E-mail"/>
+                      <input type="email" class="form-control" id="email_user" placeholder="E-mail"/>
                     </div>
                     
                     <div>
-                      <input type="email" class="form-control" id="email" placeholder="Senha antiga"/>
+                      <input type="password" class="form-control" id="senha-antiga" placeholder="Senha antiga"/>
                     </div>
 
                     <div>
-                      <input type="text" class="form-control" id="peso" placeholder="Nova Senha"/>
+                      <input type="password" class="form-control" id="nova-senha" placeholder="Nova Senha"/>
                     </div>
 
                     <div>
-                      <input type="text" class="form-control" id="sobrenome_user" placeholder="Confirmar Nova Senha"/>
+                      <input type="password" class="form-control" id="confirmar-senha" placeholder="Confirmar Nova Senha"/>
                     </div>       
 
                     <div>
-                      <input type="text" class="form-control" id="sobrenome_user" placeholder="Data de Nascimento"/>
-                    </div>
-
-                     <div>
-                      <input type="text" class="form-control" id="sobrenome_user" placeholder="Peso"/>
+                        <input type="tel" maxlength="10" class="form-control" id="format-input" placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
                     </div>
 
                     <div>
-                      <input type="email" class="form-control" id="email" placeholder="Altura"/>
+                      <input type="text" class="form-control" id="peso" placeholder="Peso"/>
                     </div>
 
                     <div>
-                      <input type="text" class="form-control" id="email" placeholder="CPF"/>
+                      <input type="text" class="form-control" id="altura" placeholder="Altura"/>
                     </div>
 
                     <div>
-                      <input type="text" class="form-control" id="altura" placeholder="Telefone"/>
+                      <input type="text" class="form-control" id="cpf" placeholder="CPF"/>
                     </div>
+
+                    <div>
+                      <input type="text" class="form-control" id="telefone" placeholder="Telefone"/>
+                    </div>
+                    <div>
+                        <input type="file"
+                        id="avatar" name="avatar"
+                        accept="image/png, image/jpeg">  
+                    </div>  
       
                     <div class="login">                    
                         <button type="reset" class="btn btn-success" onclick="location.href='./perfil.html'">
@@ -219,4 +225,18 @@
         </div>
     </div>
     <!-- #endregion -->
+    <script>
+    function DDMMYYYY(value, event) {
+      let newValue = value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
+
+      const dayOrMonth = (index) => index % 2 === 1 && index < 4;
+
+      // on delete key.  
+      if (!event.data) {
+        return value;
+      }
+
+      return newValue.split('').map((v, i) => dayOrMonth(i) ? v + '/' : v).join('');;
+    }
+    </script>
 </html>

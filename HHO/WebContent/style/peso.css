@@ -3,12 +3,6 @@
   padding: 15px 0px 5px 16px;
 }
 
-#qrCode, #attachfile{
-  border: none;
-  width: 30px;
-  height: 30px;
-}
-
 .table{
   margin-top: 50px;
   margin-bottom: 14%; 
@@ -56,11 +50,13 @@ td, th{
 }
 
 .subscribe button:hover{
-    background: pink;
+    background: #E87412;
+    color: white;
+    border-color: #E87412;
 }
 
 
-.cadastro-peso{
+.btn-success{
   margin-top: 20px;
   border: none;
   display: block;
@@ -70,8 +66,14 @@ td, th{
   width: 20%;
   height: 45px;
   border-radius: 4px;
-  color: white;
-  border-color: #FDB171;
+  color: white;  
+  width: 100%;
+  background: #FDB171;
+
+}
+
+.btn-success:hover{
+    background: #E87412;
 
 }
 
@@ -104,5 +106,13 @@ select{
    border-width: 2px;
    border-style: solid;
 
+}
+
+#add-campo{
+    width: 100%
+}
+
+#nome{
+    right: 0px;
 }
 

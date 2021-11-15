@@ -56,7 +56,7 @@ select{
     border: none;
     font-size: 14px;
     font-weight: 300;
-    color: #3E3B7A;
+    color: white;
     border-bottom: 1px solid #ccc;
 }
 
@@ -68,7 +68,7 @@ select{
     border: none;
     font-size: 14px;
     font-weight: 300;
-    color: #3E3B7A;
+    color: #FDB171;
     border-bottom: 1px solid #ccc;
 
 }
@@ -95,7 +95,7 @@ input:focus{
 }
 
 .acess button:hover{
-  background: pink;
+  background: #E87412;
 }
 
 .subscribe button{
@@ -115,7 +115,7 @@ input:focus{
 }
 
 .subscribe button:hover{
-  background: pink;
+  background: #595353;
 }
 
 
@@ -145,16 +145,29 @@ label{
 .btn-success{
     background: #FDB171;
     width: 100%;
+    border-color:#FDB171
 }
 
 .btn-success:hover{
-    background: pink;    
+    background: #E87412; 
+    border-color:#E87412;  
 }
 
 .bold{
     font-weight: bold;
     text-align: center;
 }
+
+
+.form-control::placeholder{
+    color: #FDB171;
+}
+
+label{
+    color: #FDB171;;
+}
+
+
 
 
 
