@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(description = "A Servlet that controls the logout method", urlPatterns = { "/SignOut" })
-public class SignOutServlet extends HttpServlet {
+public class SignOutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override

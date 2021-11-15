@@ -17,7 +17,7 @@ import br.com.healthhistoryonline.model.User;
 import br.com.healthhistoryonline.sysmodel.Pair;
 
 @WebServlet("/SignUp")
-public class SignUpServlet extends HttpServlet {
+public class SignUpController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDao userDao;
     

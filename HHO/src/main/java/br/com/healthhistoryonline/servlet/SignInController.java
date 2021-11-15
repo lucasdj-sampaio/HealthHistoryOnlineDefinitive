@@ -12,7 +12,7 @@ import br.com.healthhistoryonline.model.User;
 import br.com.healthhistoryonline.sysmodel.Pair;
 
 @WebServlet(description = "A Servlet how control the login method", urlPatterns = { "/SignIn" })
-public class SignInServlet extends HttpServlet {
+public class SignInController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDao userDao;
 	

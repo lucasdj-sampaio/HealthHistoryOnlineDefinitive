@@ -15,8 +15,8 @@ import br.com.healthhistoryonline.model.Phone;
 import br.com.healthhistoryonline.model.User;
 import br.com.healthhistoryonline.sysmodel.Pair;
 
-@WebServlet(description = "A Servlet how control the login method", urlPatterns = { "/Profile" })
-public class ProfileServlet extends HttpServlet {
+@WebServlet(description = "A Servlet how control the profile methods", urlPatterns = { "/Profile" })
+public class ProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDao userDao;
 	private MeasureDao measureDao;
