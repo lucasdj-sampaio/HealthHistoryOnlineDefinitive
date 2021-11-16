@@ -10,6 +10,15 @@
   align-items: center;
 }
 
+#userPN {
+  display: flex;
+  align-items: center;
+}
+
+#userPN label{
+  margin-right: 10px;
+}
+
 #menu-icone:hover{
   cursor: pointer;
   box-sizing: border-box;

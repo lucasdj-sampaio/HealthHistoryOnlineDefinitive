@@ -101,7 +101,7 @@
 
           <div>
             <select class="form-control" id="format-input">
-              <option value="F">Feminino selected</option>
+              <option value="F" selected>Feminino</option>
               <option value="M">Masculino</option>
               <option value="O">Outro</option>
             </select>
@@ -148,19 +148,19 @@
     </div>
   </div>
 
-    <script>
-      function DDMMYYYY(value, event) {
-        let newValue = value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
+  <script>
+    function DDMMYYYY(value, event) {
+      let newValue = value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
 
-        const dayOrMonth = (index) => index % 2 === 1 && index < 4;
+      const dayOrMonth = (index) => index % 2 === 1 && index < 4;
 
-        // on delete key.  
-        if (!event.data) {
-          return value;
-        }
-
-        return newValue.split('').map((v, i) => dayOrMonth(i) ? v + '/' : v).join('');;
+      // on delete key.  
+      if (!event.data) {
+        return value;
       }
-    </script>
+
+      return newValue.split('').map((v, i) => dayOrMonth(i) ? v + '/' : v).join('');;
+    }
+  </script>
 
   </html>

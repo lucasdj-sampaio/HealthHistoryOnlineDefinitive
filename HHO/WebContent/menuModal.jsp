@@ -11,20 +11,20 @@
             <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone" />
           </a>
           <a href="./metricas.jsp">
-            <img src="./_img/Icons/métricas.png" alt="Métricas" id="menu-icone" />
+            <img src="./_img/Icons/metricas.png" alt="Métricas" id="menu-icone" />
           </a>
         </div>
         <div class="icones-menu">
           <a href="./peso.jsp">
-            <img src="./_img/Icons/peso-botao.png" alt="Peso" id="menu-icone" />
+            <img src="./_img/Icons/btnPeso.png" alt="Peso" id="menu-icone" />
           </a>
           <a href="./pressao.jsp">
-            <img src="./_img/Icons/pressão-botão.png" alt="Perfil" id="menu-icone" />
+            <img src="./_img/Icons/btnPressao.png" alt="Perfil" id="menu-icone" />
           </a>
         </div>
         <div class="icones-menu">
           <img src="./_img/Icons/exercicios.png" alt="Exercicios" id="menu-icone" />
-          <img src="./_img/Icons/alimentação.png" alt="Perfil" id="menu-icone" />
+          <img src="./_img/Icons/alimentacao.png" alt="Perfil" id="menu-icone" />
         </div>
         <div class="icones-menu">
           <img src="./_img/Icons/suporte.png" alt="Perfil" id="menu-icone" />

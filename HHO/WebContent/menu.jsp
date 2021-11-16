@@ -8,7 +8,10 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#menuModelBar">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <img id="profileEdit" src="./_img/Index/profile.jpg" alt="Editar perfil" height="80px" />
+          <div id="userPN">
+            <label>Lucas Sampaio</label>
+            <img id="profileEdit" src="./_img/Index/profile.jpg" alt="Editar perfil" height="80px" />
+          </div>
         </div>
       </nav>
     </div>

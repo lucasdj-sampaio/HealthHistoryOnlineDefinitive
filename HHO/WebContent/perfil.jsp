@@ -5,6 +5,7 @@
     <head>
         <title>Perfil</title>
         <link href="style/perfil.css" rel="stylesheet" />
+        <link href="style/userData.css" rel="stylesheet" />
         <%@ include file="head.jsp" %>
     </head>
 
@@ -17,10 +18,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 d-grid gap-2">
-                        <button class="perfilButton">
+                        <button class="perfilButton" data-bs-toggle="modal" data-bs-target="#newUser">
                             Perfil
-                            <img src="./_img/Icons/editar.png" data-bs-toggle="modal" data-bs-target="#newUser"
-                                id="editar-perfil" />
+                            <img src="./_img/Icons/editar.png" id="editar-perfil" />
                         </button>
                     </div>
                 </div>
@@ -28,89 +28,64 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="container col-9" style="margin-top: 30px;">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-sm-3 col-md-3 col-lg-3">
-                                                    <div class="conteinerPerfil">
-                                                        <img src="./_img/Index/profile.jpg" alt="Perfil" />
+                            <%@ include file="userData.jsp" %>
 
-                                                        <label>Nome do Usuário</label>
-                                                    </div>
-                                                </div>
+                                <div class="row" style="margin-top: 30px;">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="containerIconInput">
+                                                            <img class="imageSize" src="./_img/Icons/email.png" />
 
-                                                <div class="col-sm-9 col-md-9 col-lg-9">
-                                                    <div class="conteinerDados">
-                                                        <label>25 anos</label>
+                                                            <div class="containerInput">
+                                                                <label>E-mail:</label>
 
-                                                        <label>67 kg</label>
-
-                                                        <label>1,80m</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row" style="margin-top: 30px;">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="containerIconInput">
-                                                        <img class="imageSize" src="./_img/Icons/email.png" />
-
-                                                        <div class="containerInput">
-                                                            <label>E-mail:</label>
-
-                                                            email@email.com.br
+                                                                email@email.com.br
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="containerIconInput">
-                                                        <img class="imageSize" src="./_img/Icons/cpf.png" />
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="containerIconInput">
+                                                            <img class="imageSize" src="./_img/Icons/cpf.png" />
 
-                                                        <div class="containerInput">
-                                                            <label>CPF:</label>
+                                                            <div class="containerInput">
+                                                                <label>CPF:</label>
 
-                                                            000.000.000-00
+                                                                000.000.000-00
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="containerIconInput">
-                                                        <img class="imageSize" src="./_img/Icons/nascimento.png" />
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="containerIconInput">
+                                                            <img class="imageSize" src="./_img/Icons/nascimento.png" />
 
-                                                        <div class="containerInput">
-                                                            <label>Data de Nascimento:</label>
+                                                            <div class="containerInput">
+                                                                <label>Data de Nascimento:</label>
 
-                                                            00/00/0000
+                                                                00/00/0000
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="containerIconInput">
-                                                        <img class="imageSize" src="./_img/Icons/telefone.png" />
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="containerIconInput">
+                                                            <img class="imageSize" src="./_img/Icons/telefone.png" />
 
-                                                        <div class="containerInput">
-                                                            <label>Telefone:</label>
+                                                            <div class="containerInput">
+                                                                <label>Telefone:</label>
 
-                                                            (00) 00000-0000
+                                                                (00) 00000-0000
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -118,7 +93,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -284,7 +258,7 @@
                 </div>
             </div>
         </div>
-        
+
         <%@ include file="menuModal.jsp" %>
 
     </html>

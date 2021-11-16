@@ -50,7 +50,7 @@
                                 </td>
                                 <td>
                                     <button type="button">
-                                        <img id="editar" src="./_img/Icons/lixeira.png" onclick="clicar('excluir1')" />
+                                        <img id="editar" src="./_img/Icons/lixo.png" onclick="clicar('excluir1')" />
                                     </button>
                                 </td>
                             </tr>
@@ -66,7 +66,7 @@
                                 </td>
                                 <td>
                                     <button type="button">
-                                        <img id="editar" src="./_img/Icons/lixeira.png" onclick="clicar('excluir2')" />
+                                        <img id="editar" src="./_img/Icons/lixo.png" onclick="clicar('excluir2')" />
                                     </button>
                                 </td>
                             </tr>
@@ -82,7 +82,7 @@
                                 </td>
                                 <td>
                                     <button type="button">
-                                        <img id="editar" src="./_img/Icons/lixeira.png" onclick="clicar('excluir3')" />
+                                        <img id="editar" src="./_img/Icons/lixo.png" onclick="clicar('excluir3')" />
                                     </button>
                                 </td>
                             </tr>
