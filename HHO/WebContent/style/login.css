@@ -3,6 +3,10 @@ label{
   text-transform: uppercase;
 }
 
+#menuBar h3{
+  color: #3D3A7A;
+}
+
 form{ 
   max-width: 500px;  
   padding: 0px 20px;
@@ -14,6 +18,7 @@ form{
   height: 450px;
   padding: 0px 20px;
   background: #3c3879a8;
+  margin-bottom: 64px;
 }
 
 ::-webkit-input-placeholder{
@@ -25,12 +30,12 @@ form{
   color: #FDB171;
   font-size: 30px;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 64px;
   max-width: 500px;  
   height: 90px;
-  background: #3c3879;font-weight: bold;
+  background: #3c3879;
+  font-weight: bold;
   padding: 20px;  
-
 }
 
 body{
@@ -118,7 +123,6 @@ input:focus{
   background: #595353;
 }
 
-
 label{
   color: rgba(112, 112, 112, 0.973);
   font-size: 14px;
@@ -166,8 +170,3 @@ label{
 label{
     color: #FDB171;;
 }
-
-
-
-
-

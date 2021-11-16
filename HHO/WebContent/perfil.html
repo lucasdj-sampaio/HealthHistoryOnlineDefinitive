@@ -1,161 +1,182 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+
+<head>
     <title>Perfil</title>
     <meta charset="utf-8" />
 
-    <!-- #region Bootstrap config/reference-->
-    <!-- Make responsive -->
     <meta name="viewport" content="width=device-width , initial-scale=1" />
-    <!-- Set style classes -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-      crossorigin="anonymous"
-    ></script>
-    <!-- #endregion -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!-- Css References -->
     <link href="style/default.css" rel="stylesheet" />
     <link href="style/perfil.css" rel="stylesheet" />
-    <link rel="icon" href="./_img/Icons/icone.png"> 
-  </head>
+    <link rel="icon" href="./_img/Icons/icone.png">
+</head>
 
-  <body>
-    <div class="container-fluid">
-        <!-- #region MenuBar -->
+<body>
+    <header>
         <nav class="navbar navbar-light bg-light shadow">
-            <div id="menuBar" class="container-fluid">
+            <div class="container-header">
                 <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#menuModelBar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <img id="profileEdit"src="./_img/Index/profile.jpg" alt="Editar perfil" height="80px" />
+
+                <img id="profileEdit" src="./_img/Index/profile.jpg" alt="Editar perfil" height="80px" />
             </div>
         </nav>
-        <!-- #endregion -->
+    </header>
 
-        <!-- #region Content-->
-        <form>      
-            <div id="hoLabel" class="col sm-10 col-md-10 col-lg-10">
-                <h3 class="texto-perfil">Perfil</h3>
-                <img src="./_img/Icons/editar.png" data-bs-toggle="modal" data-bs-target="#newUser" id="editar-perfil" /> 
-            </div> 
-        </form>
-        <!-- #endregion --> 
+    <main>
+        <div class="row">
+            <div class="col-12 d-grid gap-2">
+                <button class="perfilButton">
+                    Perfil
+                    <img src="./_img/Icons/editar.png" data-bs-toggle="modal" data-bs-target="#newUser"
+                        id="editar-perfil" />
+                </button>
+            </div>
+        </div>
 
-        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="row">
-                <div class="row justify-content-center">
-                    <div id="titleDiv" class="col sm-9 col-md-6 col-lg-6">
-                        <div>                  
-                            <img src="./_img/Index/profile.jpg"  alt="Perfil" style="width: 150px;" /> 
-                            <h5 class="nome-usuario">Nome do usuário</h5>              
-                        </div>
-                        <div id="dados-usuario">
-                            <div class="dados-perfil">                             
-                                <h5>Idade</h5>
-                            </div> 
-                            <div class="dados-perfil"> 
-                                <h5>Peso</h5>
+        <div class="row">
+            <div class="col-12">
+                <div class="container col-9" style="margin-top: 30px;">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3 col-md-3 col-lg-3">
+                                            <div class="conteinerPerfil">
+                                                <img src="./_img/Index/profile.jpg" alt="Perfil" />
+
+                                                <label>Nome do Usuário</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-9 col-md-9 col-lg-9">
+                                            <div class="conteinerDados">
+                                                <label>25 anos</label>
+
+                                                <label>67 kg</label>
+
+                                                <label>1,80m</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="dados-perfil">  
-                                <h5>Altura</h5> 
-                            </div>             
                         </div>
                     </div>
-                </div>
-          
-                <div class="row justify-content-center">
-                    <div class="col sm-12 col-md-12 col-lg-12" id="acessBox">
-                        <form>
-                            <div>
-                                <img src="./_img/Icons/email.png"style="width: 70px;" />
-                                <label class="col-9">E-mail:
-                                    <input id="input-perfil"  placeholder="email@email.com.br" >
-                                </label>
-                            </div>
 
-                            <div>
-                                <img src="./_img/Icons/cpf.png"style="width: 70px;" />
-                                <label class="col-9">CPF:
-                                    <input id="input-perfil"  placeholder="000.000.000-00" >
-                                </label> 
-                            </div>
-                
-                            <div>
-                                <img src="./_img/Icons/nascimento.png"style="width: 70px;" />
-                                <label class="col-9">Data de Nascimento:
-                                    <input id="input-perfil"  placeholder="00/00/0000">
-                                </label> 
-                            </div>
+                    <div class="row" style="margin-top: 30px;">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="containerIconInput">
+                                                <img class="imageSize" src="./_img/Icons/email.png" />
 
-                            <div>
-                                <img src="./_img/Icons/telefone.png"style="width: 70px;" />
-                                <label class="col-9">Telefone:
-                                    <input id="input-perfil"  placeholder="(00) 00000-0000">
-                                </label> 
-                            </div>                                             
-                        </form>
+                                                <div class="containerInput">
+                                                    <label>E-mail:</label>
+
+                                                    email@email.com.br
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="containerIconInput">
+                                                <img class="imageSize" src="./_img/Icons/cpf.png" />
+
+                                                <div class="containerInput">
+                                                    <label>CPF:</label>
+
+                                                    000.000.000-00
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="containerIconInput">
+                                                <img class="imageSize" src="./_img/Icons/nascimento.png" />
+
+                                                <div class="containerInput">
+                                                    <label>Data de Nascimento:</label>
+
+                                                    00/00/0000
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="containerIconInput">
+                                                <img class="imageSize" src="./_img/Icons/telefone.png" />
+
+                                                <div class="containerInput">
+                                                    <label>Telefone:</label>
+
+                                                    (00) 00000-0000
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </main>
 
-        <!-- #region MenuModal -->
-        <div
-            class="modal fade"
-            id="menuModelBar"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-                <div class="modal-dialog modal-fullscreen">
-                    <div id="modelContent" class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">MENU</h5>
-                                <button
-                                type="button"
-                                class="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>     
-                        <div class="icones-menu">
-                            <a href="./perfil.html"> 
-                                <img src="./_img/Icons/perfil-laranja.png" alt="Perfil" id="menu-icone"/>
-                            </a>
-                            <a href="./metricas.html">   
-                                <img src="./_img/Icons/métricas.png" alt="Métricas" id="menu-icone"/>
-                            </a>  
-                        </div>
-                        <div class="icones-menu">
-                            <a href="./peso.html"> 
-                                <img src="./_img/Icons/peso-botao.png" alt="Peso" id="menu-icone"/>
-                            </a>
-                            <a href="./pressao.html">    
-                                <img src="./_img/Icons/pressão-botão.png" alt="Perfil" id="menu-icone"/>
-                            </a>  
-                        </div>
-                        <div class="icones-menu">
-                            <img src="./_img/Icons/exercicios.png" alt="Exercicios" id="menu-icone"/>   
-                            <img src="./_img/Icons/alimentação.png" alt="Perfil" id="menu-icone"/>  
-                        </div> 
-                        <div class="icones-menu">
-                            <img src="./_img/Icons/suporte.png" alt="Perfil" id="menu-icone"/>   
-                            <img src="./_img/Icons/sair.png" alt="Perfil" id="menu-icone"/>  
-                        </div>      
-                    </div>             
+    <div class="modal fade" id="menuModelBar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div id="modelContent" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">MENU</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="icones-menu">
+                    <a href="./perfil.html">
+                        <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone" />
+                    </a>
+                    <a href="./metricas.html">
+                        <img src="./_img/Icons/métricas.png" alt="Métricas" id="menu-icone" />
+                    </a>
+                </div>
+                <div class="icones-menu">
+                    <a href="./peso.html">
+                        <img src="./_img/Icons/peso-botao.png" alt="Peso" id="menu-icone" />
+                    </a>
+                    <a href="./pressao.html">
+                        <img src="./_img/Icons/pressão-laranja.png" alt="Perfil" id="menu-icone" />
+                    </a>
+                </div>
+                <div class="icones-menu">
+                    <img src="./_img/Icons/exercicios.png" alt="Exercicios" id="menu-icone" />
+                    <img src="./_img/Icons/alimentação.png" alt="Perfil" id="menu-icone" />
+                </div>
+                <div class="icones-menu">
+                    <img src="./_img/Icons/suporte.png" alt="Perfil" id="menu-icone" />
+                    <img src="./_img/Icons/sair.png" alt="Perfil" id="menu-icone" />
+                </div>
+            </div>
         </div>
     </div>
-    <!-- #endregion -->
 
     <!-- #region Modal new user-->
     <div class="modal fade" id="newUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -166,77 +187,78 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <div class="modal-body">        
+                <div class="modal-body">
                     <div>
-                      <input type="text" class="form-control" id="nome_user" placeholder="Nome Completo"/>
-                    </div>
-                    
-                    <div>
-                      <input type="text" class="form-control" id="cpf_user" placeholder="Nome do Usuário" />
+                        <input type="text" class="form-control" id="nome_user" placeholder="Nome Completo" />
                     </div>
 
                     <div>
-                      <input type="email" class="form-control" id="email_user" placeholder="E-mail"/>
-                    </div>
-                    
-                    <div>
-                      <input type="password" class="form-control" id="senha-antiga" placeholder="Senha antiga"/>
+                        <input type="text" class="form-control" id="cpf_user" placeholder="Nome do Usuário" />
                     </div>
 
                     <div>
-                      <input type="password" class="form-control" id="nova-senha" placeholder="Nova Senha"/>
+                        <input type="email" class="form-control" id="email_user" placeholder="E-mail" />
                     </div>
 
                     <div>
-                      <input type="password" class="form-control" id="confirmar-senha" placeholder="Confirmar Nova Senha"/>
-                    </div>       
-
-                    <div>
-                        <input type="tel" maxlength="10" class="form-control" id="format-input" placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
+                        <input type="password" class="form-control" id="senha-antiga" placeholder="Senha antiga" />
                     </div>
 
                     <div>
-                      <input type="text" class="form-control" id="peso" placeholder="Peso"/>
+                        <input type="password" class="form-control" id="nova-senha" placeholder="Nova Senha" />
                     </div>
 
                     <div>
-                      <input type="text" class="form-control" id="altura" placeholder="Altura"/>
+                        <input type="password" class="form-control" id="confirmar-senha"
+                            placeholder="Confirmar Nova Senha" />
                     </div>
 
                     <div>
-                      <input type="text" class="form-control" id="cpf" placeholder="CPF"/>
+                        <input type="tel" maxlength="10" class="form-control" id="format-input"
+                            placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
                     </div>
 
                     <div>
-                      <input type="text" class="form-control" id="telefone" placeholder="Telefone"/>
+                        <input type="text" class="form-control" id="peso" placeholder="Peso" />
+                    </div>
+
+                    <div>
+                        <input type="text" class="form-control" id="altura" placeholder="Altura" />
+                    </div>
+
+                    <div>
+                        <input type="text" class="form-control" id="cpf" placeholder="CPF" />
+                    </div>
+
+                    <div>
+                        <input type="text" class="form-control" id="telefone" placeholder="Telefone" />
                     </div>
                     <div>
-                        <input type="file"
-                        id="avatar" name="avatar"
-                        accept="image/png, image/jpeg">  
-                    </div>  
-      
-                    <div class="login">                    
+                        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                    </div>
+
+                    <div class="login">
                         <button type="reset" class="btn btn-success" onclick="location.href='./perfil.html'">
                             CONFIRMAR
-                        </button>               
-                </div>           
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- #endregion -->
-    <script>
-    function DDMMYYYY(value, event) {
-      let newValue = value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
+        <!-- #endregion -->
+        <script>
+            function DDMMYYYY(value, event) {
+                let newValue = value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
 
-      const dayOrMonth = (index) => index % 2 === 1 && index < 4;
+                const dayOrMonth = (index) => index % 2 === 1 && index < 4;
 
-      // on delete key.  
-      if (!event.data) {
-        return value;
-      }
+                // on delete key.  
+                if (!event.data) {
+                    return value;
+                }
 
-      return newValue.split('').map((v, i) => dayOrMonth(i) ? v + '/' : v).join('');;
-    }
-    </script>
+                return newValue.split('').map((v, i) => dayOrMonth(i) ? v + '/' : v).join('');;
+            }
+        </script>
+
 </html>

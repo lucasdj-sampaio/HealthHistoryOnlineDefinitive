@@ -7,6 +7,7 @@
   margin-top: 50px;
   margin-bottom: 14%; 
 }
+
 td, th{
     text-align: center;
 }
@@ -37,8 +38,6 @@ td, th{
   display: block;
   margin-right: auto;
   margin-left: auto;
-  width: 20%;
-  height: 45px;
   border-radius: 4px;
   border-color: #FDB171;
   border-width: 2px;
@@ -116,3 +115,7 @@ select{
     right: 0px;
 }
 
+td button{
+  border: none;
+  background-color: transparent;
+}

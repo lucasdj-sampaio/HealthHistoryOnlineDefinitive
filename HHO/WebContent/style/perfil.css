@@ -8,6 +8,74 @@ body{
   display: table;
 }
 
+.container-header{
+    width: 100%;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.perfilButton{
+    background-color: #3E3B7A;
+    border: none;
+    color: white;
+    margin: 10px 10px;
+    font-size: calc(1.3rem + .6vw);
+    padding: 7px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteinerPerfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conteinerPerfil label{
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.conteinerDados{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.conteinerDados label{
+    text-align: center;
+    display: block;
+    color: #FDB171;
+    font-size: calc(1.3rem + .6vw);
+}
+
+.containerIconInput{
+    display: flex;
+    align-items: center;
+}
+
+.imageSize{
+    width: 70px;
+}
+
+.containerInput{
+    color: #FDB171;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+
+.containerInput label{
+    display: block;
+    width: auto;
+    margin: 0px 6px;
+}
+
 .texto-perfil{
     margin: 10px;
     color: white;
@@ -24,14 +92,14 @@ body{
 
 #titleDiv{
   color: #FDB171;
-  font-size: 30px;  
-  margin-top: 100px;
-  max-width: 500px;  
-  height: 210px;
+  margin-top: 30px; 
   background: #ffffff;
   padding: 20px;
-  display: inline-flex;  
+}
 
+.dados{
+    margin-top: 30%;
+    font-size: 35px;
 }
 
 #input-perfil{
@@ -47,11 +115,9 @@ body{
 }
 
 #acessBox{
-  max-width: 500px;   
-  height: 250px;
   padding: 30px 20px;
   background: #ffffff;
-  margin: 20px;
+  margin: 20px 0px 20px 0px;
 }
 
 textarea:focus, input:focus, select:focus {
@@ -83,17 +149,11 @@ label{
 }
 
 #editar-perfil{
-    margin-top: 10px;
-    width: 30px; 
-    height: 30px;"
-    cursor: pointer;
+    margin-left: 10px;
+    width: 22px; 
+    height: 22px;
 }
 
-#editar-perfil:hover{ 
-    cursor: pointer;
-}
-
- 0
 input:focus{
   border-bottom: 1px solid #3D8790; 
   transition: all 0.3s;
@@ -136,7 +196,10 @@ input:focus{
 }
 
 .nome-usuario{
+    margin-top: 10px;
     color: #3E3B7A;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 a{
@@ -177,4 +240,3 @@ select{
     width: 100%;
     background: #FDB171;
 }
-

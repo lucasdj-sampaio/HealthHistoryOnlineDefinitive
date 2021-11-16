@@ -29,12 +29,6 @@
   width: 60%;
 }
 
-#profileEdit{
-  border-radius: 80px;
-  margin-top: 10px;
-  margin-left: 73px;
-}
-
 #editProfileButton{
   background-image: url('../_img/Icons/Icon_Edit.svg');
   background-color: white;
@@ -81,4 +75,11 @@ p{
   border: none;
   width: 24px;
   height: 24px;
+}
+
+#profileEdit{
+  border-radius: 80px;
+  width: 60px;
+  height: 60px;
+  margin: 5px 5px;
 }
