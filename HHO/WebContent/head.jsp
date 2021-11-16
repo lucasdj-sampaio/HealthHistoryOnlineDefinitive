@@ -11,4 +11,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
   <link href="style/default.css" rel="stylesheet" />
+  <link href="style/menu.css" rel="stylesheet">
   <link rel="icon" href="./_img/Icons/icone.png">

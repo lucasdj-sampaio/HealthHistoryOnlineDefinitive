@@ -14,102 +14,104 @@
         </header>
 
         <main>
-            <div class="row">
-                <div class="col-12 d-grid gap-2">
-                    <button class="perfilButton">
-                        Perfil
-                        <img src="./_img/Icons/editar.png" data-bs-toggle="modal" data-bs-target="#newUser"
-                            id="editar-perfil" />
-                    </button>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 d-grid gap-2">
+                        <button class="perfilButton">
+                            Perfil
+                            <img src="./_img/Icons/editar.png" data-bs-toggle="modal" data-bs-target="#newUser"
+                                id="editar-perfil" />
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="container col-9" style="margin-top: 30px;">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-3 col-md-3 col-lg-3">
-                                                <div class="conteinerPerfil">
-                                                    <img src="./_img/Index/profile.jpg" alt="Perfil" />
+                <div class="row">
+                    <div class="col-12">
+                        <div class="container col-9" style="margin-top: 30px;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-3 col-md-3 col-lg-3">
+                                                    <div class="conteinerPerfil">
+                                                        <img src="./_img/Index/profile.jpg" alt="Perfil" />
 
-                                                    <label>Nome do Usuário</label>
+                                                        <label>Nome do Usuário</label>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="col-sm-9 col-md-9 col-lg-9">
-                                                <div class="conteinerDados">
-                                                    <label>25 anos</label>
+                                                <div class="col-sm-9 col-md-9 col-lg-9">
+                                                    <div class="conteinerDados">
+                                                        <label>25 anos</label>
 
-                                                    <label>67 kg</label>
+                                                        <label>67 kg</label>
 
-                                                    <label>1,80m</label>
+                                                        <label>1,80m</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row" style="margin-top: 30px;">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="containerIconInput">
-                                                    <img class="imageSize" src="./_img/Icons/email.png" />
+                            <div class="row" style="margin-top: 30px;">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="containerIconInput">
+                                                        <img class="imageSize" src="./_img/Icons/email.png" />
 
-                                                    <div class="containerInput">
-                                                        <label>E-mail:</label>
+                                                        <div class="containerInput">
+                                                            <label>E-mail:</label>
 
-                                                        email@email.com.br
+                                                            email@email.com.br
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="containerIconInput">
-                                                    <img class="imageSize" src="./_img/Icons/cpf.png" />
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="containerIconInput">
+                                                        <img class="imageSize" src="./_img/Icons/cpf.png" />
 
-                                                    <div class="containerInput">
-                                                        <label>CPF:</label>
+                                                        <div class="containerInput">
+                                                            <label>CPF:</label>
 
-                                                        000.000.000-00
+                                                            000.000.000-00
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="containerIconInput">
-                                                    <img class="imageSize" src="./_img/Icons/nascimento.png" />
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="containerIconInput">
+                                                        <img class="imageSize" src="./_img/Icons/nascimento.png" />
 
-                                                    <div class="containerInput">
-                                                        <label>Data de Nascimento:</label>
+                                                        <div class="containerInput">
+                                                            <label>Data de Nascimento:</label>
 
-                                                        00/00/0000
+                                                            00/00/0000
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="containerIconInput">
-                                                    <img class="imageSize" src="./_img/Icons/telefone.png" />
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="containerIconInput">
+                                                        <img class="imageSize" src="./_img/Icons/telefone.png" />
 
-                                                    <div class="containerInput">
-                                                        <label>Telefone:</label>
+                                                        <div class="containerInput">
+                                                            <label>Telefone:</label>
 
-                                                        (00) 00000-0000
+                                                            (00) 00000-0000
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -206,6 +208,83 @@
             }
         </script>
 
+
+        <div class="modal fade" id="newUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Cadastro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div>
+                            <input type="text" class="form-control" id="nome_user" placeholder="Nome" />
+                        </div>
+
+                        <div>
+                            <input type="text" class="form-control" id="sobrenome_user" placeholder="Sobrenome" />
+                        </div>
+
+                        <div>
+                            <input type="tel" maxlength="10" class="form-control" id="format-input"
+                                placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
+                        </div>
+
+                        <div>
+                            <input type="text" class="form-control" id="cpf_user" placeholder="CPF"
+                                onkeypress="$(this).mask('000.000.000-00');" />
+                        </div>
+
+                        <div>
+                            <select class="form-control" id="format-input">
+                                <option value="F">Feminino selected</option>
+                                <option value="M">Masculino</option>
+                                <option value="O">Outro</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <input type="text" class="form-control" id="peso" placeholder="Peso" />
+                        </div>
+
+                        <div>
+                            <input type="text" class="form-control" id="altura" placeholder="Altura" />
+                        </div>
+
+                        <div>
+                            <input type="text" class="form-control" id="sobrenome_user" placeholder="Telefone" />
+                        </div>
+
+                        <div>
+                            <input type="email" class="form-control" id="email" placeholder="E-mail" />
+                        </div>
+
+                        <div>
+                            <input type="email" class="form-control" id="email" placeholder="Confirme seu E-mail" />
+                        </div>
+
+                        <div>
+                            <input type="password" class="form-control" id="senha" placeholder="Senha" />
+                        </div>
+
+                        <div>
+                            <input type="password" class="form-control" id="senha" placeholder="Confirme sua senha" />
+                        </div>
+
+
+                        <div class="login">
+                            <a href="./login.html">
+                                <button type="reset" class="btn btn-success" onclick="location.href='./login.html'">
+                                    CONFIRMAR
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <%@ include file="menuModal.jsp" %>
 
     </html>

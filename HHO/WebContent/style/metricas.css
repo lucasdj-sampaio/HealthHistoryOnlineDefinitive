@@ -120,21 +120,6 @@ label{
   text-align: center;
 }
 
-#menu-icone{
-  width: 45%;
-  align-items: center;
-
-}
-
-#menu-icone:hover{
-  cursor: pointer;
-  box-sizing: border-box;
-  border-color: #FDB171;
-  border-width: 2px;
-  border-style: solid;
-
-}
-
 #hoLabel{
   display: inline-flex;
   justify-content: center;
@@ -147,21 +132,6 @@ label{
 .texto-peso{
   margin: 10px;
   color: white;
-}
-
-#menu-icone{
-  width: 45%;
-  align-items: center;
- 
-}
-
-#menu-icone:hover{
-  cursor: pointer;
-  box-sizing: border-box;
-  border-color: #FDB171;
-  border-width: 2px;
-  border-style: solid;
-
 }
 
 .tabela-imc{

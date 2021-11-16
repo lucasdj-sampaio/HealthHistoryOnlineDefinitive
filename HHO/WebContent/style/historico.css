@@ -9,9 +9,8 @@
 }
 
 td, th{
-    text-align: center;
+  text-align: center !important;
 }
-
 
 #attachfile{
   background-image: url('../_img/Icons/Icon_Attach.svg');
@@ -92,21 +91,6 @@ select{
     border-bottom: 1px solid #ccc;
 }
 
-#menu-icone{
-    width: 45%;
-   align-items: center;
- 
-}
-
-#menu-icone:hover{
-    cursor: pointer;
-    box-sizing: border-box;
-   border-color: #FDB171;
-   border-width: 2px;
-   border-style: solid;
-
-}
-
 #add-campo{
     width: 100%
 }
@@ -118,4 +102,9 @@ select{
 td button{
   border: none;
   background-color: transparent;
+}
+
+td img{
+  height: 20px;
+  width: 20px;
 }

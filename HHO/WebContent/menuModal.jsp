@@ -7,19 +7,19 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="icones-menu">
-          <a href="./perfil.html">
+          <a href="./perfil.jsp">
             <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone" />
           </a>
-          <a href="./metricas.html">
+          <a href="./metricas.jsp">
             <img src="./_img/Icons/métricas.png" alt="Métricas" id="menu-icone" />
           </a>
         </div>
         <div class="icones-menu">
-          <a href="./peso.html">
+          <a href="./peso.jsp">
             <img src="./_img/Icons/peso-botao.png" alt="Peso" id="menu-icone" />
           </a>
-          <a href="./pressao.html">
-            <img src="./_img/Icons/pressão-laranja.png" alt="Perfil" id="menu-icone" />
+          <a href="./pressao.jsp">
+            <img src="./_img/Icons/pressão-botão.png" alt="Perfil" id="menu-icone" />
           </a>
         </div>
         <div class="icones-menu">

@@ -44,11 +44,14 @@
                                 <td>2021-11-13</td>
                                 <td>
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#newUser">
-                                        <img id="editar" src="./_img/Icons/editar.png" height="20px" />
+                                        <img id="editar" src="./_img/Icons/editar.png" />
                                     </button>
                                 </td>
-                                <td><img id="editar" src="./_img/Icons/lixeira.png" onclick="clicar('excluir3')"
-                                        height="20px" /></td>
+                                <td>
+                                    <button type="button">
+                                        <img id="editar" src="./_img/Icons/lixeira.png" onclick="clicar('excluir3')" />
+                                    </button>
+                                </td>
                             </tr>
 
                             <tr>
@@ -57,11 +60,14 @@
                                 <td>2021-11-14</td>
                                 <td>
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#newUser">
-                                        <img id="editar" src="./_img/Icons/editar.png" height="20px" />
+                                        <img id="editar" src="./_img/Icons/editar.png" />
                                     </button>
                                 </td>
-                                <td><img id="editar" src="./_img/Icons/lixeira.png" onclick="clicar('excluir3')"
-                                        height="20px" /></td>
+                                <td>
+                                    <button type="button">
+                                        <img id="editar" src="./_img/Icons/lixeira.png" onclick="clicar('excluir3')" />
+                                    </button>
+                                </td>
                             </tr>
 
                             <tr>
@@ -70,11 +76,14 @@
                                 <td>2021-11-15</td>
                                 <td>
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#newUser">
-                                        <img id="editar" src="./_img/Icons/editar.png" height="20px" />
+                                        <img id="editar" src="./_img/Icons/editar.png" />
                                     </button>
                                 </td>
-                                <td><img id="editar" src="./_img/Icons/lixeira.png" onclick="clicar('excluir3')"
-                                        height="20px" /></td>
+                                <td>
+                                    <button type="button">
+                                        <img id="editar" src="./_img/Icons/lixeira.png" onclick="clicar('excluir3')" />
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

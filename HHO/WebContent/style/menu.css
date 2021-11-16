@@ -4,3 +4,20 @@
   height: 60px;
   margin: 5px 5px;
 }
+
+#menu-icone{
+  width: 140px;
+  align-items: center;
+}
+
+#menu-icone:hover{
+  cursor: pointer;
+  box-sizing: border-box;
+  border-color: #FDB171;
+  border-width: 2px;
+  border-style: solid;
+}
+
+a{
+  text-decoration: none;
+}

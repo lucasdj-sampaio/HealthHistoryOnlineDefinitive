@@ -170,21 +170,6 @@ input:focus{
     border-color:#E87412;  
 }
 
-#menu-icone{
-    width: 45%;
-   align-items: center;
- 
-}
-
-#menu-icone:hover{
-    cursor: pointer;
-    box-sizing: border-box;
-   border-color: #FDB171;
-   border-width: 2px;
-   border-style: solid;
-
-}
-
 #dados-usuario{
     display: inline-flex;
     margin: 15% 0px;
