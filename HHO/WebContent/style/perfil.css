@@ -1,6 +1,6 @@
 body{
   font-family: 'Work Sans', sans-serif;
-  background-image: url('../_img/Login/backgroundLogin.jpg');
+  background-image: url('../_img/Perfil/perfil.png');
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -26,32 +26,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.conteinerPerfil{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.conteinerPerfil label{
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.conteinerDados{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.conteinerDados label{
-    text-align: center;
-    display: block;
-    color: #FDB171;
-    font-size: calc(1.3rem + .6vw);
 }
 
 .containerIconInput{
@@ -133,13 +107,6 @@ input {
     color: #FDB171;
 } 
 
-label{
-    color: #3E3B7A;
-    font-weight: bold;
-    display: inline-flex;  
-    width: 100%;  
-}
-
 #input-perfil{
     font-style:#FDB171;
 }
@@ -168,21 +135,6 @@ input:focus{
 .btn-success:hover{
     background: #E87412; 
     border-color:#E87412;  
-}
-
-#menu-icone{
-    width: 45%;
-   align-items: center;
- 
-}
-
-#menu-icone:hover{
-    cursor: pointer;
-    box-sizing: border-box;
-   border-color: #FDB171;
-   border-width: 2px;
-   border-style: solid;
-
 }
 
 #dados-usuario{

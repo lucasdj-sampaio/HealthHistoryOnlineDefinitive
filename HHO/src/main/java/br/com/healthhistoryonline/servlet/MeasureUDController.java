@@ -13,7 +13,7 @@ import br.com.healthhistoryonline.model.User;
 import br.com.healthhistoryonline.sysmodel.Pair;
 import br.com.healthhistoryonline.sysmodel.Weight;
 
-@WebServlet(description = "A Servlet how control the measure methods", urlPatterns = { "/Measures" })
+@WebServlet(description = "A Servlet how control the measure methods", urlPatterns = { "/AlterMeasures" })
 public class MeasureUDController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MeasureDao measureDao;

@@ -83,3 +83,10 @@ p{
   height: 60px;
   margin: 5px 5px;
 }
+
+label{
+  color: #3E3B7A;
+  font-weight: bold;
+  display: inline-flex;  
+  width: 100%;  
+}
