@@ -5,9 +5,8 @@ public class SnackType {
 	private int snackTypeCode;
 	private String snack;
 	
-	public SnackType(int snackCode, String snack) {
+	public SnackType(int snackCode) {
 		this.snackTypeCode = snackCode;
-		this.snack = snack;
 	}
 	
 	public int getSnackTypeCode() {
@@ -15,5 +14,9 @@ public class SnackType {
 	}
 	public String getSnack() {
 		return snack;
+	}
+	
+	public void setSnack(String snack) {
+		this.snack = snack;
 	}
 }

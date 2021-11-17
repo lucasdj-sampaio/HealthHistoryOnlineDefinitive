@@ -5,13 +5,14 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import br.com.healthhistoryonline.model.Meal;
 import br.com.healthhistoryonline.model.Snack;
-import br.com.healthhistoryonline.sysmodel.FoodType;
-import br.com.healthhistoryonline.sysmodel.FoodMeasureType;
 import br.com.healthhistoryonline.sysmodel.Pair;
 import br.com.healthhistoryonline.sysmodel.SnackType;
 
@@ -22,26 +23,23 @@ public class MealDao {
 	public Pair<Boolean, String> insertMeal(Snack data, String userName){	
 		try {
 			PreparedStatement snack = conn.getConnection().prepareStatement("INSERT INTO T_REFEICAO"
-					+ "(cd_ref, nm_usuario, cd_tp_refeicao, dt_inclusao)"
+					+ "(cd_ref, nm_usuario, cd_tp_refeicao, dt_inclusao, nr_caloria)"
 					+ "VALUES (REFEICAO.Nextval, ?"
-					+ ", ?, ?)");
+					+ ", ?, ?, ?)");
 		
 			snack.setString(1, userName);
 			snack.setInt(2, data.getTypeFood().getSnackTypeCode());
 			snack.setDate(3, java.sql.Date.valueOf(data.getInclusionDate().toString()));
+			snack.setInt(4, data.getCalories());
 			
 			if (conn.executeCommand(snack, false) == 1) {
 				for (Meal meal : data.getMeal()) {
 					
 					PreparedStatement stat = conn.getConnection().prepareStatement("INSERT INTO T_REF_ALIMENTO"
-							+ "(cd_relacao, cd_ref, cd_medida, qtd_alimento, nr_caloria, cd_alimento)"
-							+ "VALUES (REF_ALIMENTO.Nextval, (SELECT MAX(cd_ref) FROM T_REFEICAO),"
-							+ "?, ?, ?, ?)");
+							+ "(cd_relacao, cd_ref, nm_alimento)"
+							+ "VALUES (REF_ALIMENTO.Nextval, (SELECT MAX(cd_ref) FROM T_REFEICAO), ?)");
 					
-					stat.setInt(1, meal.getMeasure().getMeasureCode());
-					stat.setInt(2, meal.getQuantity());
-					stat.setInt(3, meal.getCalories());
-					stat.setInt(4, meal.getFood().getFoodCode());
+					stat.setString(1, meal.getMealName());
 					
 					if (conn.executeCommand(snack, false) != 1) {
 						return new Pair<Boolean, String>(false, "Falha ao cadastrar refeição!");
@@ -64,97 +62,81 @@ public class MealDao {
 		}
 	}
 	
-	public Pair<Boolean, List<Snack>> getAll(String userName) throws ParseException{
-		List<Snack> snackList = new ArrayList<Snack>();
-				
+	public Pair<Boolean, Map<Date, List<Snack>>> getAll(String userName) throws ParseException{
+		Map<Date, List<Snack>> map = new HashMap<Date, List<Snack>>();
+		
 		try {
 			PreparedStatement getSnack = conn.getConnection().prepareStatement("SELECT R.cd_ref, TP.cd_tp_refeicao, TP.tp_refeicao "
-					+ ", R.dt_inclusao FROM T_REFEICAO R INNER JOIN T_TP_REFEICAO TP ON R.cd_tp_refeicao = TP.cd_tp_refeicao "
-					+ "WHERE R.nm_usuario = ?");
+					+ ", R.nr_caloria, R.dt_inclusao FROM T_REFEICAO R INNER JOIN T_TP_REFEICAO TP ON R.cd_tp_refeicao = TP.cd_tp_refeicao "
+					+ "WHERE R.nm_usuario = ? ORDER BY R.dt_inclusao ASC");
 			
 			getSnack.setString(1, userName);
 						
 			ResultSet response = conn.getData(getSnack);
 			
 			while (response.next()) {
+				SnackType type = new SnackType(response.getInt(2));
+				type.setSnack(response.getString(3));
+								
 				Snack snack = new Snack();
 				snack.setSnackCode(response.getInt(1));
-				snack.setTypeFood(new SnackType(response.getInt(2), response.getString(3)));
-				snack.setInclusionDate(new SimpleDateFormat("dd/MM/yyyy").parse(response.getString(3)));
+				snack.setTypeFood(type);
+				snack.setCalories(response.getInt(4));
 				
-				snackList.add(snack);
+				snack.setMeal(getRefFood(conn, snack.getSnackCode()));
+				
+				Date currentDate = new SimpleDateFormat("dd/MM/yyyy").parse(response.getString(5));
+				
+				if (map.containsKey(currentDate)){
+					map.get(currentDate).add(snack);
+				}
+				else {
+					List<Snack> list = new ArrayList<Snack>();
+					list.add(snack);
+					
+					map.put(currentDate, list);
+				}
 			}
 						
 			conn.closeConnection();
-						
-			for (Snack currentSnack : snackList) {
-				
-				List<Meal> mealList = new ArrayList<Meal>();
-				
-				PreparedStatement getMeal = conn.getConnection().prepareStatement("SELECT A.cd_alimento, A.nm_alimento, RA.nr_caloria,"
-						+ " RA.qtd_alimento, MA.cd_medida, MA.nm_medida FROM T_REF_ALIMENTO RA "
-						+ "INNER JOIN T_REFEICAO R ON R.cd_ref = RA.cd_ref "
-						+ "INNER JOIN T_TP_REFEICAO TP ON R.cd_tp_refeicao = TP.cd_tp_refeicao "
-						+ "INNER JOIN T_ALIMENTO A ON RA.cd_alimento = A.cd_alimento "
-						+ "INNER JOIN T_MEDIDA_ALIMENTO MA ON RA.cd_medida = MA.cd_medida "
-						+ "WHERE R.cd_ref = ?");
-				
-				getMeal.setInt(1, currentSnack.getSnackCode());
-				
-				ResultSet mealResponse = conn.getData(getMeal);
-				
-				while (mealResponse.next()) {
-					Meal meal = new Meal();
-					
-					meal.setFood(new FoodType(response.getInt(1), response.getString(2)));
-					meal.setCalories(response.getInt(3));
-					meal.setQuantity(response.getInt(4));
-					meal.setMeasure(new FoodMeasureType(response.getInt(5), response.getString(6)));
-					
-					mealList.add(meal);
-				}
-											
-				currentSnack.setMeal(mealList);
-								
-				conn.closeConnection();
-			}
 		}
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
-			return new Pair<Boolean, List<Snack>>(false, null);
+			return new Pair<Boolean, Map<Date, List<Snack>>>(false, null);
 		}
 		finally {
 			conn.closeConnection();
 		}
 		
-		return new Pair<Boolean, List<Snack>>(true, snackList);
+		return new Pair<Boolean, Map<Date, List<Snack>>>(true, map);
 	}
 	
-	public Set<FoodType> getAllFoodTypes(){
-		Set<FoodType> foodTypes = new HashSet<FoodType>();
-				
+	private List<Meal> getRefFood(ConnectionManager conn, int refCode){
+		List<Meal> mealList = new ArrayList<Meal>();
+		
 		try {
-			PreparedStatement food = conn.getConnection().prepareStatement("SELECT cd_alimento, nm_alimento "
-					+ "FROM T_ALIMENTO");
-					
-			ResultSet response = conn.getData(food);
 			
-			while (response.next()) {
-				foodTypes.add(new FoodType(response.getInt(1), response.getString(2)));
+			PreparedStatement getMeal = conn.getConnection().prepareStatement("SELECT cd_relacao, nm_alimento "
+					+ "WHERE R.cd_ref = ?");
+			
+			getMeal.setInt(1, refCode);
+			
+			ResultSet mealResponse = conn.getData(getMeal);
+			
+			while (mealResponse.next()) {
+				Meal meal = new Meal(mealResponse.getString(2));
+				meal.setMealCode(mealResponse.getInt(1));
+				
+				mealList.add(meal);
 			}
-			
-			conn.closeConnection();			
-		}
+		}		
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
 		}
-		finally {
-			conn.closeConnection();
-		}
 		
-		return foodTypes;
+		return mealList;
 	}
 
 	public Set<SnackType> getAllSnackTypes(){
@@ -167,7 +149,10 @@ public class MealDao {
 			ResultSet response = conn.getData(stat);
 			
 			while (response.next()) {
-				snackTypes.add(new SnackType(response.getInt(1), response.getString(2)));
+				SnackType type = new SnackType(response.getInt(1));
+				type.setSnack(response.getString(2));
+				
+				snackTypes.add(type);
 			}
 			
 			conn.closeConnection();			
@@ -181,32 +166,6 @@ public class MealDao {
 		}
 		
 		return snackTypes;
-	}
-
-	public Set<FoodMeasureType> getAllMeasureTypes(){
-		Set<FoodMeasureType> measureTypes = new HashSet<FoodMeasureType>();
-				
-		try {
-			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT cd_medida, nm_medida "
-					+ "FROM T_MEDIDA_ALIMENTO");
-					
-			ResultSet response = conn.getData(stat);
-			
-			while (response.next()) {
-				measureTypes.add(new FoodMeasureType(response.getInt(1), response.getString(2)));
-			}
-			
-			conn.closeConnection();			
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-		}
-		finally {
-			conn.closeConnection();
-		}
-		
-		return measureTypes;
 	}
 
 	public Pair<Boolean, String> updateMeal(Snack data){	
@@ -237,15 +196,11 @@ public class MealDao {
 	public Pair<Boolean, String> updateMeal(Meal meal){	
 		try {
 			PreparedStatement updateMeal = conn.getConnection().prepareStatement("UPDATE T_REF_ALIMENTO "
-					+ "SET cd_medida = ? qtd_alimento = ?, nr_caloria = ?, cd_alimento = ? WHERE cd_relacao = ?");
+					+ "SET nm_alimento = ? WHERE cd_relacao = ?");
 		
-			updateMeal.setInt(1, meal.getMeasure().getMeasureCode());
-			updateMeal.setInt(2, meal.getQuantity());
-			updateMeal.setInt(3, meal.getCalories());
-			updateMeal.setInt(4, meal.getFood().getFoodCode());
-			updateMeal.setInt(5, meal.getMealCode());
+			updateMeal.setString(1, meal.getMealName());
+			updateMeal.setInt(2, meal.getMealCode());
 						
-			
 			if (conn.executeCommand(updateMeal, false) <= 1) {
 				conn.getConnection().commit();
 				return new Pair<Boolean, String>(true, "Refeição atualizada com sucesso!");
