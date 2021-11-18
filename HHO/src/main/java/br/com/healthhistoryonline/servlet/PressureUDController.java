@@ -16,7 +16,7 @@ import br.com.healthhistoryonline.model.User;
 import br.com.healthhistoryonline.sysmodel.Pair;
 
 
-@WebServlet(description = "A Servlet that updates/deletes the Pressure Method", urlPatterns = {"/PressureUDController"})
+@WebServlet(description = "A Servlet that updates/deletes the Pressure Method", urlPatterns = {"/AlterPressure"})
 public class PressureUDController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PressureDao pressureDao;

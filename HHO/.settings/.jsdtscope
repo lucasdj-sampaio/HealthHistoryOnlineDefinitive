@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="WebService"/>
-	<classpathentry excluding="**/bower_components/*/|**/node_modules/*/|**/*.min.js/" kind="src" path="WebContent"/>
+	<classpathentry excluding="**/*.min.js/|**/bower_components/*/|**/node_modules/*/|resources/js/bootstrap.bundle.js|resources/js/bootstrap.bundle.js.map|resources/js/bootstrap.bundle.min.js|resources/js/bootstrap.bundle.min.js.map|resources/js/bootstrap.esm.js|resources/js/bootstrap.esm.js.map|resources/js/bootstrap.esm.min.js|resources/js/bootstrap.esm.min.js.map|resources/js/bootstrap.js|resources/js/bootstrap.js.map|resources/js/bootstrap.min.js|resources/js/bootstrap.min.js.map|resources/js/jquery-3.6.0.min.js" kind="src" path="WebContent"/>
 	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.WebProject">
 		<attributes>
