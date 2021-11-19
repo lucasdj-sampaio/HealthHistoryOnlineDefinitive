@@ -43,7 +43,7 @@ public class PhoneDao {
 	
 	public static Phone getAll(ConnectionManager conn, String userName){
 		try {
-			PreparedStatement phoneStat = conn.getConnection().prepareStatement("SELECT NR_DDI, NR_DDD, NR_TELEFONE "
+			PreparedStatement phoneStat = conn.getConnection().prepareStatement("SELECT NR_DDI, NR_DDD, NR_TELEFONE, "
 					+ "CD_TELEFONE FROM T_TELEFONE WHERE NM_USUARIO = ?");
 			
 			phoneStat.setString(1, userName);

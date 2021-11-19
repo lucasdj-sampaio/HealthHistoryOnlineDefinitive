@@ -84,7 +84,7 @@ public class ConnectionManager {
 		return response;		
 	}
 	
-	public ResultSet getData(PreparedStatement stat) {
+	public ResultSet getData(PreparedStatement stat) throws SQLException {
 		ResultSet result = null;
 		
 		try {
@@ -94,7 +94,8 @@ public class ConnectionManager {
 		{
 			ex.printStackTrace();
 		}
-				
+		
+		connection.commit();
 		return result;
 	}
 }
