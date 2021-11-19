@@ -5,7 +5,7 @@
   <head>
     <title>Login</title>
     <link href="style/login.css" rel="stylesheet" />
-    <%@ include file="head.jsp" %>
+    <%@ include file="imports/head.jsp" %>
   </head>
 
   <body>
@@ -36,13 +36,13 @@
 
           <div class="row justify-content-center">
             <div class="col sm-9 col-md-6 col-lg-6" id="acessBox">
-              <form>
+              <form action="SignIn" method="post">
                 <div>
-                  <input type="email" class="form-control" id="email" placeholder="E-mail" required />
+                  <input name="usuario" type="email" class="form-control" id="email" placeholder="E-mail" required />
                 </div>
 
                 <div>
-                  <input type="password" class="form-control" id="pwd" placeholder="Senha" required />
+                  <input name="senha" type="password" class="form-control" id="pwd" placeholder="Senha" required />
                 </div>
 
                 <div>
@@ -50,12 +50,10 @@
                 </div>
 
                 <div class="acess">
-                  <a href="./inicio.html">
-                    <button type="reset" class="btn btn-primary" onclick="location.href='./inicio.jsp'"> <img
-                        id="acessar-icon" src="./_img/Icons/acessar.png" alt="Acessar" />
-                      Acessar
-                    </button>
-                  </a>
+                  <button type="submit" class="btn btn-primary" onclick="location.href='./inicio.jsp'"> <img
+                      id="acessar-icon" src="./_img/Icons/acessar.png" alt="Acessar" />
+                    Acessar
+                  </button>
                 </div>
 
                 <div class="subscribe">

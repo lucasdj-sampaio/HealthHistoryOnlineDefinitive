@@ -23,9 +23,11 @@ public class UserDao {
 			
 			ResultSet response = conn.getData(stat);
 			
-			if (response.next()) {
-				if (response.getInt(1) == 1) {
-					return new Pair<Boolean, String>(true, response.getString(1));
+				if (response != null) {
+					if (response.next()) {
+						if (response.getInt(1) == 1) {
+							return new Pair<Boolean, String>(true, response.getString(1));
+					}
 				}
 			}
 			

@@ -29,7 +29,7 @@ public class SignInController extends HttpServlet {
     	User user = (User)session.getAttribute("usuario");
 		String userName = request.getParameter("usuario").toString();
 		
-    	if (user.getCredential().getUserName() == null)
+    	if (user == null)
     	{			
 			Pair<Boolean, String> hasUser = userDao.validLogin(userName
 					, request.getParameter("senha").toString());
@@ -44,8 +44,9 @@ public class SignInController extends HttpServlet {
 			user = userDao.getUser(userName).getSecond();
 			session.setAttribute("user", user);		
     	}
-    		
-		RequestDispatcher rd = request.getRequestDispatcher("DASH?user="+user.getCredential().getUserName());
-    	rd.forward(request, response);
+    	else {
+    		RequestDispatcher rd = request.getRequestDispatcher("DASH?user="+user.getCredential().getUserName());
+        	rd.forward(request, response);
+    	}	
 	}
 }

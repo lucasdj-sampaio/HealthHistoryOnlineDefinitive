@@ -5,12 +5,12 @@
     <head>
         <title>Inicio</title>
         <link href="style/inicio.css" rel="stylesheet" />
-        <%@ include file="head.jsp" %>
+        <%@ include file="imports/head.jsp" %>
     </head>
 
     <body>
         <header>
-            <%@ include file="menu.jsp" %>
+            <%@ include file="imports/menu.jsp" %>
         </header>
 
         <div class="container-fluid">
@@ -20,6 +20,6 @@
         </div>
     </body>
 
-    <%@ include file="menuModal.jsp" %>
+    <%@ include file="imports/menuModal.jsp" %>
 
     </html>

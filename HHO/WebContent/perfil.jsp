@@ -6,12 +6,12 @@
         <title>Perfil</title>
         <link href="style/perfil.css" rel="stylesheet" />
         <link href="style/userData.css" rel="stylesheet" />
-        <%@ include file="head.jsp" %>
+        <%@ include file="imports/head.jsp" %>
     </head>
 
     <body>
         <header>
-            <%@ include file="menu.jsp" %>
+            <%@ include file="imports/menu.jsp" %>
         </header>
 
         <main>
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="container col-9" style="margin-top: 30px;">
-                            <%@ include file="userData.jsp" %>
+                            <%@ include file="imports/userData.jsp" %>
 
                                 <div class="row" style="margin-top: 30px;">
                                     <div class="col-12">
@@ -259,6 +259,6 @@
             </div>
         </div>
 
-        <%@ include file="menuModal.jsp" %>
+        <%@ include file="imports/menuModal.jsp" %>
 
     </html>
