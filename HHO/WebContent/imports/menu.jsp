@@ -6,8 +6,8 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div id="userPN">
-          <label>Lucas Sampaio</label>
-          <img id="profileEdit" src="./_img/Index/profile.jpg" alt="Editar perfil" height="80px" />
+          <label>${user.getCredential().getUserName()}</label>
+          <img id="profileEdit" src=${user.getUserPhoto()} alt="Editar perfil" height="80px" />
         </div>
       </div>
     </nav>

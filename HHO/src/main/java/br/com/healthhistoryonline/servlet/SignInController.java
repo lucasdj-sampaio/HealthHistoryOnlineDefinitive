@@ -26,27 +26,24 @@ public class SignInController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
     	HttpSession session = request.getSession(true);
     	
-    	User user = (User)session.getAttribute("usuario");
+    	//User user = (User)session.getAttribute("usuario");
 		String userName = request.getParameter("usuario").toString();
 		
-    	if (user == null)
-    	{			
-			Pair<Boolean, String> hasUser = userDao.validLogin(userName
-					, request.getParameter("senha").toString());
+		Pair<Boolean, String> hasUser = userDao.validLogin(userName
+				, request.getParameter("senha").toString());
+		
+		if (!hasUser.getFirst()) {		
+	    	request.setAttribute("message", new Pair<String, String>("E", hasUser.getSecond()));
 			
-			if (!hasUser.getFirst()) {		
-		    	request.setAttribute("message", hasUser.getSecond());
-				
-		    	RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-		    	rd.forward(request, response);
-			}
-			
-			user = userDao.getUser(userName).getSecond();
-			session.setAttribute("user", user);		
-    	}
-    	else {
-    		RequestDispatcher rd = request.getRequestDispatcher("DASH?user="+user.getCredential().getUserName());
-        	rd.forward(request, response);
-    	}	
+	    	RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+	    	rd.forward(request, response);
+		}
+		else {
+			User user = userDao.getUser(userName).getSecond();
+			session.setAttribute("user", user);	
+		}
+
+		RequestDispatcher rd = request.getRequestDispatcher("inicio.jsp");
+    	rd.forward(request, response);	
 	}
 }

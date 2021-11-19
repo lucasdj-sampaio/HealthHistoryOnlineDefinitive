@@ -9,13 +9,13 @@ import br.com.healthhistoryonline.sysmodel.Pair;
 
 public class UserDao {
 	
-	ConnectionManager conn = new ConnectionManager();
-	
 	public Pair<Boolean, String> validLogin(String user, String password){
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT COUNT(NM_USUARIO), NM_USUARIO "
 					+ "FROM T_CREDENCIAL WHERE NM_USUARIO = ? OR EMAIL = ? AND SENHA = ? "
-					+ "GROUP BY NM_USUARIO;");
+					+ "GROUP BY NM_USUARIO");
 			
 			stat.setString(1, user);
 			stat.setString(2, user);
@@ -23,10 +23,10 @@ public class UserDao {
 			
 			ResultSet response = conn.getData(stat);
 			
-				if (response != null) {
-					if (response.next()) {
-						if (response.getInt(1) == 1) {
-							return new Pair<Boolean, String>(true, response.getString(1));
+			if (response != null) {
+				if (response.next()) {
+					if (response.getInt(1) == 1) {
+						return new Pair<Boolean, String>(true, response.getString(1));
 					}
 				}
 			}
@@ -44,6 +44,8 @@ public class UserDao {
 	}
 	
 	public Pair<Boolean, String> insertUser(User userData) {
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			if (!validLogin(userData.getCredential().getUserName())) {
 				return new Pair<Boolean, String>(false, "Usuário já cadastrado!");
@@ -78,6 +80,8 @@ public class UserDao {
 	}
 	
 	private boolean includeUser(User userData) {
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement newUser = conn.getConnection().prepareStatement("INSERT INTO T_USUARIO (?, ?, ?, ?, ?, ?)");
 			
@@ -105,6 +109,8 @@ public class UserDao {
 	}
 	
 	private boolean includeUser(Credential credential) {
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement newUser = conn.getConnection().prepareStatement("INSERT INTO T_CREDENCIAL "
 					+ "VALUES (?,?,?)");
@@ -130,6 +136,8 @@ public class UserDao {
 	}
 	
 	public Pair<Boolean, User> getUser(String userName) {
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement getUser = conn.getConnection().prepareStatement("SELECT NOME, SOBRENOME, NR_CPF"
 					+ ", DT_NASCIMENTO, DS_SEXO, CD_ARQUIVO FROM T_USUARIO WHERE NM_USUARIO = ?");
@@ -141,8 +149,9 @@ public class UserDao {
 			if (response.next()) {
 				User user = new User(response.getString(1), response.getString(2)
 						, response.getString(5).charAt(0), response.getLong(3), response.getDate(4));
-				
-				user.setUserPhoto(response.getString(6));
+							
+				user.setUserPhoto(response.getString(6) == null ? "./_img/Usuario/"+ user.getGender() +".png" 
+						: response.getString(6));
 				user.setPhone(PhoneDao.getAll(conn, userName));
 				user.setCredential(getCredential(userName));
 				
@@ -162,9 +171,11 @@ public class UserDao {
 	}
 	
 	private Credential getCredential(String userName){
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement getCredential = conn.getConnection().prepareStatement("SELECT EMAIL, SENHA "
-					+ "WHERE NM_USUARIO = ?");
+					+ "FROM T_CREDENCIAL WHERE NM_USUARIO = ?");
 			
 			getCredential.setString(1, userName);
 			
@@ -187,6 +198,8 @@ public class UserDao {
 	}
 		
 	public Pair<Boolean, String> updateUser(Credential credential){
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement updateUser = conn.getConnection().prepareStatement("UPDATE T_CREDENCIAL "
 					+ "SET EMAIL = ?, SENHA = ? WHERE NM_USUARIO = ?");
@@ -212,6 +225,8 @@ public class UserDao {
 	}
 	
 	public Pair<Boolean, String> updateUser(User user){
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement updateUser = conn.getConnection().prepareStatement("UPDATE T_USUARIO "
 					+ "SET NOME = ?, SOBRENOME = ?, NR_CPF = ?, DT_NASCIMENTO = ?, DS_SEXO = ?, CD_ARQUIVO = ? "
@@ -241,6 +256,8 @@ public class UserDao {
 	} 
 	
 	private boolean validLogin(String userName){
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT NM_USUARIO "
 					+ "FROM T_CREDENCIAL WHERE NM_USUARIO = ? OR EMAIL = ?");
