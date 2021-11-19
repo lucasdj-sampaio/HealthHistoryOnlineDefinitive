@@ -151,7 +151,6 @@
         </div>
       </div>
     </div>
-    </div>
 
     <script>
       function DDMMYYYY(value, event) {
