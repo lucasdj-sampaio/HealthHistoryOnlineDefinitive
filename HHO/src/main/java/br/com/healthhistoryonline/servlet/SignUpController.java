@@ -38,11 +38,11 @@ public class SignUpController extends HttpServlet {
  			
  			user.setCredential(new Credential(request.getParameter("username")
  					, request.getParameter("email")
- 					, request.getParameter("password")));
+ 					, request.getParameter("senha")));
  			
  			user.setPhone(new Phone(Integer.parseInt(request.getParameter("ddi"))
  					, Integer.parseInt(request.getParameter("ddd"))
- 					, Integer.parseInt(request.getParameter("number"))));
+ 					, Integer.parseInt(request.getParameter("numero"))));
  			
  			Pair<Boolean, String> userResponse = userDao.insertUser(user);
  			
