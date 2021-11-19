@@ -49,7 +49,7 @@
               <div class="col sm-9 col-md-6 col-lg-6" id="acessBox">
                 <form action="SignIn" method="post">
                   <div>
-                    <input name="usuario" type="text" class="form-control" id="email" placeholder="E-mail" required />
+                    <input name=" usuario" type="text" class="form-control" id="email" placeholder="E-mail" required />
                   </div>
 
                   <div>
@@ -82,7 +82,7 @@
     </body>
 
     <div class="modal fade" id="newUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5>Cadastro</h5>
@@ -91,60 +91,66 @@
 
           <form action="SignUp" method="post">
             <div class="modal-body">
-              <div>
-                <input name="nome" type="text" class="form-control" id="nome_user" placeholder="Nome" />
-              </div>
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-6">
+                    <input name="nome" type="text" class="form-control" id="nome_user" placeholder="Nome" />
+                  </div>
+                  <div class="col-6">
+                    <input name="sobrenome" type="text" class="form-control" id="sobrenome_user"
+                      placeholder="Sobrenome" />
+                  </div>
+                </div>
 
-              <div>
-                <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="Sobrenome" />
-              </div>
 
-              <div>
-                <input name="numero" type="tel" maxlength="10" class="form-control" id="format-input"
-                  placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
-              </div>
 
-              <div>
-                <input name="cpf" type="text" class="form-control" id="cpf_user" placeholder="CPF"
-                  onkeypress="$(this).mask('000.000.000-00');" />
-              </div>
+                <div>
+                  <input name="numero" type="tel" maxlength="10" class="form-control" id="format-input"
+                    placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
+                </div>
 
-              <div>
-                <select name="sexo" class="form-control" id="format-input">
-                  <option value="F" selected>Feminino</option>
-                  <option value="M">Masculino</option>
-                  <option value="O">Outro</option>
-                </select>
-              </div>
+                <div>
+                  <input name="cpf" type="text" class="form-control" id="cpf_user" placeholder="CPF"
+                    onkeypress="$(this).mask('000.000.000-00');" />
+                </div>
 
-              <div>
-                <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="Telefone" />
-              </div>
+                <div>
+                  <select name="sexo" class="form-control" id="format-input">
+                    <option value="F" selected>Feminino</option>
+                    <option value="M">Masculino</option>
+                    <option value="O">Outro</option>
+                  </select>
+                </div>
 
-              <div>
-                <input name="email" type="email" class="form-control" id="email" placeholder="E-mail" />
-              </div>
+                <div>
+                  <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="Telefone" />
+                </div>
 
-              <div>
-                <input name="confirmarEmail" type="email" class="form-control" id="email"
-                  placeholder="Confirme seu E-mail" />
-              </div>
+                <div>
+                  <input name="email" type="email" class="form-control" id="email" placeholder="E-mail" />
+                </div>
 
-              <div>
-                <input name="senha" type="password" class="form-control" id="senha" placeholder="Senha" />
-              </div>
+                <div>
+                  <input name="confirmarEmail" type="email" class="form-control" id="email"
+                    placeholder="Confirme seu E-mail" />
+                </div>
 
-              <div>
-                <input name="confirmarSenha" type="password" class="form-control" id="senha"
-                  placeholder="Confirme sua senha" />
-              </div>
+                <div>
+                  <input name="senha" type="password" class="form-control" id="senha" placeholder="Senha" />
+                </div>
 
-              <div class="login">
-                <a href="./login.html">
-                  <button type="submit" class="btn btn-success" onclick="location.href='./login.html'">
-                    CONFIRMAR
-                  </button>
-                </a>
+                <div>
+                  <input name="confirmarSenha" type="password" class="form-control" id="senha"
+                    placeholder="Confirme sua senha" />
+                </div>
+
+                <div class="login">
+                  <a href="./login.html">
+                    <button type="submit" class="btn btn-success" onclick="location.href='./login.html'">
+                      CONFIRMAR
+                    </button>
+                  </a>
+                </div>
               </div>
             </div>
           </form>

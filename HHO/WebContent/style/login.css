@@ -7,12 +7,6 @@ label{
   color: #3D3A7A;
 }
 
-form{ 
-  max-width: 500px;  
-  padding: 0px 20px;
-  margin: 10vh auto; 
-}
-
 #acessBox{
   max-width: 500px;   
   height: 450px;
@@ -75,7 +69,6 @@ select{
     font-weight: 300;
     color: #FDB171;
     border-bottom: 1px solid #ccc;
-
 }
 
 input:focus{
@@ -137,36 +130,43 @@ label{
 }
 
 #acessar-icon{
-    width: 20px;
-
+  width: 20px;
 }
 
 #cadastro-icon{
-    width: 25px;
-    
+  width: 25px;
 }
 
 .btn-success{
-    background: #FDB171;
-    width: 100%;
-    border-color:#FDB171
+  background: #FDB171;
+  width: 100%;
+  border-color:#FDB171
 }
 
 .btn-success:hover{
-    background: #E87412; 
-    border-color:#E87412;  
+  background: #E87412; 
+  border-color:#E87412;  
 }
 
 .bold{
-    font-weight: bold;
-    text-align: center;
+  font-weight: bold;
+  text-align: center;
 }
 
-
 .form-control::placeholder{
-    color: #FDB171;
+  color: #FDB171;
 }
 
 label{
-    color: #FDB171;;
+  color: #FDB171;;
+}
+
+form{ 
+  width: 100%;  
+  padding: 0px 20px;
+  margin: 10vh auto; 
+}
+
+.col input::placeholder{
+  color: #3E3B7A;
 }
