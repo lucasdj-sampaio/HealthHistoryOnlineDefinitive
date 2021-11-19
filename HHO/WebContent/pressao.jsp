@@ -142,19 +142,10 @@
             row_index = substring(answer, 1)
             row_to_delete = 'linha_' + row_index + '_tr'
             document.getElementById(row_to_delete).style.display = "none";
-            // if (answer == "selecione") { // hide the div that is not selected
-            //     document.getElementById('selecionePagamento').style.display = "none";
-            // } else if (answer == "excluir1") {
-            //     document.getElementById('linha1_tr').style.display = "none";
-            // } else if (answer == "excluir2") {
-            //     document.getElementById('linha2').style.display = "none";
-            // } else if (answer == "excluir3"){
-            //     document.getElementById('linha3').style.display = "none";
-
-            // }
+          
         }
     </script>
 
-    <%@ include file="menuModal.jsp" %>
+    <%@ include file="menuModal.html" %>
 
     </html>
