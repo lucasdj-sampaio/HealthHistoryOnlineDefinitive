@@ -12,11 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.healthhistoryonline.dao.ExerciseDao;
-import br.com.healthhistoryonline.dao.MeasureDao;
 import br.com.healthhistoryonline.model.Exercise;
 import br.com.healthhistoryonline.model.User;
 import br.com.healthhistoryonline.sysmodel.Pair;
-import br.com.healthhistoryonline.sysmodel.Weight;
 
 @WebServlet(description = "A Servlet that controls the Update/Delete methods", urlPatterns = { "/AlterExercise" })
 public class ExerciseUDController extends HttpServlet {
