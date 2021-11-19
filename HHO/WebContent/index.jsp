@@ -61,8 +61,8 @@
                   </div>
 
                   <div class="acess">
-                    <button type="submit" class="btn btn-primary" onclick="location.href='./inicio.jsp'"> <img
-                        id="acessar-icon" src="./_img/Icons/acessar.png" alt="Acessar" />
+                    <button type="submit" class="btn btn-primary">
+                      <img id="acessar-icon" src="./_img/Icons/acessar.png" alt="Acessar" />
                       Acessar
                     </button>
                   </div>

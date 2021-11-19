@@ -5,12 +5,12 @@
     <head>
         <title>Alimento</title>
         <link rel="stylesheet" href="style/historico.css">
-        <%@ include file="head.jsp" %>
+        <%@ include file="imports/head.jsp" %>
     </head>
 
     <body>
         <header>
-            <%@ include file="menu.jsp" %>
+            <%@ include file="imports/menu.jsp" %>
         </header>
 
         <main>
@@ -264,6 +264,6 @@
         });
     </script>
 
-    <%@ include file="menuModal.jsp" %>
+    <%@ include file="imports/menuModal.jsp" %>
 
     </html>
