@@ -168,31 +168,6 @@ public class MealDao {
 		return snackTypes;
 	}
 
-	public Pair<Boolean, String> updateMeal(Snack data){	
-		try {
-			PreparedStatement updateSnack = conn.getConnection().prepareStatement("UPDATE T_REFEICAO SET cd_tp_refeicao = ? WHERE cd_ref = ?");
-		
-			updateSnack.setInt(1, data.getTypeFood().getSnackTypeCode());
-			updateSnack.setInt(2, data.getSnackCode());
-						
-			if (conn.executeCommand(updateSnack, false) <= 1) {
-				conn.getConnection().commit();
-				return new Pair<Boolean, String>(true, "Refeição atualizada com sucesso!");
-			}	
-			
-			conn.getConnection().rollback();
-			return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-			return new Pair<Boolean, String>(false, "Falha ao atualizar refeição!");
-		}
-		finally {
-			conn.closeConnection();
-		}
-	}
-	
 	public Pair<Boolean, String> updateMeal(Meal meal){	
 		try {
 			PreparedStatement updateMeal = conn.getConnection().prepareStatement("UPDATE T_REF_ALIMENTO "
@@ -226,7 +201,7 @@ public class MealDao {
 		
 			deleteMeal.setInt(1, snack.getSnackCode());
 			
-			if (conn.executeCommand(deleteMeal, false) == snack.getMeal().size()) {
+			if (conn.executeCommand(deleteMeal, false) > 0) {
 				
 				PreparedStatement deleteSnack = conn.getConnection().prepareStatement("DELETE FROM T_REFEICAO "
 						+ "WHERE cd_ref = ?");
@@ -252,12 +227,12 @@ public class MealDao {
 		}	
 	}
 	
-	public Pair<Boolean, String> deleteMeal(Meal meal){	
+	public Pair<Boolean, String> deleteMeal(int mealCode){	
 		try {
 			PreparedStatement deleteMeal = conn.getConnection().prepareStatement("DELETE FROM T_REF_ALIMENTO "
 					+ "WHERE cd_relacao = ?");
 		
-			deleteMeal.setInt(1, meal.getMealCode());
+			deleteMeal.setInt(1, mealCode);
 			
 			if (conn.executeCommand(deleteMeal, false) <= 1) {
 				conn.getConnection().commit();
