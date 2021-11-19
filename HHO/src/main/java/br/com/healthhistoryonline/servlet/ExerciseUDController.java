@@ -67,8 +67,7 @@ public class ExerciseUDController extends HttpServlet {
 			Exercise exer = new Exercise(Integer.parseInt("calorias"), Integer.parseInt("bpm")
 					, new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataInclusao")));
 			exer.setActivityCode(Integer.parseInt(request.getParameter("id")));
-			exer.getInclusionDate(new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataInclusao")));
-			
+	
 			Pair<Boolean, String> updateResponse = exerciseDao.updateExercise(exer);
 			
 			if (!updateResponse.getFirst()) {
