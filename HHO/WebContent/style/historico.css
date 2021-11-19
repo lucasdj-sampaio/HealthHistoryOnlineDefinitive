@@ -75,11 +75,7 @@ td, th{
 
 }
 
-input[type="text"],
-input[type="email"], 
-input[type="password"],
-input[type="date"]
-select{
+.form-control{
     width: 100%;
     height: 35px;
     margin-bottom: 35px;
@@ -89,6 +85,10 @@ select{
     font-weight: 300;
     color: #ccc;
     border-bottom: 1px solid #ccc;
+}
+
+.form-control::placeholder{
+    color: #FDB171;
 }
 
 #add-campo{
@@ -107,4 +107,28 @@ td button{
 td img{
   height: 20px;
   width: 20px;
+}
+
+
+input::placeholder{
+    color: #FDB171;
+}
+
+.data-cadastro{
+    text-align: center;
+    margin: 0px 0px 40px;
+}
+
+.subtitulo-centro{
+    text-align: center; 
+}
+
+.input-cadastro{
+    text-align: center;
+    margin: 10px;
+    width: 100%;
+}
+
+.alinhamento{
+    display: flex;
 }
