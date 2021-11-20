@@ -54,7 +54,7 @@ td, th{
 }
 
 
-.btn-success{
+#add-campo{
   margin-top: 20px;
   border: none;
   display: block;
@@ -70,25 +70,25 @@ td, th{
 
 }
 
-.btn-success:hover{
+#add-campo:hover{
     background: #E87412;
 
 }
 
-.form-control{
-    width: 100%;
-    height: 35px;
-    margin-bottom: 35px;
-    background: none;
-    border: none;
-    font-size: 14px;
-    font-weight: 300;
-    color: #ccc;
-    border-bottom: 1px solid #ccc;
+.form-control{    
+    width: 100% !important;
+    height: 35px !important;
+    margin-bottom: 35px !important;
+    background: none !important;
+    border: none !important;
+    font-size: 14px !important;
+    font-weight: 300 !important;
+    color: #3E3B7A !important;
+    border-bottom: 1px solid #ccc !important;
 }
 
 .form-control::placeholder{
-    color: #FDB171;
+    color: #3E3B7A !important;;
 }
 
 #add-campo{
@@ -103,12 +103,6 @@ td button{
   border: none;
   background-color: transparent;
 }
-
-td img{
-  height: 20px;
-  width: 20px;
-}
-
 
 input::placeholder{
     color: #FDB171;
@@ -131,4 +125,16 @@ input::placeholder{
 
 .alinhamento{
     display: flex;
+}
+
+.fake-input { 
+    position: relative;
+}
+
+.fake-input input {
+    border:none: background:#fff; display:block; width: 100%; box-sizing: border-box 
+}
+
+.fake-input img { 
+    position: absolute; top: 2px; right: 5px 
 }
