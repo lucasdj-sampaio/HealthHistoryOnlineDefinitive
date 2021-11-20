@@ -185,4 +185,5 @@ form{
 
 #checkbox{
     color: white;
+    display: inline-block !important;
 }

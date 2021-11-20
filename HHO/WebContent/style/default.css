@@ -86,7 +86,8 @@ p{
 
 label{
   color: #3E3B7A;
-  font-weight: bold;
-  display: inline-flex;  
-  width: 100%;  
+  font-weight: bold;  
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;  
 }
