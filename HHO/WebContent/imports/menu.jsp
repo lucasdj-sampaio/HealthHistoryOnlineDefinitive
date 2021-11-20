@@ -7,7 +7,7 @@
         </button>
         <div id="userPN">
           <label>${user.getCredential().getUserName()}</label>
-          <img id="profileEdit" src=${user.getUserPhoto()} alt="Editar perfil" height="80px" />
+          <img id="profileEdit" src="${user.getUserPhoto()}" alt="Editar perfil" height="80px" />
         </div>
       </div>
     </nav>

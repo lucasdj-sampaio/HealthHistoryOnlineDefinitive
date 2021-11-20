@@ -14,7 +14,7 @@
         </a>
       </div>
       <div class="icones-menu">
-        <a href="./peso.jsp">
+        <a href="Measures?user=${user.getCredential().getUserName()}">
           <img src="./_img/Icons/btnPeso.png" alt="Peso" id="menu-icone" />
         </a>
         <a href="./pressao.jsp">

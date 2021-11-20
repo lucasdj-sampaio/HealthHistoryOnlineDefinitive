@@ -104,66 +104,71 @@
 
 
                 <div class="col-12">
-                    <div class="row">
-                        <div class="col-6">
-                            <input name="cpf" type="text" class="form-control" id="cpf_user" placeholder="CPF"
-                            onkeypress="$(this).mask('000.000.000-00');" />
-                        </div>
-                        <div class="col-6">
-                            <input name="numero" type="tel" maxlength="10" class="form-control" id="format-input"
-                            placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
-                        <div>                  
+                  <div class="row">
+                    <div class="col-6">
+                      <input name="cpf" type="text" class="form-control" id="cpf_user" placeholder="CPF"
+                        onkeypress="$(this).mask('000.000.000-00');" />
                     </div>
-                </div>
+                    <div class="col-6">
+                      <input name="numero" type="tel" maxlength="10" class="form-control" id="format-input"
+                        placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
+                      <div>
+                      </div>
+                    </div>
 
-                <div class="col-12">
-                    <div class="row">                            
+                    <div class="col-12">
+                      <div class="row">
                         <div class="col-3">
-                          <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="DDI" />
+                          <input name="sobrenome" type="text" class="form-control" id="sobrenome_user"
+                            placeholder="DDI" />
                         </div>
                         <div class="col-3">
-                          <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="DDD" />
+                          <input name="sobrenome" type="text" class="form-control" id="sobrenome_user"
+                            placeholder="DDD" />
                         </div>
                         <div class="col-6">
-                          <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="Telefone" />
+                          <input name="sobrenome" type="text" class="form-control" id="sobrenome_user"
+                            placeholder="Telefone" />
                         </div>
+                      </div>
                     </div>
-                </div>
 
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-6">                                
-                            <select name="sexo" class="form-control" id="format-input">
-                                <option value="F" selected>Feminino</option>
-                                <option value="M">Masculino</option>
-                                <option value="O">Outro</option>
-                            </select>                                                        
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-6">
+                          <select name="sexo" class="form-control" id="format-input">
+                            <option value="F" selected>Feminino</option>
+                            <option value="M">Masculino</option>
+                            <option value="O">Outro</option>
+                          </select>
                         </div>
                         <div class="col-6">
-                            <input name="email" type="email" class="form-control"placeholder="E-mail" />
+                          <input name="email" type="email" class="form-control" placeholder="E-mail" />
                         </div>
+                      </div>
                     </div>
-                </div>
 
 
-                <div class="col-12">
-                    <div class="row">
+                    <div class="col-12">
+                      <div class="row">
                         <div class="col-6">
-                            <input name="senha" type="password" class="form-control" id="senha" placeholder="Senha" />
+                          <input name="senha" type="password" class="form-control" id="senha" placeholder="Senha" />
                         </div>
-                        <div class="col-6">                  
-                            <input name="confirmarSenha" type="password" class="form-control" id="senha"
-                                placeholder="Confirme sua senha" />
+                        <div class="col-6">
+                          <input name="confirmarSenha" type="password" class="form-control" id="senha"
+                            placeholder="Confirme sua senha" />
                         </div>
+                      </div>
                     </div>
-                </div>
 
-                <div class="login">
-                  <a href="./login.html">
-                    <button type="submit" class="btn btn-success" onclick="location.href='./login.html'">
-                      CONFIRMAR
-                    </button>
-                  </a>
+                    <div class="login">
+                      <a href="./login.html">
+                        <button type="submit" class="btn btn-success" onclick="location.href='./login.html'">
+                          CONFIRMAR
+                        </button>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -187,6 +192,7 @@
       }
     </script>
 
-    <%@ include file="imports/notifyModal.jsp" %>
+    <%@ include file="imports/menuModal.jsp" %>
+      <%@ include file="imports/notifyModal.jsp" %>
 
     </html>

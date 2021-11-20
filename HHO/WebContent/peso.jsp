@@ -46,7 +46,7 @@
                                     <c:forEach var="peso" items="${pesos}">
                                         <tr>
                                             <th scope="row">
-                                                <fmt:parseNumber type="number" value="${contador}" id="linha" />
+                                                <fmt:parseNumber type="number" value="${contador}"/>
                                             </th>
                                             <td>
                                                 <fmt:formatNumber type="number" pattern="##.##Kg"
@@ -89,6 +89,5 @@
             </script>
 
             <%@ include file="imports/alterWModal.jsp" %>
-                <%@ include file="imports/menuModal.jsp" %>
 
             </html>

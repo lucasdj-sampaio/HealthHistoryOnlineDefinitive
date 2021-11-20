@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <form action="AlterMeasures" method="post">
                     <div>
-                        <input id="iptId" name="id" type="number" hidden />
+                        <input id="iptId" name="id" type="number" hidden=true />
                     </div>
                     <div>
                         <input id="iptPeso" name="peso" type="number" class="form-control" id="peso-cadastro"
