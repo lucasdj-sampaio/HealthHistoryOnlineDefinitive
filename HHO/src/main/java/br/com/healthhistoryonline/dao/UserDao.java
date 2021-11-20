@@ -14,7 +14,7 @@ public class UserDao {
 		
 		try {
 			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT COUNT(NM_USUARIO), NM_USUARIO "
-					+ "FROM T_CREDENCIAL WHERE NM_USUARIO = ? OR EMAIL = ? AND SENHA = ? "
+					+ "FROM T_CREDENCIAL WHERE (NM_USUARIO = ? OR EMAIL = ?) AND SENHA = ?"
 					+ "GROUP BY NM_USUARIO");
 			
 			stat.setString(1, user);
@@ -227,7 +227,7 @@ public class UserDao {
 	public Pair<Boolean, String> updateUser(User user){
 		ConnectionManager conn = new ConnectionManager();
 		
-		try {
+		try { 
 			PreparedStatement updateUser = conn.getConnection().prepareStatement("UPDATE T_USUARIO "
 					+ "SET NOME = ?, SOBRENOME = ?, NR_CPF = ?, DT_NASCIMENTO = ?, DS_SEXO = ?, CD_ARQUIVO = ? "
 					+ "WHERE NM_USUARIO = ?");

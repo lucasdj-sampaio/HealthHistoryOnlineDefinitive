@@ -1,3 +1,3 @@
-function openModal() {
-  $('#notificacaoModal').modal('show')
+function openModal(modal) {
+  $(modal).modal('show')
 };

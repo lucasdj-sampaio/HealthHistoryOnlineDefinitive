@@ -6,10 +6,6 @@ public class Weight {
 	private int weightCode;
 	private float weight;
 	private Date inclusionDate;
-	
-	public Weight(float weight) {
-		this.weight = weight;
-	}
 
 	public int getWeightCode() {
 		return weightCode;

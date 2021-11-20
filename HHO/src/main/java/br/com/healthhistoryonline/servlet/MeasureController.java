@@ -32,7 +32,7 @@ public class MeasureController extends HttpServlet {
 			
 			request.setAttribute("pesos", measureDao.getAllWeight(userName));
 			
-			RequestDispatcher rd = request.getRequestDispatcher("?????????.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("peso.jsp");
 	    	rd.forward(request, response);
 		}
 		catch(Exception ex) {
@@ -48,7 +48,8 @@ public class MeasureController extends HttpServlet {
 			
 			User sessionUser = (User)session.getAttribute("usuario");
 			
-			Weight wei = new Weight(Float.parseFloat(request.getParameter("peso")));
+			Weight wei = new Weight();
+			wei.setWeight(Float.parseFloat(request.getParameter("peso")));
 			wei.setInclusionDate(new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataInclusao")));
 			
 			Pair<Boolean, String> insertResponse = measureDao.insertMeasure(wei, sessionUser.getCredential().getUserName());
@@ -59,7 +60,7 @@ public class MeasureController extends HttpServlet {
 			
 			request.setAttribute("message", new Pair<String, String>("S", insertResponse.getSecond()));
 			
-			RequestDispatcher rd = request.getRequestDispatcher("???????????.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Measures?user="+sessionUser.getCredential().getUserName());
 	    	rd.forward(request, response);
 		}
 		catch (Exception ex) {

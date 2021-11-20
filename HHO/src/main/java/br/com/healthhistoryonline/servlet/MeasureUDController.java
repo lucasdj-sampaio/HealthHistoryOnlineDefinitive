@@ -31,7 +31,7 @@ public class MeasureUDController extends HttpServlet {
 			
 			User sessionUser = (User)session.getAttribute("usuario");
 			
-			Weight wei = new Weight(Float.parseFloat(request.getParameter("peso")));
+			Weight wei = new Weight();
 			wei.setWeightCode(Integer.parseInt(request.getParameter("id")));
 			
 			Pair<Boolean, String> deleteResponse = measureDao.deleteMeasure(wei);
@@ -58,7 +58,8 @@ public class MeasureUDController extends HttpServlet {
 			
 			User sessionUser = (User)session.getAttribute("usuario");
 			
-			Weight wei = new Weight(Float.parseFloat(request.getParameter("peso")));
+			Weight wei = new Weight();
+			wei.setWeight(Float.parseFloat(request.getParameter("peso")));
 			wei.setWeightCode(Integer.parseInt(request.getParameter("id")));
 			wei.setInclusionDate(new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataInclusao")));
 			

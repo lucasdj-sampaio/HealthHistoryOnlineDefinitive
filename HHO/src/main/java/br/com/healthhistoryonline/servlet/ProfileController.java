@@ -116,7 +116,6 @@ public class ProfileController extends HttpServlet {
 	
 	private void redirect(HttpServletRequest request, HttpServletResponse response, String userName) throws ServletException, IOException {
     	
-		
 		HttpSession session = request.getSession(true);
 		
 		session.removeAttribute("usuario");
@@ -142,14 +141,20 @@ public class ProfileController extends HttpServlet {
     		return new Pair<Boolean, String>(false, updateUser.getSecond());
     	}
     	
-    	Pair<Boolean, String> updateW = measureDao.updateMeasure(measure.getHeight());
-    	if (!updateW.getFirst()) {
-    		return new Pair<Boolean, String>(false, updateW.getSecond());
-    	}
+    	Pair<Boolean, String> updateH = measure.getHeight().getHeightCode() < 1 
+    					? measureDao.insertMeasure(measure.getHeight(), user.getCredential().getUserName()) 
+    					: measureDao.updateMeasure(measure.getHeight());
     	
-    	Pair<Boolean, String> updateH = measureDao.updateMeasure(measure.getHeight());
     	if (!updateH.getFirst()) {
     		return new Pair<Boolean, String>(false, updateH.getSecond());
+    	}
+    	
+    	Pair<Boolean, String> updateW = measure.getWeight().getWeightCode() < 1 
+    						?  measureDao.insertMeasure(measure.getWeight(), user.getCredential().getUserName())
+    						:  measureDao.updateMeasure(measure.getWeight());
+    	
+    	if (!updateW.getFirst()) {
+    		return new Pair<Boolean, String>(false, updateW.getSecond());
     	}
     	
     	return new Pair<Boolean, String>(true, "Dados atualizados!");

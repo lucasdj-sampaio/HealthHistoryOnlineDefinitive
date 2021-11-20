@@ -42,7 +42,7 @@
                                                             <div class="containerInput">
                                                                 <label>E-mail:</label>
 
-                                                                email@email.com.br
+                                                                ${usuario.getCredential().getMailAddress()}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -56,7 +56,7 @@
                                                             <div class="containerInput">
                                                                 <label>CPF:</label>
 
-                                                                000.000.000-00
+                                                                ${usuario.getCpf()}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -70,7 +70,7 @@
                                                             <div class="containerInput">
                                                                 <label>Data de Nascimento:</label>
 
-                                                                00/00/0000
+                                                                ${usuario.getBirthDate()}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -84,7 +84,7 @@
                                                             <div class="containerInput">
                                                                 <label>Telefone:</label>
 
-                                                                (00) 00000-0000
+                                                                 ${usuario.getPhone().getDddNumber()} ${usuario.getPhone().getNumber()}
                                                             </div>
                                                         </div>
                                                     </div>

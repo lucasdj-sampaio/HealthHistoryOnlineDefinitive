@@ -13,7 +13,7 @@
       <c:if test="${message.getSecond() != null}">
         <script>
           window.onload = function () {
-            openModal()
+            openModal('#notificacaoModal')
           }
         </script>
       </c:if>
@@ -49,7 +49,7 @@
               <div class="col sm-9 col-md-6 col-lg-6" id="acessBox">
                 <form action="SignIn" method="post">
                   <div>
-                    <input name=" usuario" type="text" class="form-control" id="email" placeholder="E-mail" required />
+                    <input name="usuario" type="text" class="form-control" id="email" placeholder="E-mail" required />
                   </div>
 
                   <div>
