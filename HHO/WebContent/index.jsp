@@ -103,53 +103,58 @@
                 </div>
 
 
-                <div class="row">
-                    <div class="col-6">
-                        <input name="cpf" type="text" class="form-control" id="cpf_user" placeholder="CPF"
-                        onkeypress="$(this).mask('000.000.000-00');" />
-                    </div>
-                    <div class="col-6">
-                        <input name="numero" type="tel" maxlength="10" class="form-control" id="format-input"
-                        placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
-                    <div>                  
-                </div>
-
-                <div class="row">
-                    <div class="col-6">
-                        <select name="sexo" class="form-control" id="format-input">
-                            <option value="F" selected>Feminino</option>
-                            <option value="M">Masculino</option>
-                            <option value="O">Outro</option>
-                        </select>
-                    </div>
-                    <div class="col-1">
-                      <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="DDI" />
-                    </div>
-                    <div class="col-1">
-                      <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="DDD" />
-                    </div>
-                    <div class="col-4">
-                      <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="Telefone" />
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <input name="cpf" type="text" class="form-control" id="cpf_user" placeholder="CPF"
+                            onkeypress="$(this).mask('000.000.000-00');" />
+                        </div>
+                        <div class="col-6">
+                            <input name="numero" type="tel" maxlength="10" class="form-control" id="format-input"
+                            placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
+                        <div>                  
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-6">
-                        <input name="email" type="email" class="form-control" id="email" placeholder="E-mail" />
-                    </div>
-                    <div class="col-6">
-                        <input name="confirmarEmail" type="email" class="form-control" id="email"
-                            placeholder="Confirme seu E-mail" />
+                <div class="col-12">
+                    <div class="row">                            
+                        <div class="col-3">
+                          <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="DDI" />
+                        </div>
+                        <div class="col-3">
+                          <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="DDD" />
+                        </div>
+                        <div class="col-6">
+                          <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="Telefone" />
+                        </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-6">
-                        <input name="senha" type="password" class="form-control" id="senha" placeholder="Senha" />
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6">                                
+                            <select name="sexo" class="form-control" id="format-input">
+                                <option value="F" selected>Feminino</option>
+                                <option value="M">Masculino</option>
+                                <option value="O">Outro</option>
+                            </select>                                                        
+                        </div>
+                        <div class="col-6">
+                            <input name="email" type="email" class="form-control"placeholder="E-mail" />
+                        </div>
                     </div>
-                    <div class="col-6">                  
-                        <input name="confirmarSenha" type="password" class="form-control" id="senha"
-                            placeholder="Confirme sua senha" />
+                </div>
+
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <input name="senha" type="password" class="form-control" id="senha" placeholder="Senha" />
+                        </div>
+                        <div class="col-6">                  
+                            <input name="confirmarSenha" type="password" class="form-control" id="senha"
+                                placeholder="Confirme sua senha" />
+                        </div>
                     </div>
                 </div>
 

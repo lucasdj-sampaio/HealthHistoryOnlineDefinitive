@@ -100,69 +100,105 @@
         </main>
 
         <div class="modal fade" id="newUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5>Cadastro</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <div class="modal-body">
-                        <div>
-                            <input type="text" class="form-control" id="nome_user" placeholder="Nome Completo" />
-                        </div>
+                    <form action="SignUp" method="post">
+                        <div class="modal-body">
+                          <div class="col-12">
+                            <div class="row">
+                              <div class="col-6">
+                                <input type="text" class="form-control" id="nome_user" placeholder="Nome Completo" />
+                              </div>
+                              <div class="col-6">
+                                <input type="text" class="form-control" id="cpf_user" placeholder="Nome do Usuário" />
+                              </div>
+                            </div>
 
-                        <div>
-                            <input type="text" class="form-control" id="cpf_user" placeholder="Nome do Usuário" />
-                        </div>
+                            <div class="row">
+                              <div class="col-6">
+                                <input type="tel" maxlength="10" class="form-control" id="format-input"
+                                    placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
+                              </div>
+                              <div class="col-6">
+                                <input type="email" class="form-control" id="email_user" placeholder="E-mail" />
+                              </div>
+                            </div>
 
-                        <div>
-                            <input type="email" class="form-control" id="email_user" placeholder="E-mail" />
-                        </div>
+                             <div class="row">
+                              <div class="col-6">
+                                <input type="text" class="form-control" id="peso" placeholder="Peso" />
+                              </div>
+                              <div class="col-6">
+                                <input type="password" class="form-control" id="senha-antiga" placeholder="Senha antiga" />
+                              </div>
+                            </div>
 
-                        <div>
-                            <input type="password" class="form-control" id="senha-antiga" placeholder="Senha antiga" />
-                        </div>
+                            <div class="row">
+                              <div class="col-6">
+                                <input type="text" class="form-control" id="altura" placeholder="Altura" />
+                              </div>
+                              <div class="col-6">
+                                <input type="password" class="form-control" id="nova-senha" placeholder="Nova Senha" />
+                              </div>
+                            </div>
 
-                        <div>
-                            <input type="password" class="form-control" id="nova-senha" placeholder="Nova Senha" />
-                        </div>
+                            <div class="row">
+                              <div class="col-6">
+                                <input type="text" class="form-control" id="cpf" placeholder="CPF" />
+                              </div>
+                              <div class="col-6">
+                                <input type="password" class="form-control" id="confirmar-senha"
+                                    placeholder="Confirmar Nova Senha" />
+                              </div>
+                            </div>
 
-                        <div>
-                            <input type="password" class="form-control" id="confirmar-senha"
-                                placeholder="Confirmar Nova Senha" />
-                        </div>
+                            <div class="row">
+                              <div class="col-6">
+                                <input type="text" class="form-control" id="cpf" placeholder="CPF" />
+                              </div>
+                              <div class="col-6">
+                                <input type="password" class="form-control" id="confirmar-senha"
+                                    placeholder="Confirmar Nova Senha" />
+                              </div>
+                            </div>
 
-                        <div>
-                            <input type="tel" maxlength="10" class="form-control" id="format-input"
-                                placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
-                        </div>
+                            <div class="row">                            
+                                <div class="col-3">
+                                  <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="DDI" />
+                                </div>
+                                <div class="col-3">
+                                  <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="DDD" />
+                                </div>
+                                <div class="col-6">
+                                  <input name="sobrenome" type="text" class="form-control" id="sobrenome_user" placeholder="Telefone" />
+                                </div>
+                            </div>                    
 
-                        <div>
-                            <input type="text" class="form-control" id="peso" placeholder="Peso" />
-                        </div>
+                            <div class="row">
+                                <div class="col-6">                                
+                                    <select name="sexo" class="form-control" id="format-input">
+                                        <option value="F" selected>Feminino</option>
+                                        <option value="M">Masculino</option>
+                                        <option value="O">Outro</option>
+                                    </select>                                                        
+                                </div>
+                                <div class="col-6">
+                                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                                </div>
+                            </div>                            
 
-                        <div>
-                            <input type="text" class="form-control" id="altura" placeholder="Altura" />
+                            <div class="login">
+                                <button type="reset" class="btn btn-success" onclick="location.href='./perfil.html'">
+                                    CONFIRMAR
+                                </button>
+                            </div>
                         </div>
-
-                        <div>
-                            <input type="text" class="form-control" id="cpf" placeholder="CPF" />
-                        </div>
-
-                        <div>
-                            <input type="text" class="form-control" id="telefone" placeholder="Telefone" />
-                        </div>
-                        <div>
-                            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
-                        </div>
-
-                        <div class="login">
-                            <button type="reset" class="btn btn-success" onclick="location.href='./perfil.html'">
-                                CONFIRMAR
-                            </button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
