@@ -103,7 +103,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5>Cadastro</h5>
+                        <h5 >Editar Perfil</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
@@ -112,77 +112,67 @@
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-6">
-                                        <input type="text" class="form-control" id="nome_user"
-                                            placeholder="Nome Completo" />
+                                        <input type="text" class="form-control" id="form-control" 
+                                            placeholder="Nome" />
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control" id="cpf_user"
-                                            placeholder="Nome do Usuário" />
+                                        <input type="text" class="form-control" id="form-control" 
+                                            placeholder="Sobrenome" />
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-6">
-                                        <input type="tel" maxlength="10" class="form-control" id="format-input"
+                                        <input type="tel" maxlength="10" class="form-control" id="form-control" 
                                             placeholder="Data de nascimento"
                                             oninput="this.value = DDMMYYYY(this.value, event)" />
                                     </div>
                                     <div class="col-6">
-                                        <input type="email" class="form-control" id="email_user" placeholder="E-mail" />
+                                        <input type="email" class="form-control" id="form-control"  placeholder="E-mail" />
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-6">
-                                        <input type="text" class="form-control" id="peso" placeholder="Peso" />
+                                        <input type="text" class="form-control" id="form-control"  placeholder="Peso" />
                                     </div>
                                     <div class="col-6">
-                                        <input type="password" class="form-control" id="senha-antiga"
+                                        <input type="password" class="form-control" id="form-control" 
                                             placeholder="Senha antiga" />
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-6">
-                                        <input type="text" class="form-control" id="altura" placeholder="Altura" />
+                                        <input type="text" class="form-control" id="form-control"  placeholder="Altura" />
                                     </div>
                                     <div class="col-6">
-                                        <input type="password" class="form-control" id="nova-senha"
+                                        <input type="password" class="form-control" id="form-control" 
                                             placeholder="Nova Senha" />
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-6">
-                                        <input type="text" class="form-control" id="cpf" placeholder="CPF" />
+                                        <input type="text" class="form-control" id="form-control"  placeholder="CPF" />
                                     </div>
                                     <div class="col-6">
-                                        <input type="password" class="form-control" id="confirmar-senha"
-                                            placeholder="Confirmar Nova Senha" />
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-6">
-                                        <input type="text" class="form-control" id="cpf" placeholder="CPF" />
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="password" class="form-control" id="confirmar-senha"
+                                        <input type="password" class="form-control" id="form-control" 
                                             placeholder="Confirmar Nova Senha" />
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-3">
-                                        <input name="sobrenome" type="text" class="form-control" id="sobrenome_user"
+                                        <input name="sobrenome" type="text" class="form-control" id="form-control" 
                                             placeholder="DDI" />
                                     </div>
                                     <div class="col-3">
-                                        <input name="sobrenome" type="text" class="form-control" id="sobrenome_user"
+                                        <input name="sobrenome" type="text" class="form-control" id="form-control" 
                                             placeholder="DDD" />
                                     </div>
                                     <div class="col-6">
-                                        <input name="sobrenome" type="text" class="form-control" id="sobrenome_user"
+                                        <input name="sobrenome" type="text" class="form-control" id="form-control" 
                                             placeholder="Telefone" />
                                     </div>
                                 </div>
@@ -201,7 +191,7 @@
                                 </div>
 
                                 <div class="login">
-                                    <button type="reset" class="btn btn-success"
+                                    <button type="reset" class="btn btn-success" id="btn-success" 
                                         onclick="location.href='./perfil.html'">
                                         CONFIRMAR
                                     </button>

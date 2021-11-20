@@ -71,6 +71,10 @@ select{
     border-bottom: 1px solid #ccc;
 }
 
+#format-input::placeholder{
+    color: #3E3B7A;
+}
+
 input:focus{
   border-bottom: 1px solid #ced4da;; 
   transition: all 0.3s;
@@ -137,13 +141,13 @@ label{
   width: 25px;
 }
 
-.btn-success{
+#btn-success{
   background: #FDB171;
   width: 100%;
   border-color:#FDB171
 }
 
-.btn-success:hover{
+#btn-success:hover{
   background: #E87412; 
   border-color:#E87412;  
 }
@@ -176,5 +180,9 @@ form{
 }
 
 #pwd::placeholder{
+    color: white;
+}
+
+#checkbox{
     color: white;
 }
