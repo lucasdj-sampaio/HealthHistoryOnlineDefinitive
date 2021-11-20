@@ -11,9 +11,8 @@ import br.com.healthhistoryonline.sysmodel.Pair;
 
 public class PressureDao {
 
-ConnectionManager conn = new ConnectionManager();
-
 	public Pair<Boolean, String> insertPressure(Pressure pressureDetails, String userName){	
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement pressure = conn.getConnection().prepareStatement("INSERT INTO T_PRESSAO"
 					+ "(CD_PRESSAO, NM_USUARIO, NR_DIASTOLICA, NR_SISTOLICA, DT_INCLUSAO)"
@@ -43,6 +42,7 @@ ConnectionManager conn = new ConnectionManager();
 	public Pair<Boolean, Set<Pressure>> getAll(String userName) throws ParseException{
 		Set<Pressure> listValues = new HashSet<Pressure>();
 
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT CD_PRESSAO, NR_DIASTOLICA, NR_SISTOLICA, DT_INCLUSAO FROM T_PRESSAO "
 					+ "WHERE NM_USUARIO = ?");
@@ -76,6 +76,8 @@ ConnectionManager conn = new ConnectionManager();
 	}
 	
 	public Pair<Boolean, String> updatePressure(Pressure pressureDetails){	
+		
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement pressure = conn.getConnection().prepareStatement("UPDATE T_PRESSAO"
 					+ "SET NR_DIASTOLICA = ?, NR_SISTOLICA = ?, DT_INCLUSAO = ? WHERE CD_PRESSAO = ?");				
@@ -105,6 +107,8 @@ ConnectionManager conn = new ConnectionManager();
 	}
 	
 	public Pair<Boolean, String> deletePressure(Pressure pressureDetails, String userName){	
+		
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement pressure = conn.getConnection().prepareStatement("DELETE FROM T_PRESSAO"
 					+ "WHERE CD_PRESSAO = ?");				

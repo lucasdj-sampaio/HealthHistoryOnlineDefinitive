@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+        
     <!DOCTYPE html>
     <html lang="pt-br">
 
@@ -17,7 +20,7 @@
             <div class="container-fluid">
                 <form>
                     <div id="hoLabel" class="col sm-10 col-md-10 col-lg-10">
-                        <h3 class="texto-peso">Acompanhe seu progresso</h3>
+                        <h3 class="texto-pressao">Acompanhe seu progresso</h3>
                     </div>
 
                     <div class="subscribe">
@@ -37,7 +40,7 @@
                             </tr>
                         </thead>
 
-                        <tbody class="tabela-peso">
+                        <tbody class="tabela-pressao">
 
                             <tr id="linha1_tr">
                                 <th scope="row">1</th>
@@ -51,38 +54,6 @@
                                 <td>
                                     <button type="button">
                                         <img id="editar" src="./_img/Icons/lixo.png" onclick="clicar('excluir1')" />
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>120/80mmHg</td>
-                                <td>2021-11-14</td>
-                                <td>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#newUser">
-                                        <img id="editar" src="./_img/Icons/editar.png" />
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button">
-                                        <img id="editar" src="./_img/Icons/lixo.png" onclick="clicar('excluir2')" />
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>120/80mmHg</td>
-                                <td>2021-11-15</td>
-                                <td>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#newUser">
-                                        <img id="editar" src="./_img/Icons/editar.png" />
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button">
-                                        <img id="editar" src="./_img/Icons/lixo.png" onclick="clicar('excluir3')" />
                                     </button>
                                 </td>
                             </tr>
@@ -130,7 +101,7 @@
         $("#add-campo").click(
             function () {
                 contador++;
-                var sistolica = $('#siatólica-cadastro').val()
+                var sistolica = $('#sistólica-cadastro').val()
                 var diastolica = $('#diastólica-cadastro').val()
                 var data = $('#data-cadastro').val()
                 $(".tabela-peso").append("<tr> <th scope='row'>" + contador + "</th>" + "<td>" + sistolica + "/" + diastolica + "mmHg</td>" + "<td>" + data + "</td>" + "<td type='button' data-bs-toggle='modal' data-bs-target='#newUser'>" + "<img id='editar'src='./_img/Icons/editar.png'  height='20px' />" + "</td>" + "<td>" + "<img id='editar'src='./_img/Icons/lixeira.png'  height='20px'/>" + "</td></tr>");
