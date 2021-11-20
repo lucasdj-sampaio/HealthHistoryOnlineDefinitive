@@ -50,18 +50,19 @@ public class MeasureController extends HttpServlet {
 			
 			Weight wei = new Weight();
 			wei.setWeight(Float.parseFloat(request.getParameter("peso")));
-			wei.setInclusionDate(new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataInclusao")));
+			wei.setInclusionDate(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataInclusao")));
 			
 			Pair<Boolean, String> insertResponse = measureDao.insertMeasure(wei, sessionUser.getCredential().getUserName());
 			
 			if (!insertResponse.getFirst()) {
 				request.setAttribute("message", new Pair<String, String>("E", insertResponse.getSecond()));
 			}
+			else {
+				request.setAttribute("message", new Pair<String, String>("S", insertResponse.getSecond()));
+			}
 			
-			request.setAttribute("message", new Pair<String, String>("S", insertResponse.getSecond()));
-			
-			RequestDispatcher rd = request.getRequestDispatcher("Measures?user="+sessionUser.getCredential().getUserName());
-	    	rd.forward(request, response);
+			request.setAttribute("pesos", measureDao.getAllWeight(sessionUser.getCredential().getUserName()).getSecond());
+			response.sendRedirect("Measures?user="+sessionUser.getCredential().getUserName());
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();

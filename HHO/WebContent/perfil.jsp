@@ -84,7 +84,6 @@
                                                             <div class="containerInput">
                                                                 <label>Telefone:</label>
 
-                                                                ${usuario.getPhone().getDddNumber()}
                                                                 ${usuario.getPhone().getNumber()}
                                                             </div>
                                                         </div>

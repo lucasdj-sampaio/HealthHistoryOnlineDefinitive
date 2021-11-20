@@ -1,4 +1,4 @@
-<div class="modal fade" id="atualizarPeso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="incluirPeso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,21 +7,17 @@
             </div>
 
             <div class="modal-body">
-                <form action="AlterMeasures" method="post">
+                <form action="Measures" method="post" id="medidaForm">
                     <div>
-                        <input id="iptId" name="id" type="number" hidden=true />
+                        <input name="peso" type="number" class="form-control" id="peso-cadastro" placeholder="Peso" />
                     </div>
                     <div>
-                        <input value="" id="iptPeso" name="peso" type="number" class="form-control" id="peso-cadastro"
-                            placeholder="Peso" />
-                    </div>
-                    <div>
-                        <input id="iptData" name="dataInclusao" type="date" class="form-control" id="data-cadastro"
+                        <input name="dataInclusao" type="date" class="form-control" id="data-cadastro"
                             placeholder="Data" />
                     </div>
                     <div class="cadastro-peso">
                         <button type="submit" class="btn btn-success" id="add-campo">
-                            Atualizar
+                            Cadastrar
                         </button>
                     </div>
                 </form>

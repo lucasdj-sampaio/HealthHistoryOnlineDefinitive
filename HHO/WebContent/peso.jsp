@@ -10,6 +10,7 @@
                     <head>
                         <title>Peso</title>
                         <link rel="stylesheet" href="style/historico.css">
+                        <script src="js/peso.js"></script>
                         <%@ include file="imports/head.jsp" %>
                     </head>
 
@@ -33,7 +34,7 @@
                                     </div>
 
                                     <div class="subscribe">
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#newUser">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#incluirPeso">
                                             Cadastre um novo peso
                                         </button>
                                     </div>
@@ -50,25 +51,23 @@
                                         </thead>
 
                                         <tbody class="tabela-peso">
-                                            <c:set var="contador" value="1" />
+                                            <c:set var="contador" value="0" />
                                             <c:forEach var="currentW" items="${pesos}">
-                                                <tr>
+                                                <tr class="line-w">
                                                     <th scope="row">
-                                                        <fmt:parseNumber type="number" value="${contador}" />
+                                                        <fmt:parseNumber type="number" value="${contador+1}" />
                                                     </th>
-                                                    <td>
+                                                    <td id='peso'>
                                                         <fmt:formatNumber type="number" pattern="##.##Kg"
                                                             value="${currentW.getWeight()}" />
                                                     </td>
-                                                    <td>
+                                                    <td id='data'>
                                                         <fmt:formatDate pattern="dd/MM/yyyy"
                                                             value="${currentW.getInclusionDate()}" />
                                                     </td>
                                                     <td>
-                                                        <button type="button" data-bs-toggle="modal"
-                                                            data-bs-target="#newUser">
-                                                            <img id="editar" src="./_img/Icons/editar.png"
-                                                                onclick="setModalValue('${contador}-1')" />
+                                                        <button type="button" onclick="loadModalData('${contador}')">
+                                                            <img id="editar" src="./_img/Icons/editar.png" />
                                                         </button>
                                                     </td>
                                                     <td>
@@ -87,9 +86,9 @@
                         </main>
                     </body>
 
-
-                    <%@ include file="imports/alterWModal.jsp" %>
-                        <%@ include file="imports/menuModal.jsp" %>
-                            <%@ include file="imports/notifyModal.jsp" %>
+                    <%@ include file="imports/insertWModal.jsp" %>
+                        <%@ include file="imports/alterWModal.jsp" %>
+                            <%@ include file="imports/menuModal.jsp" %>
+                                <%@ include file="imports/notifyModal.jsp" %>
 
                     </html>

@@ -22,7 +22,7 @@ public class MeasureDao {
 					+ "VALUES (PESO.Nextval, ?, ?, ?)");
 			
 			insertWeight.setString(1, userName);
-			insertWeight.setDate(2, java.sql.Date.valueOf(weight.getInclusionDate().toString()));
+			insertWeight.setDate(2, java.sql.Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(weight.getInclusionDate())));
 			insertWeight.setFloat(3, weight.getWeight());
 			
 			if (conn.executeCommand(insertWeight, true) == 1) {
@@ -185,7 +185,6 @@ public class MeasureDao {
 	public Pair<Boolean, Measure> getMeasure(String userName){
 		ConnectionManager conn = new ConnectionManager();
 		
-		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement measure = conn.getConnection().prepareStatement("SELECT * FROM "
 					+ "(SELECT cd_peso, nr_peso FROM T_PESO WHERE nm_usuario = ? AND ROWNUM = 1 ORDER BY dt_inclusao DESC), "
@@ -226,7 +225,6 @@ public class MeasureDao {
 		
 		List<Height> heightList = new ArrayList<Height>();
 		
-		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement height = conn.getConnection().prepareStatement("SELECT cd_altura, nr_altura, dt_inclusao "
 					+ "FROM T_ALTURA WHERE nm_usuario = ? ORDER BY dt_inclusao ASC");
@@ -258,8 +256,7 @@ public class MeasureDao {
 		ConnectionManager conn = new ConnectionManager();
 		
 		List<Weight> weightList = new ArrayList<Weight>();
-		
-		ConnectionManager conn = new ConnectionManager();
+
 		try {
 			PreparedStatement weight = conn.getConnection().prepareStatement("SELECT cd_peso, nr_peso, dt_inclusao "
 					+ "FROM T_PESO WHERE nm_usuario = ? ORDER BY dt_inclusao ASC");

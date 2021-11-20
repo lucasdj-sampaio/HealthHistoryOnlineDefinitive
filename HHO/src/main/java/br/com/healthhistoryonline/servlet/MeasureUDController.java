@@ -39,8 +39,9 @@ public class MeasureUDController extends HttpServlet {
 			if (!deleteResponse.getFirst()) {
 				request.setAttribute("message", new Pair<String, String>("E", deleteResponse.getSecond()));
 			}
-			
-			request.setAttribute("message", new Pair<String, String>("S", deleteResponse.getSecond()));
+			else {
+				request.setAttribute("message", new Pair<String, String>("S", deleteResponse.getSecond()));
+			}
 			
 			RequestDispatcher rd = request.getRequestDispatcher("Measures?user="+sessionUser.getCredential().getUserName());
 	    	rd.forward(request, response);
@@ -71,8 +72,7 @@ public class MeasureUDController extends HttpServlet {
 			
 			request.setAttribute("message", new Pair<String, String>("S", updateResponse.getSecond()));
 			
-			RequestDispatcher rd = request.getRequestDispatcher("Measures?user="+sessionUser.getCredential().getUserName());
-	    	rd.forward(request, response);
+			response.sendRedirect("Measures?user="+sessionUser.getCredential().getUserName());
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();
