@@ -104,7 +104,7 @@ input {
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
-    color: #FDB171;
+    color: #3E3B7A;
 } 
 
 #input-perfil{
@@ -183,7 +183,7 @@ select{
     border: none;
     font-size: 14px;
     font-weight: 300;
-    color: #FDB171;
+    color: #3E3B7A;
     border-bottom: 1px solid #ccc;
 
 }
@@ -191,4 +191,34 @@ select{
 #file-upload-button{
     width: 100%;
     background: #FDB171;
+}
+
+.form-control::placeholder{
+  color: #3E3B7A;
+}
+
+.conteinerPerfil{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.conteinerPerfil label{
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.conteinerDados{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.conteinerDados label{
+  text-align: center;
+  display: block;
+  color: #FDB171;
+  font-size: calc(1.3rem + .6vw);
 }

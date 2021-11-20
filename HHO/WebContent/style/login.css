@@ -67,7 +67,7 @@ select{
     border: none;
     font-size: 14px;
     font-weight: 300;
-    color: #FDB171;
+    color: #3E3B7A;
     border-bottom: 1px solid #ccc;
 }
 
@@ -154,7 +154,7 @@ label{
 }
 
 .form-control::placeholder{
-  color: #FDB171;
+  color: #3E3B7A;
 }
 
 label{
@@ -169,4 +169,12 @@ form{
 
 .col input::placeholder{
   color: #3E3B7A;
+}
+
+#email::placeholder{
+    color: white;
+}
+
+#pwd::placeholder{
+    color: white;
 }
