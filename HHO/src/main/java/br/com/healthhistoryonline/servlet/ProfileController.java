@@ -41,7 +41,7 @@ public class ProfileController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(true);
 		
-		User sessionUser = (User)session.getAttribute("usuario");
+		User sessionUser = (User)session.getAttribute("user");
 		Measure sessionMeasure = (Measure)request.getAttribute("medida");
    
 		try {
@@ -121,7 +121,7 @@ public class ProfileController extends HttpServlet {
 		session.removeAttribute("usuario");
 		session.setAttribute("usuario", userDao.getUser(userName).getSecond());
 		
-		request.setAttribute("medida", measureDao.getMeasure(userName));
+		request.setAttribute("medida", measureDao.getMeasure(userName).getSecond());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("perfil.jsp");
     	rd.forward(request, response);

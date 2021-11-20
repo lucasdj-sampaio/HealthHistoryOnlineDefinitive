@@ -13,9 +13,9 @@ import br.com.healthhistoryonline.sysmodel.Weight;
 
 public class MeasureDao {
 	
-	ConnectionManager conn = new ConnectionManager();
-	
 	public Pair<Boolean, String> insertMeasure(Weight weight, String userName){	
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement insertWeight = conn.getConnection().prepareStatement("INSERT INTO T_PESO"
 					+ "(cd_peso, nm_usuario, dt_inclusao, nr_peso)"
@@ -42,6 +42,8 @@ public class MeasureDao {
 	}
 	
 	public Pair<Boolean, String> insertMeasure(Height height, String userName){	
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement insertHeight = conn.getConnection().prepareStatement("INSERT INTO T_ALTURA"
 					+ "(cd_altura, nm_usuario, dt_inclusao, nr_altura)"
@@ -68,6 +70,8 @@ public class MeasureDao {
 	}
 	
 	public Pair<Boolean, String> updateMeasure(Height height){	
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement updateHeight = conn.getConnection().prepareStatement("UPDATE T_ALTURA"
 					+ "(SET nr_altura = ?, dt_inclusao = ?, WHERE cd_altura = ?)");
@@ -95,6 +99,8 @@ public class MeasureDao {
 	}
 	
 	public Pair<Boolean, String> updateMeasure(Weight weight){	
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement updateWeight = conn.getConnection().prepareStatement("UPDATE T_PESO"
 					+ "(SET nr_peso = ?, dt_inclusao = ?, WHERE cd_peso = ?)");
@@ -122,6 +128,8 @@ public class MeasureDao {
 	}
 	
 	public Pair<Boolean, String> deleteMeasure(Weight weight){	
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement deleteWeight = conn.getConnection().prepareStatement("DELETE FROM T_PESO WHERE cd_peso = ?");
 			
@@ -147,6 +155,8 @@ public class MeasureDao {
 	}
 	
 	public Pair<Boolean, String> deleteMeasure(Height height){	
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement deleteHeight = conn.getConnection().prepareStatement("DELETE FROM T_ALTURA WHERE cd_altura = ?");
 			
@@ -173,6 +183,7 @@ public class MeasureDao {
 	
 	//Get user measure
 	public Pair<Boolean, Measure> getMeasure(String userName){
+		ConnectionManager conn = new ConnectionManager();
 		
 		try {
 			PreparedStatement measure = conn.getConnection().prepareStatement("SELECT * FROM "
@@ -210,6 +221,8 @@ public class MeasureDao {
 	}
 	
 	public Pair<Boolean, List<Height>> getAllHeight(String userName) throws ParseException{
+		ConnectionManager conn = new ConnectionManager();
+		
 		List<Height> heightList = new ArrayList<Height>();
 		
 		try {
@@ -240,6 +253,8 @@ public class MeasureDao {
 	}
 	
 	public Pair<Boolean, List<Weight>> getAllWeight(String userName) throws ParseException{
+		ConnectionManager conn = new ConnectionManager();
+		
 		List<Weight> weightList = new ArrayList<Weight>();
 		
 		try {
@@ -249,14 +264,16 @@ public class MeasureDao {
 			weight.setString(1, userName);
 			ResultSet response = conn.getData(weight);
 			
-			while (response.next()) {
-				Weight wei = new Weight();
-				wei.setWeight(response.getFloat(2));
-				wei.setWeightCode(response.getInt(1));
-				wei.setInclusionDate(new SimpleDateFormat("dd/MM/yyyy").parse(response.getDate(3).toString()));
-				
-				weightList.add(wei);
-			}			
+			if(response != null) {
+				while (response.next()) {
+					Weight wei = new Weight();
+					wei.setWeight(response.getFloat(2));
+					wei.setWeightCode(response.getInt(1));
+					wei.setInclusionDate(response.getDate(3));
+					
+					weightList.add(wei);
+				}		
+			}
 		}
 		catch (SQLException ex) 
 		{

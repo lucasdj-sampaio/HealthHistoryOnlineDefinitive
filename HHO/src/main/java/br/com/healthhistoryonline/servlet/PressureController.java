@@ -48,7 +48,7 @@ public class PressureController extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			
 			HttpSession session = request.getSession(true);			
-			User sessionUser = (User)session.getAttribute("usuario");
+			User sessionUser = (User)session.getAttribute("user");
 			
 			Pressure pressure = new Pressure(Integer.parseInt("Pressão Sistólica")
 					, Integer.parseInt("Pressão Diastólica")

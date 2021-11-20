@@ -31,7 +31,7 @@ public class MealUDController extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			
 			HttpSession session = request.getSession(true);			
-			User sessionUser = (User)session.getAttribute("usuario");
+			User sessionUser = (User)session.getAttribute("user");
 			
 			switch(Integer.parseInt(request.getParameter("opcao"))) {
 				case 1:
@@ -63,7 +63,7 @@ public class MealUDController extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			
 			HttpSession session = request.getSession(true);			
-			User sessionUser = (User)session.getAttribute("usuario");
+			User sessionUser = (User)session.getAttribute("user");
 			
 			Meal meal = new Meal(request.getParameter("alimento"));
 			meal.setMealCode(Integer.parseInt(request.getParameter("id")));

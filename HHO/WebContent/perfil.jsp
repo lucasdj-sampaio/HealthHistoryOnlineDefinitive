@@ -42,7 +42,7 @@
                                                             <div class="containerInput">
                                                                 <label>E-mail:</label>
 
-                                                                ${usuario.getCredential().getMailAddress()}
+                                                                ${user.getCredential().getMailAddress()}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -56,7 +56,7 @@
                                                             <div class="containerInput">
                                                                 <label>CPF:</label>
 
-                                                                ${usuario.getCpf()}
+                                                                ${user.getCpf()}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -70,7 +70,7 @@
                                                             <div class="containerInput">
                                                                 <label>Data de Nascimento:</label>
 
-                                                                ${usuario.getBirthDate()}
+                                                                ${user.getBirthDate()}
                                                             </div>
                                                         </div>
                                                     </div>

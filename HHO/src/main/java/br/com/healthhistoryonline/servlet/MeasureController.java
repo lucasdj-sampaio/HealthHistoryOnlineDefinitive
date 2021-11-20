@@ -30,7 +30,7 @@ public class MeasureController extends HttpServlet {
 			
 			String userName = request.getParameter("user").toString();
 			
-			request.setAttribute("pesos", measureDao.getAllWeight(userName));
+			request.setAttribute("pesos", measureDao.getAllWeight(userName).getSecond());
 			
 			RequestDispatcher rd = request.getRequestDispatcher("peso.jsp");
 	    	rd.forward(request, response);
@@ -46,7 +46,7 @@ public class MeasureController extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			HttpSession session = request.getSession(true);
 			
-			User sessionUser = (User)session.getAttribute("usuario");
+			User sessionUser = (User)session.getAttribute("user");
 			
 			Weight wei = new Weight();
 			wei.setWeight(Float.parseFloat(request.getParameter("peso")));

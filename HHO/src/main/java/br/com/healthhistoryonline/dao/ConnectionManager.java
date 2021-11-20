@@ -94,8 +94,7 @@ public class ConnectionManager {
 		{
 			ex.printStackTrace();
 		}
-		
-		connection.commit();
+
 		return result;
 	}
 }

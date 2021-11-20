@@ -49,7 +49,7 @@ public class MealController extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			
 			HttpSession session = request.getSession(true);			
-			User sessionUser = (User)session.getAttribute("usuario");
+			User sessionUser = (User)session.getAttribute("user");
 			
 			Snack snack = new Snack();
 			snack.setTypeFood(new SnackType(Integer.getInteger(request.getParameter("refeicao"))));
