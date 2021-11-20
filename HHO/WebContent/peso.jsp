@@ -57,16 +57,18 @@
                                                     <th scope="row">
                                                         <fmt:parseNumber type="number" value="${contador+1}" />
                                                     </th>
-                                                    <td id='peso'>
+
+                                                    <td>
                                                         <fmt:formatNumber type="number" pattern="##.##Kg"
                                                             value="${currentW.getWeight()}" />
                                                     </td>
-                                                    <td id='data'>
+                                                    <td>
                                                         <fmt:formatDate pattern="dd/MM/yyyy"
                                                             value="${currentW.getInclusionDate()}" />
                                                     </td>
                                                     <td>
-                                                        <button type="button" onclick="loadModalData('${contador}')">
+                                                        <button type="button"
+                                                            onclick="loadModalData('${contador}',  '${currentW.getWeightCode()}')">
                                                             <img id="editar" src="./_img/Icons/editar.png" />
                                                         </button>
                                                     </td>

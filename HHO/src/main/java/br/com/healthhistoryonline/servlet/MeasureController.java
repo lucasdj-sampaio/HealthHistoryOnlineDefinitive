@@ -62,7 +62,9 @@ public class MeasureController extends HttpServlet {
 			}
 			
 			request.setAttribute("pesos", measureDao.getAllWeight(sessionUser.getCredential().getUserName()).getSecond());
-			response.sendRedirect("Measures?user="+sessionUser.getCredential().getUserName());
+			
+			RequestDispatcher rd = request.getRequestDispatcher("peso.jsp");
+	    	rd.forward(request, response);
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();

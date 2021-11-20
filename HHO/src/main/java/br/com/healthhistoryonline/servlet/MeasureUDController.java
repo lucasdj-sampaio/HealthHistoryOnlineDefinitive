@@ -43,7 +43,9 @@ public class MeasureUDController extends HttpServlet {
 				request.setAttribute("message", new Pair<String, String>("S", deleteResponse.getSecond()));
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("Measures?user="+sessionUser.getCredential().getUserName());
+			request.setAttribute("pesos", measureDao.getAllWeight(sessionUser.getCredential().getUserName()).getSecond());
+			
+			RequestDispatcher rd = request.getRequestDispatcher("peso.jsp");
 	    	rd.forward(request, response);
 		}
 		catch(Exception ex) {
@@ -54,7 +56,7 @@ public class MeasureUDController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			request.setCharacterEncoding("UTF-8");
+ 			request.setCharacterEncoding("UTF-8");
 			HttpSession session = request.getSession(true);
 			
 			User sessionUser = (User)session.getAttribute("user");
@@ -62,17 +64,21 @@ public class MeasureUDController extends HttpServlet {
 			Weight wei = new Weight();
 			wei.setWeight(Float.parseFloat(request.getParameter("peso")));
 			wei.setWeightCode(Integer.parseInt(request.getParameter("id")));
-			wei.setInclusionDate(new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataInclusao")));
+			wei.setInclusionDate(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataInclusao")));
 			
 			Pair<Boolean, String> updateResponse = measureDao.updateMeasure(wei);
 			
 			if (!updateResponse.getFirst()) {
 				request.setAttribute("message", new Pair<String, String>("E", updateResponse.getSecond()));
 			}
+			else {
+				request.setAttribute("message", new Pair<String, String>("S", updateResponse.getSecond()));
+			}
 			
-			request.setAttribute("message", new Pair<String, String>("S", updateResponse.getSecond()));
+			request.setAttribute("pesos", measureDao.getAllWeight(sessionUser.getCredential().getUserName()).getSecond());
 			
-			response.sendRedirect("Measures?user="+sessionUser.getCredential().getUserName());
+			RequestDispatcher rd = request.getRequestDispatcher("peso.jsp");
+	    	rd.forward(request, response);
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();

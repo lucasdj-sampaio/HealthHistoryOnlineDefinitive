@@ -102,17 +102,18 @@ public class MeasureDao {
 		ConnectionManager conn = new ConnectionManager();
 
 		try {
-			PreparedStatement updateWeight = conn.getConnection().prepareStatement("UPDATE T_PESO"
-					+ "(SET nr_peso = ?, dt_inclusao = ?, WHERE cd_peso = ?)");
+			PreparedStatement updateWeight = conn.getConnection().prepareStatement("UPDATE T_PESO "
+					+ "SET nr_peso = ?, dt_inclusao = ? WHERE cd_peso = ?");
 			
 			updateWeight.setFloat(1, weight.getWeight());
-			updateWeight.setDate(2, java.sql.Date.valueOf(weight.getInclusionDate().toString()));
+			updateWeight.setDate(2, java.sql.Date.valueOf(new SimpleDateFormat("yyyy-MM-dd")
+					.format(weight.getInclusionDate())));
 			updateWeight.setInt(3, weight.getWeightCode());
 			
 			if (conn.executeCommand(updateWeight, false) == 1) {
 				conn.getConnection().commit();
 				
-				return new Pair<Boolean, String>(true, "AlteraÃ§Ã£o de peso concluÃ­da");
+				return new Pair<Boolean, String>(true, "Alteração de peso concluída");
 			}
 			
 			return new Pair<Boolean, String>(false, "Erro ao alterar peso");
