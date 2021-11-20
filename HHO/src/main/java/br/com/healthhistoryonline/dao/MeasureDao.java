@@ -15,7 +15,7 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> insertMeasure(Weight weight, String userName){	
 		ConnectionManager conn = new ConnectionManager();
-		
+
 		try {
 			PreparedStatement insertWeight = conn.getConnection().prepareStatement("INSERT INTO T_PESO"
 					+ "(cd_peso, nm_usuario, dt_inclusao, nr_peso)"
@@ -43,7 +43,7 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> insertMeasure(Height height, String userName){	
 		ConnectionManager conn = new ConnectionManager();
-		
+    
 		try {
 			PreparedStatement insertHeight = conn.getConnection().prepareStatement("INSERT INTO T_ALTURA"
 					+ "(cd_altura, nm_usuario, dt_inclusao, nr_altura)"
@@ -71,7 +71,7 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> updateMeasure(Height height){	
 		ConnectionManager conn = new ConnectionManager();
-		
+
 		try {
 			PreparedStatement updateHeight = conn.getConnection().prepareStatement("UPDATE T_ALTURA"
 					+ "(SET nr_altura = ?, dt_inclusao = ?, WHERE cd_altura = ?)");
@@ -83,7 +83,7 @@ public class MeasureDao {
 			if (conn.executeCommand(updateHeight, false) == 1) {
 				conn.getConnection().commit();
 				
-				return new Pair<Boolean, String>(true, "Alteração de altura concluída");
+				return new Pair<Boolean, String>(true, "AlteraÃ§Ã£o de altura concluÃ­da");
 			}
 			
 			return new Pair<Boolean, String>(false, "Erro ao alterar altura");
@@ -100,7 +100,7 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> updateMeasure(Weight weight){	
 		ConnectionManager conn = new ConnectionManager();
-		
+
 		try {
 			PreparedStatement updateWeight = conn.getConnection().prepareStatement("UPDATE T_PESO"
 					+ "(SET nr_peso = ?, dt_inclusao = ?, WHERE cd_peso = ?)");
@@ -112,7 +112,7 @@ public class MeasureDao {
 			if (conn.executeCommand(updateWeight, false) == 1) {
 				conn.getConnection().commit();
 				
-				return new Pair<Boolean, String>(true, "Alteração de peso concluída");
+				return new Pair<Boolean, String>(true, "AlteraÃ§Ã£o de peso concluÃ­da");
 			}
 			
 			return new Pair<Boolean, String>(false, "Erro ao alterar peso");
@@ -129,7 +129,7 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> deleteMeasure(Weight weight){	
 		ConnectionManager conn = new ConnectionManager();
-		
+
 		try {
 			PreparedStatement deleteWeight = conn.getConnection().prepareStatement("DELETE FROM T_PESO WHERE cd_peso = ?");
 			
@@ -156,7 +156,7 @@ public class MeasureDao {
 	
 	public Pair<Boolean, String> deleteMeasure(Height height){	
 		ConnectionManager conn = new ConnectionManager();
-		
+
 		try {
 			PreparedStatement deleteHeight = conn.getConnection().prepareStatement("DELETE FROM T_ALTURA WHERE cd_altura = ?");
 			
@@ -185,6 +185,7 @@ public class MeasureDao {
 	public Pair<Boolean, Measure> getMeasure(String userName){
 		ConnectionManager conn = new ConnectionManager();
 		
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement measure = conn.getConnection().prepareStatement("SELECT * FROM "
 					+ "(SELECT cd_peso, nr_peso FROM T_PESO WHERE nm_usuario = ? AND ROWNUM = 1 ORDER BY dt_inclusao DESC), "
@@ -225,6 +226,7 @@ public class MeasureDao {
 		
 		List<Height> heightList = new ArrayList<Height>();
 		
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement height = conn.getConnection().prepareStatement("SELECT cd_altura, nr_altura, dt_inclusao "
 					+ "FROM T_ALTURA WHERE nm_usuario = ? ORDER BY dt_inclusao ASC");
@@ -257,6 +259,7 @@ public class MeasureDao {
 		
 		List<Weight> weightList = new ArrayList<Weight>();
 		
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement weight = conn.getConnection().prepareStatement("SELECT cd_peso, nr_peso, dt_inclusao "
 					+ "FROM T_PESO WHERE nm_usuario = ? ORDER BY dt_inclusao ASC");

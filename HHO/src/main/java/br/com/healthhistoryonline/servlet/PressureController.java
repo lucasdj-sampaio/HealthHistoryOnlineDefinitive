@@ -32,7 +32,7 @@ public class PressureController extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			String userName = request.getParameter("user").toString();
 			
-			request.setAttribute("Pressão", pressureDao.getAll(userName));
+			request.setAttribute("Pressao", pressureDao.getAll(userName));
 			
 			RequestDispatcher rd = request.getRequestDispatcher("DEFINIR.jsp");
 			rd.forward(request, response);

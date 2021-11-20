@@ -12,9 +12,8 @@ import br.com.healthhistoryonline.sysmodel.Pair;
 
 public class ExerciseDao {
 	
-	ConnectionManager conn = new ConnectionManager();
-	
 	public Pair<Boolean, String> insertExercise(Exercise exerciseDetails, String userName){	
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement exercise = conn.getConnection().prepareStatement("INSERT INTO T_EXERCICIO"
 					+ "(CD_ATIVIDADE, NM_USUARIO, NR_KCAL_GASTO, NR_BPM, DT_INCLUSAO, CD_EXERCICIO)"
@@ -43,6 +42,7 @@ public class ExerciseDao {
 	}
 	
 	public Pair<Boolean, String> updateExercise(Exercise exerciseDetails){	
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement exercise = conn.getConnection().prepareStatement("UPDATE T_EXERCICIO"
 					+ "(SET NR_KCAL_GASTO = ?, NR_BPM = ?, DT_INCLUSAO = ?, CD_EXERCICIO = ? WHERE CD_ATIVIDADE = ?)");
@@ -73,6 +73,7 @@ public class ExerciseDao {
 	}
 	
 	public Pair<Boolean, String> deleteExercise(Exercise exerciseDetails){	
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement exercise = conn.getConnection().prepareStatement("DELETE FROM T_EXERCICIO WHERE CD_ATIVIDADE = ?");
 			
@@ -101,6 +102,7 @@ public class ExerciseDao {
 	public Pair<Boolean, Set<Exercise>> getAll(String userName) throws ParseException{
 		Set<Exercise> listValues = new HashSet<Exercise>();
 		
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT E.NR_KCAL_GASTO, E.nr_bpm, E.DT_INCLUSAO,"
 					+ " TE.TP_EXERCICIO, CD_ATIVIDADE FROM T_EXERCICIO E INNER JOIN T_TP_EXERCICIO TE "
@@ -140,6 +142,7 @@ public class ExerciseDao {
 	public Set<ExerciseType> getAll(){
 		Set<ExerciseType> listValues = new HashSet<ExerciseType>();
 		
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT CD_EXERCICIO, TP_EXERCICIO "
 					+ "FROM T_TP_EXERCICIO");

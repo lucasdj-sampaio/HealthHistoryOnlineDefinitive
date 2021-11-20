@@ -7,9 +7,8 @@ import br.com.healthhistoryonline.sysmodel.Pair;
 
 public class PhoneDao {
 	
-	ConnectionManager conn = new ConnectionManager();
-	
 	public static Pair<Boolean, String> insertPhone(ConnectionManager conn, Phone phone, String userName){	
+		
 		try {
 			
 				PreparedStatement phoneStat = conn.getConnection().prepareStatement("INSERT INTO T_TELEFONE"
@@ -72,6 +71,7 @@ public class PhoneDao {
 	}
 	
 	public Pair<Boolean, String> updatePhone(Phone phone){	
+		ConnectionManager conn = new ConnectionManager();
 		try {		
 	
 			PreparedStatement phoneStat = conn.getConnection().prepareStatement("UPDATE T_TELEFONE "
@@ -102,6 +102,7 @@ public class PhoneDao {
 	}
 	
 	public Pair<Boolean, String> deletePhone(Phone phone){	
+		ConnectionManager conn = new ConnectionManager();
 		try {		
 	
 			PreparedStatement phoneStat = conn.getConnection().prepareStatement("DELETE T_TELEFONE "

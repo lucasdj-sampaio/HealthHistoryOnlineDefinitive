@@ -18,9 +18,8 @@ import br.com.healthhistoryonline.sysmodel.SnackType;
 
 public class MealDao {
 	
-	ConnectionManager conn = new ConnectionManager();
-
 	public Pair<Boolean, String> insertMeal(Snack data, String userName){	
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement snack = conn.getConnection().prepareStatement("INSERT INTO T_REFEICAO"
 					+ "(cd_ref, nm_usuario, cd_tp_refeicao, dt_inclusao, nr_caloria)"
@@ -65,6 +64,7 @@ public class MealDao {
 	public Pair<Boolean, Map<Date, List<Snack>>> getAll(String userName) throws ParseException{
 		Map<Date, List<Snack>> map = new HashMap<Date, List<Snack>>();
 		
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement getSnack = conn.getConnection().prepareStatement("SELECT R.cd_ref, TP.cd_tp_refeicao, TP.tp_refeicao "
 					+ ", R.nr_caloria, R.dt_inclusao FROM T_REFEICAO R INNER JOIN T_TP_REFEICAO TP ON R.cd_tp_refeicao = TP.cd_tp_refeicao "
@@ -141,7 +141,8 @@ public class MealDao {
 
 	public Set<SnackType> getAllSnackTypes(){
 		Set<SnackType> snackTypes = new HashSet<SnackType>();
-				
+		
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT cd_tp_refeicao, tp_refeicao "
 					+ "FROM T_TP_REFEICAO");
@@ -169,6 +170,7 @@ public class MealDao {
 	}
 
 	public Pair<Boolean, String> updateMeal(Meal meal){	
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement updateMeal = conn.getConnection().prepareStatement("UPDATE T_REF_ALIMENTO "
 					+ "SET nm_alimento = ? WHERE cd_relacao = ?");
@@ -195,6 +197,7 @@ public class MealDao {
 	}
 	
 	public Pair<Boolean, String> deleteMeal(Snack snack){	
+		ConnectionManager conn = new ConnectionManager();
 		try {		
 			PreparedStatement deleteMeal = conn.getConnection().prepareStatement("DELETE FROM T_REF_ALIMENTO "
 					+ "WHERE cd_ref = ?");
@@ -228,6 +231,7 @@ public class MealDao {
 	}
 	
 	public Pair<Boolean, String> deleteMeal(int mealCode){	
+		ConnectionManager conn = new ConnectionManager();
 		try {
 			PreparedStatement deleteMeal = conn.getConnection().prepareStatement("DELETE FROM T_REF_ALIMENTO "
 					+ "WHERE cd_relacao = ?");
