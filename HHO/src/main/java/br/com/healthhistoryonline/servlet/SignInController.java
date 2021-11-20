@@ -26,7 +26,7 @@ public class SignInController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
     	HttpSession session = request.getSession(true);
     	
-    	//User user = (User)session.getAttribute("usuario");
+    	//User user = (User)session.getAttribute("user");
 		String userName = request.getParameter("usuario").toString();
 		
 		Pair<Boolean, String> hasUser = userDao.validLogin(userName

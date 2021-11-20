@@ -47,7 +47,7 @@ public class ExerciseController extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			HttpSession session = request.getSession(true);
 			
-			User sessionUser = (User)session.getAttribute("usuario");
+			User sessionUser = (User)session.getAttribute("user");
 			
 			Exercise exercise = new Exercise(Integer.parseInt("calorias"), Integer.parseInt("bpm")
 						, new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataInclusao")));

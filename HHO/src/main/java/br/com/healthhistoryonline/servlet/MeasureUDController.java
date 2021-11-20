@@ -29,7 +29,7 @@ public class MeasureUDController extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			HttpSession session = request.getSession(true);
 			
-			User sessionUser = (User)session.getAttribute("usuario");
+			User sessionUser = (User)session.getAttribute("user");
 			
 			Weight wei = new Weight();
 			wei.setWeightCode(Integer.parseInt(request.getParameter("id")));
@@ -56,7 +56,7 @@ public class MeasureUDController extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			HttpSession session = request.getSession(true);
 			
-			User sessionUser = (User)session.getAttribute("usuario");
+			User sessionUser = (User)session.getAttribute("user");
 			
 			Weight wei = new Weight();
 			wei.setWeight(Float.parseFloat(request.getParameter("peso")));
