@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+        	<%@page import="java.util.List" %>
         
     <!DOCTYPE html>
     <html lang="pt-br">
@@ -13,6 +14,13 @@
 
     <body>
         <header>
+        	  <c:if test="${message.getSecond() != null}">
+              	<script>
+                	window.onload = function () {
+                    	openModal('#notificacaoModal')
+                    }
+              	</script>
+              </c:if>
             <%@ include file="imports/menu.jsp" %>
         </header>
 
@@ -24,7 +32,7 @@
                     </div>
 
                     <div class="subscribe">
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#newUser">
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#incluirPressao">
                             Cadastre uma nova pressão
                         </button>
                     </div>
@@ -41,22 +49,41 @@
                         </thead>
 
                         <tbody class="tabela-pressao">
-
-                            <tr id="linha1_tr">
-                                <th scope="row">1</th>
-                                <td>120/80mmHg</td>
-                                <td>2021-11-13</td>
-                                <td>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#newUser">
-                                        <img id="editar" src="./_img/Icons/editar.png" />
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button">
-                                        <img id="editar" src="./_img/Icons/lixo.png" onclick="clicar('excluir1')" />
-                                    </button>
-                                </td>
-                            </tr>
+							<c:set var="contador" value="0" />
+                            <c:forEach var="currentP" items="${pressoes}">
+                            	<tr class="line-w">
+	                                <th scope="row">
+	                                    <fmt:parseNumber type="number" value="${contador+1}" />
+	                                </th>
+	                                
+	                                <td>
+                                    	<fmt:formatNumber type="number" value="${currentP.getDiastolic()}" />
+                                    </td>
+                                    
+                                    <td>
+                                    	<fmt:formatNumber type="number" value="${currentP.getSystolic()}" />
+                                    </td>
+                                    
+                                    <td>
+                                   		<fmt:formatDate pattern="dd/MM/yyyy"
+                                        	value="${currentP.getInclusionDate()}" />
+                                    </td>
+                                    
+                                    <td>
+                                        <button type="button" 
+                                        	onclick="loadModalData('${contador}', '${currentP.getPressureCode()}')">
+                                            <img id="editar" src="./_img/Icons/editar.png" />
+                                    	</button>
+                                    </td>
+                                    
+                                    <td>
+                                    	<a href="AlterPressure?id=${currentP.getPressureCode()}">
+                                        	<img id="editar" src="./_img/Icons/lixo.png" />
+                                    	</a>
+                                    </td>
+                                </tr>
+                                <c:set var="contador" value="${contador+1}" />
+                        	</c:forEach>
                         </tbody>
                     </table>
                 </form>
@@ -96,27 +123,9 @@
         </div>
     </div>
 
-    <script>
-        var contador = 3;
-        $("#add-campo").click(
-            function () {
-                contador++;
-                var sistolica = $('#sistólica-cadastro').val()
-                var diastolica = $('#diastólica-cadastro').val()
-                var data = $('#data-cadastro').val()
-                $(".tabela-peso").append("<tr> <th scope='row'>" + contador + "</th>" + "<td>" + sistolica + "/" + diastolica + "mmHg</td>" + "<td>" + data + "</td>" + "<td type='button' data-bs-toggle='modal' data-bs-target='#newUser'>" + "<img id='editar'src='./_img/Icons/editar.png'  height='20px' />" + "</td>" + "<td>" + "<img id='editar'src='./_img/Icons/lixeira.png'  height='20px'/>" + "</td></tr>");
-            }
-        );
-    </script>
-    <script>
-        function clicar(answer) {
-            row_index = substring(answer, 1)
-            row_to_delete = 'linha_' + row_index + '_tr'
-            document.getElementById(row_to_delete).style.display = "none";
-          
-        }
-    </script>
-
     <%@ include file="imports/menuModal.jsp" %>
+    	<%@ include file="imports/insertPModal.jsp" %>
+    		 <%@ include file="imports/alterPModal.jsp" %>
+    		 	<%@ include file="imports/notifyModal.jsp" %>
 
     </html>
