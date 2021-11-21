@@ -2,6 +2,7 @@ package br.com.healthhistoryonline.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import br.com.healthhistoryonline.model.Credential;
 import br.com.healthhistoryonline.model.User;
@@ -23,14 +24,12 @@ public class UserDao {
 			
 			ResultSet response = conn.getData(stat);
 			
-			if (response != null) {
-				if (response.next()) {
-					if (response.getInt(1) == 1) {
-						return new Pair<Boolean, String>(true, response.getString(1));
-					}
+			if (response.next()) {
+				if (response.getInt(1) == 1) {
+					return new Pair<Boolean, String>(true, response.getString(1));
 				}
 			}
-			
+		
 			return new Pair<Boolean, String>(false, "Usuário/Senha inválido");
 		}
 		catch (SQLException ex) 
@@ -47,16 +46,16 @@ public class UserDao {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {
-			if (!validLogin(userData.getCredential().getUserName())) {
+			if (!validLogin(conn, userData.getCredential().getUserName())) {
 				return new Pair<Boolean, String>(false, "Usuário já cadastrado!");
 			}
 			
-			if (!includeUser(userData.getCredential())) {
+			if (!includeUser(conn, userData.getCredential())) {
 				conn.getConnection().rollback();
 				return new Pair<Boolean, String>(false, "Erro ao criar credenciais");	
 			}
 			
-			if (!includeUser(userData)) {
+			if (!includeUser(conn, userData)) {
 				conn.getConnection().rollback();
 				return new Pair<Boolean, String>(false, "Erro ao cadastrar usuários");
 			}
@@ -79,17 +78,17 @@ public class UserDao {
 		}
 	}
 	
-	private boolean includeUser(User userData) {
-		ConnectionManager conn = new ConnectionManager();
+	private boolean includeUser(ConnectionManager conn, User userData) {	
 		
 		try {
-			PreparedStatement newUser = conn.getConnection().prepareStatement("INSERT INTO T_USUARIO (?, ?, ?, ?, ?, ?)");
+			PreparedStatement newUser = conn.getConnection().prepareStatement("INSERT INTO T_USUARIO (NM_USUARIO, NOME, "
+					+ "SOBRENOME, NR_CPF, DT_NASCIMENTO, DS_SEXO) VALUES (?, ?, ?, ?, ?, ?)");
 			
 			newUser.setString(1, userData.getCredential().getUserName());
 			newUser.setString(2, userData.getName());
 			newUser.setString(3, userData.getLastName());
 			newUser.setLong(4, userData.getCpf());
-			newUser.setDate(5, java.sql.Date.valueOf(userData.getBirthDate().toString()));
+			newUser.setDate(5, java.sql.Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(userData.getBirthDate())));
 			newUser.setString(6, String.valueOf(userData.getGender().charAt(0)).toString());
 			
 			if (conn.executeCommand(newUser, false) == 1) {
@@ -103,13 +102,9 @@ public class UserDao {
 			ex.printStackTrace();
 			return false;
 		}
-		finally {
-			conn.closeConnection();
-		}
 	}
 	
-	private boolean includeUser(Credential credential) {
-		ConnectionManager conn = new ConnectionManager();
+	private boolean includeUser(ConnectionManager conn, Credential credential) {
 		
 		try {
 			PreparedStatement newUser = conn.getConnection().prepareStatement("INSERT INTO T_CREDENCIAL "
@@ -130,19 +125,20 @@ public class UserDao {
 			ex.printStackTrace();
 			return false;
 		}
-		finally {
-			conn.closeConnection();
-		}
 	}
 	
 	public Pair<Boolean, User> getUser(String userName) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {
-			PreparedStatement getUser = conn.getConnection().prepareStatement("SELECT NOME, SOBRENOME, NR_CPF"
-					+ ", DT_NASCIMENTO, DS_SEXO, CD_ARQUIVO FROM T_USUARIO WHERE NM_USUARIO = ?");
+			PreparedStatement getUser = conn.getConnection().prepareStatement("SELECT NOME, "
+					+ "SOBRENOME, NR_CPF, DT_NASCIMENTO, DS_SEXO, CD_ARQUIVO, C.NM_USUARIO "
+					+ "FROM T_USUARIO U INNER JOIN T_CREDENCIAL C "
+					+ "ON U.NM_USUARIO = C.NM_USUARIO "
+					+ "WHERE C.NM_USUARIO = ? OR C.EMAIL = ?");
 			
 			getUser.setString(1, userName);
+			getUser.setString(2, userName);
 			
 			ResultSet response = conn.getData(getUser);
 			
@@ -150,10 +146,10 @@ public class UserDao {
 				User user = new User(response.getString(1), response.getString(2)
 						, response.getString(5).charAt(0), response.getLong(3), response.getDate(4));
 							
+				user.setCredential(getCredential(response.getString(7)));
 				user.setUserPhoto(response.getString(6) == null ? "./_img/Usuario/"+ user.getGender() +".png" 
 						: response.getString(6));
-				user.setPhone(PhoneDao.getAll(conn, userName));
-				user.setCredential(getCredential(userName));
+				user.setPhone(PhoneDao.getAll(conn, user.getCredential().getUserName()));
 				
 				return new Pair<Boolean, User>(true, user);
 			}
@@ -255,8 +251,7 @@ public class UserDao {
 		}
 	} 
 	
-	private boolean validLogin(String userName){
-		ConnectionManager conn = new ConnectionManager();
+	private boolean validLogin(ConnectionManager conn, String userName){
 		
 		try {
 			PreparedStatement stat = conn.getConnection().prepareStatement("SELECT NM_USUARIO "
@@ -267,8 +262,10 @@ public class UserDao {
 			
 			ResultSet response = conn.getData(stat);
 			
-			if (response.next()) {
-				return false;
+			if(response != null) {
+				if (response.next()) {
+					return false;
+				}
 			}
 			
 			return true;
@@ -277,9 +274,6 @@ public class UserDao {
 		{
 			ex.printStackTrace();
 			return false;
-		}
-		finally {
-			conn.closeConnection();
 		}
 	}
 }

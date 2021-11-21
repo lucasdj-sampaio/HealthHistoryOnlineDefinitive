@@ -260,7 +260,7 @@ public class MeasureDao {
 
 		try {
 			PreparedStatement weight = conn.getConnection().prepareStatement("SELECT cd_peso, nr_peso, dt_inclusao "
-					+ "FROM T_PESO WHERE nm_usuario = ? ORDER BY dt_inclusao ASC");
+					+ "FROM T_PESO WHERE nm_usuario = ? ORDER BY dt_inclusao DESC");
 					
 			weight.setString(1, userName);
 			ResultSet response = conn.getData(weight);

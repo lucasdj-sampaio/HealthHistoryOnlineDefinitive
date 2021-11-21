@@ -39,11 +39,10 @@ public class SignInController extends HttpServlet {
 	    	rd.forward(request, response);
 		}
 		else {
-			User user = userDao.getUser(userName).getSecond();
-			session.setAttribute("user", user);	
+			session.setAttribute("user", userDao.getUser(userName).getSecond());	
+			
+			RequestDispatcher rd = request.getRequestDispatcher("inicio.jsp");
+	    	rd.forward(request, response);	
 		}
-
-		RequestDispatcher rd = request.getRequestDispatcher("inicio.jsp");
-    	rd.forward(request, response);	
 	}
 }

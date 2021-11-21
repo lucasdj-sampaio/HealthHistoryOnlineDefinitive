@@ -10,33 +10,26 @@ public class PhoneDao {
 	public static Pair<Boolean, String> insertPhone(ConnectionManager conn, Phone phone, String userName){	
 		
 		try {
+			PreparedStatement phoneStat = conn.getConnection().prepareStatement("INSERT INTO T_TELEFONE"
+					+ "(CD_TELEFONE, NM_USUARIO, NR_DDI, NR_DDD, NR_TELEFONE)"
+					+ "VALUES (TELEFONE.Nextval, ?, ?, ?, ?)");
+		
+			phoneStat.setString(1, userName);
+			phoneStat.setInt(2, phone.getDdiNumber());
+			phoneStat.setInt(3, phone.getDddNumber());
+			phoneStat.setInt(4, phone.getNumber());
 			
-				PreparedStatement phoneStat = conn.getConnection().prepareStatement("INSERT INTO T_TELEFONE"
-						+ "(CD_TELEFONE, NM_USUARIO, NR_DDI, NR_DDD, NR_TELEFONE)"
-						+ "VALUES (TELEFONE.Nextval, ?, ?, ?, ?)");
-			
-				phoneStat.setString(1, userName);
-				phoneStat.setInt(2, phone.getDdiNumber());
-				phoneStat.setInt(3, phone.getDddNumber());
-				phoneStat.setInt(4, phone.getNumber());
-				
-				if (conn.executeCommand(phoneStat, false) != 1) {
-					conn.getConnection().rollback();
-					return new Pair<Boolean, String>(false, "Falha ao cadastrar telefone!");
-			
-				}	
-			
-			conn.getConnection().commit();
-			
+			if (conn.executeCommand(phoneStat, false) != 1) {
+				conn.getConnection().rollback();
+				return new Pair<Boolean, String>(false, "Falha ao cadastrar telefone!");
+			}	
+		
 			return new Pair<Boolean, String>(true, "Inclusão de telefone realizada!");
 		}
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
 			return new Pair<Boolean, String>(false, "Falha ao cadastrar telefone!");
-		}
-		finally {
-			conn.closeConnection();
 		}
 	}
 	

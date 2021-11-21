@@ -93,12 +93,16 @@
             <div class="modal-body">
               <div class="col-12">
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-4">
                     <input name="nome" type="text" class="form-control" id="format-input" placeholder="Nome" />
                   </div>
-                  <div class="col-6">
+                  <div class="col-4">
                     <input name="sobrenome" type="text" class="form-control" id="format-input"
                       placeholder="Sobrenome" />
+                  </div>
+                  <div class="col-4">
+                    <input name="username" type="text" class="form-control" id="format-input"
+                      placeholder="NOME DE USUÁRIO" />
                   </div>
                 </div>
 
@@ -110,7 +114,7 @@
                         onkeypress="$(this).mask('000.000.000-00');" />
                     </div>
                     <div class="col-6">
-                      <input name="numero" type="tel" maxlength="10" class="form-control" id="format-input"
+                      <input name="datanasc" type="tel" maxlength="10" class="form-control" id="format-input"
                         placeholder="Data de nascimento" oninput="this.value = DDMMYYYY(this.value, event)" />
                       <div>
                       </div>
@@ -119,15 +123,13 @@
                     <div class="col-12">
                       <div class="row">
                         <div class="col-3">
-                          <input name="sobrenome" type="text" class="form-control" id="format-input"
-                            placeholder="DDI" />
+                          <input name="ddi" type="text" class="form-control" id="format-input" placeholder="DDI" />
                         </div>
                         <div class="col-3">
-                          <input name="sobrenome" type="text" class="form-control" id="format-input"
-                            placeholder="DDD" />
+                          <input name="ddd" type="text" class="form-control" id="format-input" placeholder="DDD" />
                         </div>
                         <div class="col-6">
-                          <input name="sobrenome" type="text" class="form-control" id="format-input"
+                          <input name="telefone" type="text" class="form-control" id="format-input"
                             placeholder="Telefone" />
                         </div>
                       </div>
@@ -143,7 +145,8 @@
                           </select>
                         </div>
                         <div class="col-6">
-                          <input name="email" type="email" class="form-control" id="format-input" placeholder="E-mail" />
+                          <input name="email" type="email" class="form-control" id="format-input"
+                            placeholder="E-mail" />
                         </div>
                       </div>
                     </div>
@@ -152,7 +155,8 @@
                     <div class="col-12">
                       <div class="row">
                         <div class="col-6">
-                          <input name="senha" type="password" class="form-control" id="format-input" placeholder="Senha" />
+                          <input name="senha" type="password" class="form-control" id="format-input"
+                            placeholder="Senha" />
                         </div>
                         <div class="col-6">
                           <input name="confirmarSenha" type="password" class="form-control" id="format-input"
@@ -163,7 +167,8 @@
 
                     <div class="login">
                       <a href="./login.html">
-                        <button type="submit" class="btn btn-success" id="btn-success" onclick="location.href='./login.html'">
+                        <button type="submit" class="btn btn-success" id="btn-success"
+                          onclick="location.href='./login.html'">
                           CONFIRMAR
                         </button>
                       </a>
