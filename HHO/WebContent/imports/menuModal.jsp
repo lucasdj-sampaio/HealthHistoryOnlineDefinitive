@@ -6,7 +6,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="icones-menu">
-        <a href="./perfil.jsp">
+        <a href="Profile?user=${user.getCredential().getUserName()}">
           <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone" />
         </a>
         <a href="./metricas.jsp">
@@ -22,19 +22,19 @@
         </a>
       </div>
       <div class="icones-menu">
-      	<a href="./atividades.jsp">
-        	<img src="./_img/Icons/exercicios.png" alt="Exercicios" id="menu-icone" />
+        <a href="./atividades.jsp">
+          <img src="./_img/Icons/exercicios.png" alt="Exercicios" id="menu-icone" />
         </a>
-      	<a href="./alimento.jsp">
-        	<img src="./_img/Icons/alimentacao.png" alt="Perfil" id="menu-icone" />
+        <a href="./alimento.jsp">
+          <img src="./_img/Icons/alimentacao.png" alt="Perfil" id="menu-icone" />
         </a>
       </div>
       <div class="icones-menu">
-      	<a href="AQUIFICAOSUPORTE">
-        <img src="./_img/Icons/suporte.png" alt="Perfil" id="menu-icone" />
+        <a href="AQUIFICAOSUPORTE">
+          <img src="./_img/Icons/suporte.png" alt="Perfil" id="menu-icone" />
         </a>
         <a href="SignOut">
-      	  <img src="./_img/Icons/sair.png" alt="Perfil" id="menu-icone" />
+          <img src="./_img/Icons/sair.png" alt="Perfil" id="menu-icone" />
         </a>
       </div>
     </div>

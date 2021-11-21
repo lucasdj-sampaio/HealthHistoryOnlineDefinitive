@@ -187,14 +187,30 @@ public class MeasureDao {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {
-			PreparedStatement measure = conn.getConnection().prepareStatement("SELECT * FROM "
-					+ "(SELECT cd_peso, nr_peso FROM T_PESO WHERE nm_usuario = ? AND ROWNUM = 1 ORDER BY dt_inclusao DESC), "
-					+ "(SELECT cd_altura, nr_altura FROM T_ALTURA WHERE nm_usuario = ? AND ROWNUM = 1 ORDER BY dt_inclusao DESC)");
+			Measure measure = new Measure();
+			measure.setHeight(getLastHeight(conn, userName));
+			measure.setWeight(getLastWeight(conn, userName));
 			
-			measure.setString(1, userName);
-			measure.setString(2, userName);
+			if(measure.getHeight() != null && measure.getHeight() != null) {
+				measure.setImc();
+			}
 			
-			ResultSet response = conn.getData(measure);
+			return new Pair<Boolean, Measure>(true, measure);
+		}
+		finally {
+			conn.closeConnection();
+		}
+	}
+	
+	private Weight getLastWeight(ConnectionManager conn, String userName) {
+				
+		try {
+			PreparedStatement weight = conn.getConnection().prepareStatement("SELECT cd_peso, nr_peso "
+					+ "FROM T_PESO WHERE nm_usuario = ? AND ROWNUM = 1 ORDER BY dt_inclusao DESC");
+			
+			weight.setString(1, userName);
+			
+			ResultSet response = conn.getData(weight);
 		
 			if (response != null) {
 				if (response.next()) {
@@ -202,22 +218,44 @@ public class MeasureDao {
 					wei.setWeightCode(response.getInt(1));
 					wei.setWeight(response.getFloat(2));
 					
-					Height hei = new Height(response.getFloat(4));
-					hei.setHeightCode(response.getInt(3));
-					
-					return new Pair<Boolean, Measure>(true, new Measure(hei, wei));
+					return wei;
 				}
 			}
 			
-			return new Pair<Boolean, Measure>(false, null);
+			return null;
 		}
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
-			return new Pair<Boolean, Measure>(false, null);
+			return null;
 		}
-		finally {
-			conn.closeConnection();
+	}
+	
+	private Height getLastHeight(ConnectionManager conn, String userName) {
+		
+		try {
+			PreparedStatement height = conn.getConnection().prepareStatement("SELECT cd_altura, nr_altura "
+					+ "FROM T_ALTURA WHERE nm_usuario = ? AND ROWNUM = 1 ORDER BY dt_inclusao DESC");
+			
+			height.setString(1, userName);
+			
+			ResultSet response = conn.getData(height);
+		
+			if (response != null) {
+				if (response.next()) {
+					Height hei = new Height(response.getFloat(1));
+					hei.setHeightCode(response.getInt(2));
+					
+					return hei;
+				}
+			}
+			
+			return null;
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return null;
 		}
 	}
 	

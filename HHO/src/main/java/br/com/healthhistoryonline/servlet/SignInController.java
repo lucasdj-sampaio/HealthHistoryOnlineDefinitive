@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import br.com.healthhistoryonline.dao.UserDao;
-import br.com.healthhistoryonline.model.User;
 import br.com.healthhistoryonline.sysmodel.Pair;
 
 @WebServlet(description = "A Servlet how control the login method", urlPatterns = { "/SignIn" })

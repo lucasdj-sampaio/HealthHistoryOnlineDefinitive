@@ -1,6 +1,5 @@
 package br.com.healthhistoryonline.servlet;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +12,9 @@ import br.com.healthhistoryonline.dao.UserDao;
 import br.com.healthhistoryonline.model.Measure;
 import br.com.healthhistoryonline.model.Phone;
 import br.com.healthhistoryonline.model.User;
+import br.com.healthhistoryonline.sysmodel.Height;
 import br.com.healthhistoryonline.sysmodel.Pair;
+import br.com.healthhistoryonline.sysmodel.Weight;
 
 @WebServlet(description = "A Servlet how control the profile methods", urlPatterns = { "/Profile" })
 public class ProfileController extends HttpServlet {
@@ -42,7 +43,10 @@ public class ProfileController extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		
 		User sessionUser = (User)session.getAttribute("user");
-		Measure sessionMeasure = (Measure)request.getAttribute("medida");
+		Measure sessionMeasure = (Measure)session.getAttribute("measure");
+		
+		if (sessionUser.getUserPhoto().getFileCode() == 0)
+    		sessionUser.getUserPhoto().setFileName("");
    
 		try {
 			sessionUser.setName(request.getParameter("nome").trim().length() > 0 
@@ -57,9 +61,12 @@ public class ProfileController extends HttpServlet {
 					? Long.parseLong(request.getParameter("cpf"))
 					: sessionUser.getCpf());
 			
-			sessionUser.setBirthDate(request.getParameter("aniversario").trim().length() > 0
+			if (request.getParameter("arquivo").length() > 0)
+				sessionUser.getUserPhoto().setFileName(request.getParameter("arquivo"));
+			
+			/*sessionUser.setBirthDate(request.getParameter("aniversario").trim().length() > 0
 					? new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("aniversario"))
-					: sessionUser.getBirthDate());
+					: sessionUser.getBirthDate());*/
 			
 			if (request.getParameter("telefone").trim().length() > 0 
 					&& request.getParameter("ddd").trim().length() > 0
@@ -72,42 +79,41 @@ public class ProfileController extends HttpServlet {
 				sessionUser.setPhone(phone);
 			}
 						
-			sessionUser.setGender(request.getParameter("sM").equals("on") ? "M" : "F");
+			sessionUser.setGender(request.getParameter("sexo"));
 			
 	    	sessionUser.getCredential().setMailAddress(request.getParameter("email").trim().length() > 0 
 					? request.getParameter("email").trim() 
 					: sessionUser.getCredential().getMailAddress());
-    	    		
+	    	
 	    	if (request.getParameter("novaSenha").trim().length() > 0 
-	    			&& request.getParameter("novaSenha") == request.getParameter("confirmarSenha")
-	    			&& request.getParameter("senha") == sessionUser.getCredential().getPassword()) {
+	    			&& request.getParameter("novaSenha").equals(request.getParameter("confirmarSenha"))
+	    			&& request.getParameter("senha").equals(sessionUser.getCredential().getPassword()))
 	    	
 	    		sessionUser.getCredential().setPassword("novaSenha");
-	    	}
-	    	else if (request.getParameter("senha") == request.getParameter("novaSenha")) {
+	    	else if (request.getParameter("senha").equals(request.getParameter("novaSenha"))
+	    				&& request.getParameter("novaSenha").length() > 0) 
 	    		request.setAttribute("message", new Pair<String, String>("W","Senha não alterada pois são iguais!"));
-	    	}
-	    	else {
+	    	else 
 	    		request.setAttribute("message", new Pair<String, String>("W","Senha de confirmação inválida ou vazia"));
-	    	}
 	    	
-	    	sessionMeasure.getHeight().setHeight(request.getParameter("altura").trim().length() > 0 
-	    			? Float.parseFloat(request.getParameter("altura").trim().replace(",", "."))   
-	    			: sessionMeasure.getHeight().getHeight());
-	   
-	    	sessionMeasure.getWeight().setWeight(request.getParameter("peso").trim().length() > 0 
-	    			? Float.parseFloat(request.getParameter("peso").trim().replace(",", "."))   
-	    			: sessionMeasure.getWeight().getWeight());
 	    	
-	    	Pair<Boolean, String> incluseResponse = includeUser(sessionUser, sessionMeasure);
+	    	Height hei = new Height(Float.parseFloat(request.getParameter("altura").trim().replace(",", ".")));
+    		
+    		sessionMeasure.setHeight(hei);
+    		
+    		Weight wei = new Weight();
+    		wei.setWeight(Float.parseFloat(request.getParameter("peso").trim().replace(",", ".")));
+    		
+    		sessionMeasure.setWeight(wei);
 	    	
-	    	if(!incluseResponse.getFirst()) {
+	    	Pair<Boolean, String> incluseResponse = updateUser(sessionUser, sessionMeasure);
+	    	
+	    	if(!incluseResponse.getFirst())
 	    		request.setAttribute("message", new Pair<String, String>("E", incluseResponse.getSecond()));
-	    	}
-	    	else {
+	    	else
 	    		request.setAttribute("message", new Pair<String, String>("S", incluseResponse.getSecond()));
-	    	}
-    	}catch (Exception ex){
+    	}
+		catch (Exception ex){
     		ex.printStackTrace();
     	}
     	
@@ -118,16 +124,17 @@ public class ProfileController extends HttpServlet {
     	
 		HttpSession session = request.getSession(true);
 		
-		session.removeAttribute("usuario");
-		session.setAttribute("usuario", userDao.getUser(userName).getSecond());
+		session.removeAttribute("user");
+		session.setAttribute("user", userDao.getUser(userName).getSecond());
 		
-		request.setAttribute("medida", measureDao.getMeasure(userName).getSecond());
+		session.removeAttribute("measure");
+		session.setAttribute("measure", measureDao.getMeasure(userName).getSecond());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("perfil.jsp");
     	rd.forward(request, response);
 	}
 	
-	private Pair<Boolean, String> includeUser(User user, Measure measure){
+	private Pair<Boolean, String> updateUser(User user, Measure measure){
     	UserDao userDao = new UserDao();
 		MeasureDao measureDao = new MeasureDao();
 		
@@ -140,6 +147,11 @@ public class ProfileController extends HttpServlet {
     	if (!updateUser.getFirst()) {
     		return new Pair<Boolean, String>(false, updateUser.getSecond());
     	}
+    	
+    	Pair<Boolean, String> updatePhoto = userDao.updatePhoto(user.getUserPhoto());
+    	if (!updatePhoto.getFirst()) {
+			return new Pair<Boolean, String>(false, updatePhoto.getSecond());
+		}
     	
     	Pair<Boolean, String> updateH = measure.getHeight().getHeightCode() < 1 
     					? measureDao.insertMeasure(measure.getHeight(), user.getCredential().getUserName()) 

@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 
 import br.com.healthhistoryonline.model.Credential;
 import br.com.healthhistoryonline.model.User;
+import br.com.healthhistoryonline.sysmodel.File;
 import br.com.healthhistoryonline.sysmodel.Pair;
 
 public class UserDao {
@@ -131,10 +132,10 @@ public class UserDao {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {
-			PreparedStatement getUser = conn.getConnection().prepareStatement("SELECT NOME, "
-					+ "SOBRENOME, NR_CPF, DT_NASCIMENTO, DS_SEXO, CD_ARQUIVO, C.NM_USUARIO "
-					+ "FROM T_USUARIO U INNER JOIN T_CREDENCIAL C "
-					+ "ON U.NM_USUARIO = C.NM_USUARIO "
+			PreparedStatement getUser = conn.getConnection().prepareStatement("SELECT NOME, SOBRENOME, NR_CPF, DT_NASCIMENTO, DS_SEXO"
+					+ ", U.CD_ARQUIVO, A.CAMINHO, C.NM_USUARIO FROM T_USUARIO U "
+					+ "INNER JOIN T_CREDENCIAL C ON U.NM_USUARIO = C.NM_USUARIO "
+					+ "LEFT JOIN T_ARQUIVO A ON A.CD_ARQUIVO = U.CD_ARQUIVO "
 					+ "WHERE C.NM_USUARIO = ? OR C.EMAIL = ?");
 			
 			getUser.setString(1, userName);
@@ -146,9 +147,17 @@ public class UserDao {
 				User user = new User(response.getString(1), response.getString(2)
 						, response.getString(5).charAt(0), response.getLong(3), response.getDate(4));
 							
-				user.setCredential(getCredential(response.getString(7)));
-				user.setUserPhoto(response.getString(6) == null ? "./_img/Usuario/"+ user.getGender() +".png" 
-						: response.getString(6));
+				user.setCredential(getCredential(response.getString(8)));
+				
+				File photo = new File(response.getString(7) == null 
+						? "./_img/Usuario/"+ user.getGender() +".png" 
+						: response.getString(7));
+				photo.setFileCode(response.getInt(6) > 0 
+						? response.getInt(6)
+						: 0);
+				
+				user.setUserPhoto(photo);
+				
 				user.setPhone(PhoneDao.getAll(conn, user.getCredential().getUserName()));
 				
 				return new Pair<Boolean, User>(true, user);
@@ -225,7 +234,7 @@ public class UserDao {
 		
 		try { 
 			PreparedStatement updateUser = conn.getConnection().prepareStatement("UPDATE T_USUARIO "
-					+ "SET NOME = ?, SOBRENOME = ?, NR_CPF = ?, DT_NASCIMENTO = ?, DS_SEXO = ?, CD_ARQUIVO = ? "
+					+ "SET NOME = ?, SOBRENOME = ?, NR_CPF = ?, DT_NASCIMENTO = ?, DS_SEXO = ? "
 					+ "WHERE NM_USUARIO = ?");
 		
 			updateUser.setString(1, user.getName());
@@ -233,13 +242,14 @@ public class UserDao {
 			updateUser.setLong(3, user.getCpf());
 			updateUser.setDate(4, java.sql.Date.valueOf(user.getBirthDate().toString()));
 			updateUser.setString(5, String.valueOf(user.getGender().charAt(0)).toString());
-			updateUser.setString(6, user.getUserPhoto());
 			
-			if (conn.executeCommand(updateUser, true) <= 1) {
-				return new Pair<Boolean, String>(true, "Usuário atualizado com sucesso!");
+			if (conn.executeCommand(updateUser, false) > 1) {
+				conn.getConnection().rollback();
+				return new Pair<Boolean, String>(false, "Erro ao atualizar dados do usuário");
 			}
 			
-			return new Pair<Boolean, String>(false, "Erro ao atualizar dados do usuário");
+			conn.getConnection().commit();
+			return new Pair<Boolean, String>(true, "Usuário atualizado com sucesso!");
 		}
 		catch (SQLException ex) 
 		{
@@ -250,6 +260,47 @@ public class UserDao {
 			conn.closeConnection();
 		}
 	} 
+	
+	public Pair<Boolean, String> updatePhoto(File photo) {
+		ConnectionManager conn = new ConnectionManager();
+		
+		try { 
+			if(photo.getFileCode() != 0) {
+				PreparedStatement updatePhoto = conn.getConnection().prepareStatement("UPDATE T_ARQUIVO "
+						+ "SET CAMINHO = ? WHERE CD_ARQUIVO = ?");
+			
+				updatePhoto.setString(1, photo.getFileName());
+		        updatePhoto.setInt(2, photo.getFileCode());
+				
+				if (conn.executeCommand(updatePhoto, false) <= 1) {
+					conn.getConnection().commit();
+					return new Pair<Boolean, String>(true, "Foto atualizada com sucesso");
+				}
+			}
+			else {
+				PreparedStatement insertPhoto = conn.getConnection().prepareStatement("INSERT INTO T_ARQUIVO "
+						+ "(CAMINHO, CD_ARQUIVO) VALUES (?, ARQUIVO.Nextval)");
+			
+				insertPhoto.setString(1, photo.getFileName());
+				
+				if (conn.executeCommand(insertPhoto, false) == 1) {
+					conn.getConnection().commit();
+					return new Pair<Boolean, String>(true, "Foto incluída com sucesso");
+				}
+			}
+			
+			conn.getConnection().rollback();
+			return new Pair<Boolean, String>(false, "Erro ao atualizar foto do usuário");
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return new Pair<Boolean, String>(false, "Erro ao atualizar foto do usuário");
+		}
+		finally {
+			conn.closeConnection();
+		}
+	}
 	
 	private boolean validLogin(ConnectionManager conn, String userName){
 		
