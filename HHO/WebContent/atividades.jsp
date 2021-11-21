@@ -120,130 +120,65 @@
     </div>
     <!-- #endregion -->
 
-    <!-- #region Modal new user-->
+        <!-- #region Modal new user-->
     <div class="modal fade" id="newfood" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5>Cadastro</h5>
+                    <img src="./_img/Icons/icone-exercicio.png"/> 
+                    <h5 class="titulo-modal">Exercícios praticados</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div> 
-                <div class="modal-body">        
-                    <div class="data-cadastro">
-                        <img src="./_img/Icons/calendario.png"/> 
-                        <label>14.11.2021</label>
-                    </div>
-                <div>
-                    <img src="./_img/Icons/icone-exercicio.png"/> 
-                    <label>Exercícios praticados:</label>
-                </div>
+                <form action="SignUp" method="post">
+                    <div class="modal-body">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div id="centro-modal">
+                                        <img src="./_img/Icons/calendario.png"/> 
+                                        <label>14.11.2021</label>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="subtitulo-centro">
-                    <div class="alinhamento">             
-                        <input class="input-cadastro" type="text" placeholder="pão" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento">    
-                        <input class="input-cadastro" type="text" placeholder="suco de laranja"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento">                   
-                        <input class="input-cadastro" type="text" placeholder="torrada"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro"type="text" placeholder="manteiga"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="geléia"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="bolo de cenoura"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                </div>
+                            <div class="row">
+                                <div class="col-5">
+                                    <input class="input-cadastro" type="text" placeholder="Musculação" disabled>
+                                </div>
+                                <div class="col-3">
+                                    <input class="input-cadastro" type="text" placeholder="250Kcal" disabled>
+                                </div>
+                                <div class="col-3">
+                                    <input class="input-cadastro" type="text" placeholder="100.2bpm" disabled>
+                                </div>
+                            </div>
 
-                <div class="subtitulo-centro">
-                    <div class="alinhamento">             
-                        <input class="input-cadastro" type="text" placeholder="Suco de abacaxi" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="Arroz"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="Feijoada"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                     </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="Farofa"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="Couve"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="Mousse de chocolate"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                </div>
+                            <div class="row">
+                                <div class="col-5">
+                                    <input class="input-cadastro" type="text" placeholder="Musculação" disabled>
+                                </div>
+                                <div class="col-3">
+                                    <input class="input-cadastro" type="text" placeholder="250Kcal" disabled>
+                                </div>
+                                <div class="col-3">
+                                    <input class="input-cadastro" type="text" placeholder="100.2bpm" disabled>
+                                </div>
+                            </div>
 
-                <div class="subtitulo-centro">
-                    <div class="alinhamento">              
-                        <input class="input-cadastro" type="text" placeholder="Café" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
+                            <div class="row">
+                                <div class="col-5">
+                                    <input class="input-cadastro" type="text" placeholder="Musculação" disabled>
+                                </div>
+                                <div class="col-3">
+                                    <input class="input-cadastro" type="text" placeholder="250Kcal" disabled>
+                                </div>
+                                <div class="col-3">
+                                    <input class="input-cadastro" type="text" placeholder="100.2bpm" disabled>
+                                </div>
+                            </div>                     
+                        </div>
                     </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="Torrada"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="geléia"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="pão"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="Requeijão"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>                   
-                </div>
-
-                <div class="subtitulo-centro">
-                    <div class="alinhamento">              
-                        <input class="input-cadastro" type="text" placeholder="Sopa de legumes" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>
-                    <div class="alinhamento"> 
-                        <input class="input-cadastro" type="text" placeholder="Suco de laranja"disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                        <input class="input-cadastro" type="text" placeholder="52 Kcal" disabled>
-                    </div>                              
-                </div>
+                </form>                 
             </div>                           
         </div>
     </div>

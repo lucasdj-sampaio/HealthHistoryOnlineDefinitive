@@ -88,7 +88,7 @@ td, th{
 }
 
 .form-control::placeholder{
-    color: #3E3B7A !important;;
+    color: #3E3B7A !important;
 }
 
 #add-campo{
@@ -113,13 +113,13 @@ input::placeholder{
     margin: 0px 0px 40px;
 }
 
-.subtitulo-centro{
-    text-align: center; 
+#subtitulo-centro{
+    text-align: center !important; 
 }
 
 .input-cadastro{
     text-align: center;
-    margin: 10px;
+    margin: 10px 5px;
     width: 100%;
 }
 
@@ -131,10 +131,19 @@ input::placeholder{
     position: relative;
 }
 
-.fake-input input {
+.fake-input input { 
     border:none: background:#fff; display:block; width: 100%; box-sizing: border-box 
 }
 
 .fake-input img { 
     position: absolute; top: 2px; right: 5px 
+}
+
+#centro-modal{
+    text-align: center;
+    margin: 10px;    
+}
+
+.titulo-modal{
+    color: #3E3B7A !important;
 }
