@@ -10,7 +10,7 @@
           <img src="./_img/Icons/perfil.png" alt="Perfil" id="menu-icone" />
         </a>
         <a href="./metricas.jsp">
-          <img src="./_img/Icons/metricas.png" alt="MÃ©tricas" id="menu-icone" />
+          <img src="./_img/Icons/metricas.png" alt="Métricas" id="menu-icone" />
         </a>
       </div>
       <div class="icones-menu">
@@ -26,11 +26,11 @@
           <img src="./_img/Icons/exercicios.png" alt="Exercicios" id="menu-icone" />
         </a>
         <a href="./alimento.jsp">
-          <img src="./_img/Icons/alimentacao.png" alt="Perfil" id="menu-icone" />
+          <img src="./_img/Icons/alimentacao.png" alt="Alimentação" id="menu-icone" />
         </a>
       </div>
       <div class="icones-menu">
-        <a href="AQUIFICAOSUPORTE">
+        <a href="">
           <img src="./_img/Icons/suporte.png" alt="Perfil" id="menu-icone" />
         </a>
         <a href="SignOut">
