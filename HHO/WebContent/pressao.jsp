@@ -124,8 +124,8 @@
     </div>
 
     <%@ include file="imports/menuModal.jsp" %>
-    	<%@ include file="imports/insertPModal.jsp" %>
-    		 <%@ include file="imports/alterPModal.jsp" %>
+    	<%@ include file="imports/insertPrModal.jsp" %>
+    		 <%@ include file="imports/alterPrModal.jsp" %>
     		 	<%@ include file="imports/notifyModal.jsp" %>
 
     </html>
